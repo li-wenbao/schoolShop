@@ -1,0 +1,1 @@
+<view class="center"><view class="center_box_bg"><view class="center_menu"><block wx:for="{{menus}}" wx:for-item="item" wx:for-index="__i0__"><view class="menu_item"><text>{{item.name}}</text></view></block></view></view></view>

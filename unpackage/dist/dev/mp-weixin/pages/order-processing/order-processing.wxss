@@ -1,0 +1,256 @@
+
+.order-get-position {
+	font-size: 34rpx;
+	margin-top: 15rpx;
+}
+.order-get-kilometres {
+	font-size: 34rpx;
+	margin-top: 14rpx;
+}
+.cu-item-text {
+	font-size: 30rpx;
+}
+.order-item {
+	width: auto;
+	height: 590rpx;
+	background-color: #ffffff;
+	margin-top: 40rpx;
+	border: #cccccc 2rpx solid;
+	border-radius: 16rpx;
+	margin-right: 20rpx;
+	margin-left: 20rpx;
+}
+.order-item-item {
+	width: auto;
+	height: 590rpx;
+}
+.order-name {
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	        align-items: center;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	width: 1270rpx;
+	height: 150rpx;
+}
+.order-get {
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	        align-items: center;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	width: 690rpx;
+	height: 140rpx;
+
+	margin-left: 12rpx;
+	border-top-color: #cccccc 1px solid;
+}
+.order-push {
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	        align-items: center;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	width: 690rpx;
+	height: 170rpx;
+
+	margin-left: 12rpx;
+	border-top-color: #cccccc 1px solid;
+}
+.order-name-name {
+	width: 380rpx;
+	height: 130rpx;
+	margin-left: 35rpx;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	        align-items: center;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+}
+.product-image {
+	width: 120rpx;
+	height: 120rpx;
+}
+.text-name {
+	width: 260rpx;
+	height: 60rpx;
+	font-size: 40rpx;
+	font-weight: 700;
+	margin-left: 22rpx;
+}
+.clock {
+	width: 60rpx;
+	height: 60rpx;
+}
+.order-clock {
+	width: 70rpx;
+	height: 70rpx;
+}
+.users-clock {
+	width: 45rpx;
+
+	height: 45rpx;
+}
+.order-clock-position {
+	width: 70rpx;
+	height: 70rpx;
+}
+.about-time {
+	width: 130rpx;
+	height: 50rpx;
+	font-size: 17px;
+	margin-left: 10rpx;
+}
+.order-name-name-name {
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	        align-items: center;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	width: 340rpx;
+	height: 90rpx;
+	margin-left: 75rpx;
+}
+.order-get-underline {
+	width: 2rpx;
+	height: 128rpx;
+
+	border-left-width: 2rpx solid #cccccc;
+	margin-left: 30rpx;
+}
+.order-get-get {
+	margin-left: 20rpx;
+	width: 120rpx;
+	height: 120rpx;
+	background-color: #007aff;
+}
+.order-get-get1 {
+	margin-left: 20rpx;
+	width: 120rpx;
+	height: 120rpx;
+	background-color: #fbbd08;
+}
+.order-get-get {
+	margin-left: 20rpx;
+	width: 120rpx;
+	height: 120rpx;
+}
+.cu-avatar.xl {
+	width: 100rpx;
+	height: 100rpx;
+	margin-top: 20rpx;
+}
+.order-get-kilometre {
+	width: 360rpx;
+	height: 128rpx;
+
+	margin-left: 25rpx;
+}
+.order-account {
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	        align-items: center;
+
+	width: 696rpx;
+	height: 100rpx;
+	margin-top: 40rpx;
+
+	margin-left: 10rpx;
+	border-top-color: #cccccc 1px solid;
+}
+.view-details {
+	width: 172rpx;
+	height: 70rpx;
+	float: left;
+	color: #007aff;
+	background-color: #ffffff;
+	font-weight: 600;
+	border: #007aff solid 1rpx;
+}
+.view-detailsd {
+	width: 172rpx;
+	height: 70rpx;
+	float: left;
+	margin-left: 330rpx;
+	color: #007aff;
+	background-color: #ffffff;
+	font-weight: 600;
+	border: #007aff solid 1rpx;
+}
+.grab-sheet {
+	width: 172rpx;
+	height: 70rpx;
+	float: right;
+	color: #ffffff;
+	background-color: #007aff;
+	font-weight: 600;
+	border: #007aff solid 1rpx;
+}
+.grab-sheetd {
+	width: 172rpx;
+	height: 70rpx;
+	float: right;
+	color: #ffffff;
+	background-color: #007aff;
+	font-weight: 600;
+	border: #007aff solid 1rpx;
+}
+.users-text {
+	position: relative;
+	top: -2rpx;
+	left: 15rpx;
+}
+.view-arrived {
+	width: 172rpx;
+	height: 70rpx;
+	float: right;
+	color: #007aff;
+	background-color: #1aad19;
+	font-weight: 600;
+	border: #007aff solid 1rpx;
+}
+.view-arrive {
+	float: left;
+	width: 172rpx;
+	height: 70rpx;
+	color: #007aff;
+	background-color: #ffffff;
+	font-weight: 600;
+	margin-left: 4rpx;
+	border: #007aff solid 1rpx;
+}
+.view-change {
+	width: 172rpx;
+	height: 70rpx;
+	float: left;
+	color: #007aff;
+	background-color: #ffffff;
+	font-weight: 600;
+	margin-left: 4rpx;
+
+	border: #007aff solid 1rpx;
+}
+.view-changed {
+	width: 172rpx;
+	height: 70rpx;
+	float: right;
+	color: #007aff;
+	font-weight: 600;
+	border: #007aff solid 1rpx;
+}
+button {
+	font-size: 28rpx;
+}
+.nav .cu-item.cur {
+	border-bottom: 8rpx solid #007aff;
+	font-weight: 600;
+}
+.text-orange {
+	color: #007aff;
+}
+
