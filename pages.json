@@ -5,6 +5,10 @@
 
 		//     "style" : {}
 		// },
+		// {
+		// 	"path": "pages/order-processing/order-processing",
+		// 	"style": {}
+		// },
 		{
 			"path": "pages/order-processing/order-processingtest",
 			"style": {}
@@ -15,11 +19,9 @@
 				"navigationBarTitleText": "详情"
 			}
 		},
+
 		
 		{
-			"path": "pages/order-processing/order-processing",
-			"style": {}
-		}, {
 			"path": "pages/order-history/order-history",
 			"style": {}
 		}, {
@@ -43,8 +45,7 @@
 		"fontSize": "14px",
 		"height": "50upx",
 		"selectedColor": "#333333",
-		"list": [
-			{
+		"list": [{
 				"pagePath": "pages/order-processing/order-processingtest",
 				"text": "订单处理",
 				"iconPath": "static/order-processing.png",

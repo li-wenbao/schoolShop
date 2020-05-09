@@ -6,76 +6,91 @@
 		</view>
 		<!-- swiper切换 swiper-item表示一页 scroll-view表示滚动视窗 -->
 		<swiper style="min-height: 90vh;" :current="currentTab" @change="swiperTab">
-			<swiper-item v-for="(listItem,listIndex) in list" :key="listIndex">
-				<scroll-view style="height: 100%;" scroll-y="true" @scrolltolower="lower1" scroll-with-animation :scroll-into-view="toView">
-					<view :id="'top'+listIndex" style="width: 100%;height: 100upx;">边距盒子</view>
-					<view class='content'>
-						<!-- 显示区域 -->
-						<view class="list" v-for="(item,index) in listItem" v-if="listItem.length > 0" :key="index">
-							<view class="order-item">
-								<view class="order-item-item">
-									<view class="order-name">
-										<view class="order-name-name">
-											<image :src="item.product_image" class="product-image"></image>
-											<view class="text-name">{{ item.text_name }}</view>
-										</view>
-										<view class="order-name-name-name">
-											<image src="../../static/clock.png" mode="" class="clock"></image>
-											<view class="about-time">{{ item.about_time }}分钟</view>
-										</view>
-									</view>
-									<view class="order-get">
-										<view class="cu-avatar xl round margin-left bg-red order-get-get">取</view>
-										<view class="order-get-underline"></view>
-										<view class="order-get-kilometre">
-											<view class="order-get-kilometres">{{ item.kilometres }}km</view>
-											<view class="order-get-position">{{ item.position }}</view>
-										</view>
-										<view class="order-phone">
-											<image src="../../static/phone.png" mode="" class="order-clock" style="margin-top: 48upx;" @click="tel"></image>
-										</view>
-										<view class="order-position">
-											<image src="../../static/position.png" mode="" class="order-clock-position" style="margin-top: 48upx;"
-											 @click="position"></image>
-										</view>
-									</view>
-									<view class="order-push">
-										<view class="cu-avatar xl round margin-left bg-red order-get-get1">送</view>
-										<view class="order-get-underline"></view>
-										<view class="order-get-kilometre">
-											<view class="order-get-users">
-												<image src="../../static/users.png" mode="" class="users-clock"></image>
-												<text class="users-text">{{ item.userss }}</text>
-											</view>
-											<view class="order-get-kilometres">{{ item.kilometress }}km</view>
-											<view class="order-get-position">{{ item.positions }}</view>
-										</view>
-										<view class="order-phone">
-											<image src="../../static/phone.png" mode="" class="order-clock" style="margin-top: 140upx;" @click="tell"></image>
-										</view>
-										<navigator class="order-position" url="../map/map">
-											<image src="../../static/position.png" mode="" class="order-clock-position" style="margin-top: 140upx;"
-											 @click="position">
-											</image>
-										</navigator>
-									</view>
-									<view class="order-account" v-for="(itemaccount, index) in orderListaccount" :key="index.id" v-if="TabCur === index">
-										<button @click="details" type="" :class="index == 0 ? 'view-details' : 'view-detailsd'" v-if="index == 1 || index == 2 || index == 0">{{ itemaccount.details }}</button>
-										<button type="" :class="index == 0 ? 'view-arrive' : 'view-arrived'" v-if="index == 0">{{ itemaccount.arrived }}</button>
-										<button type="" :class="index == 0 ? 'view-change' : 'view-changed'" v-if="index == 0">{{ itemaccount.change }}</button>
-										<button type="" :class="index == 0 ? 'grab-sheet' : 'grab-sheetd'">{{ itemaccount.sheet }}</button>
-									</view>
+			<swiper-item v-for="(item,listIndex) in orderList" :key="listIndex">
+
+				<!-- 显示区域 -->
+				<view class="list">
+					<view class="order-item">
+						<view class="order-item-item">
+							<view class="order-name">
+								<view class="order-name-name">
+									<image :src="item.product_image" class="product-image"></image>
+									<view class="text-name">{{ item.text_name }}</view>
+								</view>
+								<view class="order-name-name-name">
+									<image src="../../static/clock.png" mode="" class="clock"></image>
+									<view class="about-time">{{ item.about_time }}分钟</view>
 								</view>
 							</view>
+							<view class="order-get">
+								<view class="cu-avatar xl round margin-left bg-red order-get-get">取</view>
+								<view class="order-get-underline"></view>
+								<view class="order-get-kilometre">
+									<view class="order-get-kilometres">{{ item.kilometres }}km</view>
+									<view class="order-get-position">{{ item.position }}</view>
+								</view>
+								<view class="order-phone">
+									<image src="../../static/phone.png" mode="" class="order-clock" style="margin-top: 48upx;" @click="tel"></image>
+								</view>
+								<view class="order-position">
+									<image src="../../static/position.png" mode="" class="order-clock-position" style="margin-top: 48upx;" @click="position"></image>
+								</view>
+							</view>
+
+							<view class="order-push">
+								<view class="cu-avatar xl round margin-left bg-red order-get-get1">送</view>
+								<view class="order-get-underline"></view>
+								<view class="order-get-kilometre">
+									<view class="order-get-users">
+										<image src="../../static/users.png" mode="" class="users-clock"></image>
+										<text class="users-text">{{ item.userss }}</text>
+									</view>
+									<view class="order-get-kilometres">{{ item.kilometress }}km</view>
+									<view class="order-get-position">{{ item.positions }}</view>
+								</view>
+								<view class="order-phone">
+									<image src="../../static/phone.png" mode="" class="order-clock" style="margin-top: 140upx;" @click="tell"></image>
+								</view>
+								<navigator class="order-position" url="../map/map">
+									<image src="../../static/position.png" mode="" class="order-clock-position" style="margin-top: 140upx;" @click="position">
+									</image>
+								</navigator>
+							</view>
 						</view>
-						<!-- 显示区域结束 -->
 					</view>
-					<view class='noCard' style="margin-top: 80upx;"  v-if="listItem.length===0">
-						暂无信息
-					</view>
-				</scroll-view>
+				</view>
+				<!-- 显示区域结束 -->
 			</swiper-item>
 		</swiper>
+		<!-- 模态窗口设置 -->
+		<view class="cu-modal" :class="modalName=='Modal'?'show':''">
+			<view class="cu-dialog radius30" style="background: none;">
+				<view class="bg-white radius30">
+					<view class="cu-bar bg-blue justify-end">
+						<view class="content">转单求助</view>
+					</view>
+					<view class="padding-sm margin-top-sm">
+						<text class="text-left text-red">*</text>
+						<text class="text-left">
+							转单求助持续5分钟，如无人应答，转单将被取消，仍需自己配送，如果有指定人员接单，请输入他的手机号，他将直接收到你的转单求助。
+						</text>
+					</view>
+					<view class="padding-sm margin-top-sm">
+						<text class="text-xxl">- 指定骑手 -</text>
+					</view>
+					<view class="flex justify-center">
+						<view class="cu-form-group margin-sm radius50" style="border: 1px #e8e8e8 solid;">
+							<view class="title"><text class="cuIcon-people text-xxl" style="font-size: 36rpx;"></text></view>
+							<!-- <input placeholder="请输入电话号码" name="phoneNumber"></input> -->
+							<input placeholder="输入手机号" name="input"></input>
+						</view>
+					</view>
+				</view>
+				<view class="action margin-top-xl" @tap="hideModal">
+					<text class="cuIcon-roundclose text-red text-xxl" style="font-size: 56rpx;"></text>
+				</view>
+			</view>
+		</view>
 	</view>
 </template>
 <script>
@@ -95,205 +110,24 @@
 				toView: '', //回到顶部id
 				tabTitle: ['待取货', '配送中', '抢任务', '有异常', '已完成'],
 				currentTab: 0, //sweiper所在页
-				list: [
-					[{
-							text_name: '北京烤鸭',
-							product_image: '../../static/product_image.jpg',
-							about_time: 50,
-							kilometres: 1.1,
-							position: '昆明理工大学',
-							kilometress: 1.1,
-							positions: '昆明理工大学',
-							userss: '李同学'
-						},
-						{
-							text_name: '小锅米线',
-							product_image: '../../static/product_image.jpg',
-							about_time: 40,
-							kilometres: 1.2,
-							position: '昆明理工大学2',
-							kilometress: 1.2,
-							positions: '昆明理工大学2',
-							userss: '李同学2'
-						},
-
-						{
-							text_name: '藤谷拉面',
-							product_image: '../../static/product_image.jpg',
-							about_time: 30,
-							kilometres: 1.3,
-							position: '昆明理工大学3',
-							kilometress: 1.3,
-							positions: '昆明理工大学3',
-							userss: '李同学3'
-						},
-						{
-							text_name: '凉米线',
-							product_image: '../../static/product_image.jpg',
-							about_time: 30,
-							kilometres: 1.4,
-							position: '昆明理工大学4',
-							kilometress: 1.4,
-							positions: '昆明理工大学4',
-							userss: '李同学4'
-						},
-						{
-							text_name: '黄焖鸡米饭',
-							product_image: '../../static/product_image.jpg',
-							about_time: 30,
-							kilometres: 1.5,
-							position: '昆明理工大学5',
-							kilometress: 1.5,
-							positions: '昆明理工大学5',
-							userss: '李同学5'
-						}
-					],
-					[{
-							text_name: '凉米线',
-							product_image: '../../static/product_image.jpg',
-							about_time: 30,
-							kilometres: 1.4,
-							position: '昆明理工大学4',
-							kilometress: 1.4,
-							positions: '昆明理工大学4',
-							userss: '李同学4'
-						},
-						{
-							text_name: '黄焖鸡米饭',
-							product_image: '../../static/product_image.jpg',
-							about_time: 30,
-							kilometres: 1.5,
-							position: '昆明理工大学5',
-							kilometress: 1.5,
-							positions: '昆明理工大学5',
-							userss: '李同学5'
-						},
-						{
-							text_name: '北京烤鸭',
-							product_image: '../../static/product_image.jpg',
-							about_time: 50,
-							kilometres: 1.1,
-							position: '昆明理工大学',
-							kilometress: 1.1,
-							positions: '昆明理工大学',
-							userss: '李同学'
-						},
-						{
-							text_name: '小锅米线',
-							product_image: '../../static/product_image.jpg',
-							about_time: 40,
-							kilometres: 1.2,
-							position: '昆明理工大学2',
-							kilometress: 1.2,
-							positions: '昆明理工大学2',
-							userss: '李同学2'
-						},
-
-						{
-							text_name: '藤谷拉面',
-							product_image: '../../static/product_image.jpg',
-							about_time: 30,
-							kilometres: 1.3,
-							position: '昆明理工大学3',
-							kilometress: 1.3,
-							positions: '昆明理工大学3',
-							userss: '李同学3'
-						}
-					],
-					[],
-					[{
-							text_name: '凉米线',
-							product_image: '../../static/product_image.jpg',
-							about_time: 30,
-							kilometres: 1.4,
-							position: '昆明理工大学4',
-							kilometress: 1.4,
-							positions: '昆明理工大学4',
-							userss: '李同学4'
-						},
-						{
-							text_name: '黄焖鸡米饭',
-							product_image: '../../static/product_image.jpg',
-							about_time: 30,
-							kilometres: 1.5,
-							position: '昆明理工大学5',
-							kilometress: 1.5,
-							positions: '昆明理工大学5',
-							userss: '李同学5'
-						},
-						{
-							text_name: '北京烤鸭',
-							product_image: '../../static/product_image.jpg',
-							about_time: 50,
-							kilometres: 1.1,
-							position: '昆明理工大学',
-							kilometress: 1.1,
-							positions: '昆明理工大学',
-							userss: '李同学'
-						},
-						{
-							text_name: '小锅米线',
-							product_image: '../../static/product_image.jpg',
-							about_time: 40,
-							kilometres: 1.2,
-							position: '昆明理工大学2',
-							kilometress: 1.2,
-							positions: '昆明理工大学2',
-							userss: '李同学2'
-						},
-
-						{
-							text_name: '藤谷拉面',
-							product_image: '../../static/product_image.jpg',
-							about_time: 30,
-							kilometres: 1.3,
-							position: '昆明理工大学3',
-							kilometress: 1.3,
-							positions: '昆明理工大学3',
-							userss: '李同学3'
-						},
-					],
-					[]
-				], 
-				//数据格式
-				orderListaccount: [{
-						index: 0,
-						details: '查看详情',
-						sheet: '开始配送',
-						arrived: '已到店',
-						change: '1'
-					},
-					{
-						index: 1,
-						details: '查看详情',
-						sheet: '确认送达',
-						arrived: '已到店',
-						change: '1'
-					},
-
-					{
-						index: 2,
-						details: '查看详情',
-						sheet: '抢单'
-					},
-					{
-						id: 3,
-						details: '查看详情',
-						sheet: '查看详情'
-					},
-					{
-						id: 4,
-						details: '查看详情',
-						sheet: '查看详情'
-					}
-				]
-			};
+				orderList: [],
+				modalName: null,
+			}
 		},
 		onLoad(options) {
 			// 页面显示是默认选中第一个
 			this.TabCur = 2;
+			this.getqiShouOrderList()
 		},
 		methods: {
+			// 模态窗口
+			showModal(e) {
+				this.modalName = e.currentTarget.dataset.target
+			},
+			hideModal(e) {
+				this.modalName = null
+			},
+
 			tabSelect(e) {
 				this.TabCur = e.currentTarget.dataset.id;
 				this.scrollLeft = (e.currentTarget.dataset.id - 1) * 60;
@@ -309,7 +143,7 @@
 					phoneNumber: '17388914843'
 				});
 			},
-			details(){
+			details() {
 				uni.navigateTo({
 					url: "/pages/order-processing/details"
 				});
@@ -319,7 +153,15 @@
 			},
 
 			// 后添加的东西
-
+			// 订单数据请求
+			getqiShouOrderList: function() {
+				this.$api.qiShouOrderListApi({
+					"order_status": this.currentTab,
+				}).then(res => {
+					console.log('数据:' + JSON.stringify(res.data));
+					this.orderList = res.data;
+				})
+			},
 			toTop() {
 				this.toView = ''
 				setTimeout(() => {
@@ -328,7 +170,8 @@
 			},
 			changeTab(index) {
 				this.currentTab = index;
-				console.log("点到哪个了？？？？++++",this.currentTab)
+				this.getqiShouOrderList()
+				console.log("点到哪个了？？？？++++", this.currentTab)
 			},
 			// 其他请求事件 当然刷新和其他请求可以写一起 多一层判断。
 			isRequest() {
@@ -351,7 +194,7 @@
 				var index = e.detail.current //获取索引
 				this.$refs.navTab.longClick(index);
 			},
-			
+
 			isRefresh() {
 				setTimeout(() => {
 					uni.showToast({
