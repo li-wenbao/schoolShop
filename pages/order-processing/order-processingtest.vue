@@ -80,7 +80,9 @@
 					</view>
 					<view class="flex justify-center">
 						<view class="cu-form-group margin-sm radius50" style="border: 1px #e8e8e8 solid;">
-							<view class="title"><text class="cuIcon-people text-xxl" style="font-size: 36rpx;"></text></view>
+							<view class="title">
+								<text class="cuIcon-people text-xxl" style="font-size: 36rpx;"></text>
+								</view>
 							<!-- <input placeholder="请输入电话号码" name="phoneNumber"></input> -->
 							<input placeholder="输入手机号" name="input"></input>
 						</view>

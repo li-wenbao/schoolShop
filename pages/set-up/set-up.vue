@@ -1,12 +1,8 @@
 <template>
 	<view class="center">
-		
 		<view class="center_box_bg">
-			
-		
-			<view class="center_menu">
-				<view class="menu_item" v-for="item in menus">
-					
+			<view class="center_menu" v-for="(item,index) in menus" :key="index">
+				<view class="menu_item" :data-id="item.id" @tap="setList">
 					<text>{{item.name}}</text>
 				</view>
 			</view>
@@ -18,43 +14,72 @@
 	export default {
 		data() {
 			return {
-				
+				// mIndex: 0,
 				menus: [{
 						name: '我的账户',
 						icon: '../../static/fumou-center-template/5.png',
-						key: 1,
+						id: 1,
 					},
-					{
-						name: '我的评价',
-						icon: '../../static/fumou-center-template/6.png',
-						key: 2,
-					},
+					// {
+					// 	name: '我的评价',
+					// 	icon: '../../static/fumou-center-template/6.png',
+					// 	key: 2,
+					// },
 					{
 						name: '我的客服',
 						icon: '../../static/fumou-center-template/7.png',
-						key: 3,
+						id: 3,
 					},
 					{
 						name: '修改密码',
 						icon: '../../static/fumou-center-template/8.png',
-						key: 4,
+						id: 4,
 					},
 					{
 						name: '手机权限设置',
 						icon: '../../static/fumou-center-template/9.png',
-						key: 5,
+						id: 5,
 					},
 					{
 						name: '关于我们',
 						icon: '../../static/fumou-center-template/10.png',
-						key: 6,
+						id: 6,
 					}
-
 				]
 			};
 		},
-		methods: {
+		onLoad() {
 
+		},
+
+		methods: {
+			setList(e) {
+				// let serviceId = e.currentTarget.dataset.id
+				let serviceId = e.currentTarget.dataset.id
+				console.log("serviceId:", serviceId)
+				switch (serviceId) {
+					case 1:
+						uni.navigateTo({
+							url: "/pages/set-up/set-up-account"
+						});
+						break;
+					case 4:
+						uni.navigateTo({
+							url: "/pages/set-up/set-up-chaPassword"
+						});
+						break;
+					case 5:
+						uni.navigateTo({
+							url: "/pages/set-up/set-up-access"
+						});
+						break;
+					case 6:
+						uni.navigateTo({
+							url: "/pages/set-up/set-up-about"
+						});
+						break
+				}
+			},
 		},
 		computed: {
 
@@ -80,7 +105,6 @@
 			background: url('../../static/fumou-center-template/header.jpg') no-repeat 0% 50%;
 			background-size: cover;
 
-			// background: #E6E6E6;
 			.mask {
 				background: rgba(0, 0, 0, .4);
 				height: 100%;
@@ -94,7 +118,6 @@
 			.profily {
 				position: absolute;
 				width: 90%;
-				// border:1px solid #F7F7F7;
 				margin: 0 auto;
 				top: -100upx;
 				left: 5%;
@@ -112,6 +135,7 @@
 		border-bottom: 2px solid #F6F6F6;
 		padding-bottom: 35upx;
 		position: relative;
+
 		.profily_header {
 			height: 120upx;
 			width: 120upx;
@@ -123,13 +147,13 @@
 			margin-left: 20px;
 			font-size: 30upx;
 		}
-		
-		image{
+
+		image {
 			position: absolute;
 			height: 40upx;
 			width: 40upx;
 			right: 0px;
-			top:0px;
+			top: 0px;
 		}
 	}
 
@@ -145,12 +169,13 @@
 			letter-spacing: .5px;
 			display: flex;
 			flex-direction: column;
+
 			.icon {
 				width: 50upx;
 				height: 50upx;
 				margin: 0 auto;
 				margin-bottom: 5px;
-				
+
 			}
 		}
 	}
@@ -199,8 +224,12 @@
 				height: 40upx;
 			}
 
+			&:nth-of-type(1) {
+				margin-top: 20px;
+			}
+
 			&:nth-of-type(4) {
-				margin-top: 10px;
+				margin-top: 20px;
 			}
 		}
 	}
