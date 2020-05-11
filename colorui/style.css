@@ -282,3 +282,22 @@ button {
 .radius50{
 	border-radius: 50rpx;
 }
+
+/* app 颜色 */
+.bg-appblue{
+	background: #0099FF;
+}
+.text-appcolor{
+	color: #0099FF;
+}
+
+.user-image{
+	width: 60rpx;
+	height: 60rpx;
+}
+.input-login{
+	width: 60%;text-align: center;margin-top: 50px;height: 88upx;line-height: 88upx;
+}
+.width100{
+	width: 100%;
+}

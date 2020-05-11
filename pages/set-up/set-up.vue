@@ -1,8 +1,8 @@
 <template>
-	<view class="center">
+	<view class="center width100">
 		<view class="center_box_bg">
-			<view class="center_menu" v-for="(item,index) in menus" :key="index">
-				<view class="menu_item" :data-id="item.id" @tap="setList">
+			<view class="center_menu width100" v-for="(item,index) in menus" :key="index">
+				<view class="menu_item width100" :data-id="item.id" @tap="setList">
 					<text>{{item.name}}</text>
 				</view>
 			</view>
@@ -14,11 +14,11 @@
 	export default {
 		data() {
 			return {
-				// mIndex: 0,
+				phone: "110119",
 				menus: [{
 						name: '我的账户',
 						icon: '../../static/fumou-center-template/5.png',
-						id: 1,
+						id: "1",
 					},
 					// {
 					// 	name: '我的评价',
@@ -28,22 +28,22 @@
 					{
 						name: '我的客服',
 						icon: '../../static/fumou-center-template/7.png',
-						id: 3,
+						id: "3",
 					},
 					{
 						name: '修改密码',
 						icon: '../../static/fumou-center-template/8.png',
-						id: 4,
+						id: "4",
 					},
 					{
 						name: '手机权限设置',
 						icon: '../../static/fumou-center-template/9.png',
-						id: 5,
+						id: "5",
 					},
 					{
 						name: '关于我们',
 						icon: '../../static/fumou-center-template/10.png',
-						id: 6,
+						id: "6",
 					}
 				]
 			};
@@ -54,32 +54,50 @@
 
 		methods: {
 			setList(e) {
-				// let serviceId = e.currentTarget.dataset.id
 				let serviceId = e.currentTarget.dataset.id
 				console.log("serviceId:", serviceId)
 				switch (serviceId) {
-					case 1:
+					case "1":
 						uni.navigateTo({
-							url: "/pages/set-up/set-up-account"
+							url: "/pages/set-up/set-up-info"
 						});
 						break;
-					case 4:
+					case "3":
+						// this.makePhone()
+						this.getTell()
+						break;
+					case "4":
 						uni.navigateTo({
-							url: "/pages/set-up/set-up-chaPassword"
+							url: "/pages/login/login-reste-pwd"
 						});
 						break;
-					case 5:
+					case "5":
 						uni.navigateTo({
 							url: "/pages/set-up/set-up-access"
 						});
 						break;
-					case 6:
+					case "6":
 						uni.navigateTo({
 							url: "/pages/set-up/set-up-about"
 						});
 						break
 				}
 			},
+			getTell() {
+				uni.makePhoneCall({
+					// 手机号
+					phoneNumber: '110119',
+					// 成功回调
+					success: (res) => {
+						console.log('调用成功!')
+					},
+					// 失败回调
+					fail: (res) => {
+						console.log('调用失败!')
+					}
+				});
+			}
+
 		},
 		computed: {
 
@@ -95,94 +113,6 @@
 	.profily,
 	.profily_header {
 		border-radius: 8px;
-	}
-
-	.center {
-		height: 100%;
-
-		&_top {
-			height: 18%;
-			background: url('../../static/fumou-center-template/header.jpg') no-repeat 0% 50%;
-			background-size: cover;
-
-			.mask {
-				background: rgba(0, 0, 0, .4);
-				height: 100%;
-			}
-		}
-
-		&_box_bg {
-			background: #F9F9F9;
-			position: relative;
-
-			.profily {
-				position: absolute;
-				width: 90%;
-				margin: 0 auto;
-				top: -100upx;
-				left: 5%;
-				background: #FEFEFE;
-				padding: 35upx;
-				box-sizing: border-box;
-				box-shadow: 0px 2px 5px #EDEDED;
-			}
-		}
-	}
-
-	.base {
-		display: flex;
-		align-items: center;
-		border-bottom: 2px solid #F6F6F6;
-		padding-bottom: 35upx;
-		position: relative;
-
-		.profily_header {
-			height: 120upx;
-			width: 120upx;
-			background-image: url('../../static/fumou-center-template/header.jpg');
-			background-size: 100%;
-		}
-
-		text {
-			margin-left: 20px;
-			font-size: 30upx;
-		}
-
-		image {
-			position: absolute;
-			height: 40upx;
-			width: 40upx;
-			right: 0px;
-			top: 0px;
-		}
-	}
-
-	.order_status {
-		display: flex;
-		justify-content: space-between;
-		margin-top: 35upx;
-
-		.status {
-			width: 140upx;
-			font-size: 24upx;
-			text-align: center;
-			letter-spacing: .5px;
-			display: flex;
-			flex-direction: column;
-
-			.icon {
-				width: 50upx;
-				height: 50upx;
-				margin: 0 auto;
-				margin-bottom: 5px;
-
-			}
-		}
-	}
-
-	.baiban {
-		background: #FEFEFE;
-		height: 300upx;
 	}
 
 	.center_menu {
@@ -224,13 +154,21 @@
 				height: 40upx;
 			}
 
-			&:nth-of-type(1) {
-				margin-top: 20px;
-			}
-
 			&:nth-of-type(4) {
 				margin-top: 20px;
 			}
 		}
+	}
+
+	.center_menu:nth-child(1) {
+		margin: 20upx 0;
+	}
+
+	.center_menu:nth-child(2) {
+		margin: 0upx 0 20upx 0;
+	}
+
+	.center_menu:nth-child(3) {
+		margin: 0upx 0 20upx 0;
 	}
 </style>

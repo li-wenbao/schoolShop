@@ -134,6 +134,7 @@
 				this.TabCur = e.currentTarget.dataset.id;
 				this.scrollLeft = (e.currentTarget.dataset.id - 1) * 60;
 			},
+			
 			//拨打电话
 			tel() {
 				uni.makePhoneCall({
