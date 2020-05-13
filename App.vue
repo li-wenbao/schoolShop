@@ -54,6 +54,7 @@
 		min-height: 100%;
 		display: flex;
 		font-size: 16px;
+		/* background: #111A34; */
 	}
 
 	/* #ifdef MP-ALIPAY */

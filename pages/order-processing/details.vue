@@ -188,8 +188,5 @@
 </script>
 
 <style>
-	.Image {
-		width: 40rpx;
-		height: 40rpx;
-	}
+
 </style>

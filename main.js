@@ -5,6 +5,8 @@ import cuCustom from './colorui/components/cu-custom.vue'
 Vue.component('cu-custom',cuCustom)
 Vue.config.productionTip = false
 
+import Json from './Json' //测试用数据
+
 const msg = (title, duration=1500, mask=false, icon='none')=>{
 	//统一提示方便全局修改
 	if(Boolean(title) === false){
@@ -45,6 +47,7 @@ import api from './utils/api'
 Vue.prototype.$api = api
 import store from './store'
 Vue.prototype.$store = store
+
 
 const app = new Vue({
     ...App

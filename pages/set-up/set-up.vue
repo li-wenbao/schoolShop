@@ -16,6 +16,11 @@
 			return {
 				phone: "110119",
 				menus: [{
+						name: '个人信息',
+						icon: '../../static/fumou-center-template/5.png',
+						id: "0",
+					},
+					{
 						name: '我的账户',
 						icon: '../../static/fumou-center-template/5.png',
 						id: "1",
@@ -57,9 +62,14 @@
 				let serviceId = e.currentTarget.dataset.id
 				console.log("serviceId:", serviceId)
 				switch (serviceId) {
-					case "1":
+					case "0":
 						uni.navigateTo({
 							url: "/pages/set-up/set-up-info"
+						});
+						break;
+					case "1":
+						uni.navigateTo({
+							url: "/pages/set-up/set-up-account"
 						});
 						break;
 					case "3":

@@ -74,7 +74,8 @@
 			return {
 				TabCur: 0,
 				scrollLeft: 0,
-				navList: [{
+				navList: [
+					{
 						text: '待取货'
 					},
 					{

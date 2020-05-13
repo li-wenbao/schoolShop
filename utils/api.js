@@ -65,7 +65,7 @@ const $api = {
 	
 	//post方法请求示例
 	postTest: function(data) {
-		return uniFly.get({
+		return uniFly.post({
 			url: '/reserves/eaReserves/check',
 			params: data
 		})
@@ -128,7 +128,13 @@ const $api = {
 			params: data
 		})
 	},
-	
+	// 骑手端-订单模拟数据
+	pqiShouOrderListApi: function(data) {
+		return uniFly.put({
+			url: '/qiShouOrderList',
+			params: data
+		})
+	},
 }
 
 export default $api
