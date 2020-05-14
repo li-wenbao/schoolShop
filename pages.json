@@ -1,9 +1,14 @@
 {
 	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
 		{
+			"path": "pages/order-processing/order-prssing",
+			"style": {}
+		},
+		{
 			"path": "pages/order/order",
 			"style": {}
 		},
+	
 		{
 			"path": "pages/order-processing/order-prssingtest",
 			"style": {}
@@ -90,14 +95,14 @@
 		"height": "50upx",
 		"selectedColor": "#333333",
 		"list": [
+			// {
+			// 	"pagePath": "pages/order/order",
+			// 	"text": "测试",
+			// 	"iconPath": "static/order-processing.png",
+			// 	"selectedIconPath": "static/order-processing-hover.png"
+			// },
 			{
-				"pagePath": "pages/order/order",
-				"text": "测试",
-				"iconPath": "static/order-processing.png",
-				"selectedIconPath": "static/order-processing-hover.png"
-			},
-			{
-				"pagePath": "pages/order-processing/order-prssingtest",
+				"pagePath": "pages/order-processing/order-prssing",
 				"text": "订单处理",
 				"iconPath": "static/order-processing.png",
 				"selectedIconPath": "static/order-processing-hover.png"

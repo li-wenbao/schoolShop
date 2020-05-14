@@ -648,6 +648,121 @@ const cateList = [{
 	},
 ]
 
+const history=[
+	{
+		"id":"1",
+		"text_name": "北京烤鸭(待取货为0)",
+		"product_image": "../../static/product_image.jpg",
+		"all_time": 20,
+		"start_time": "20:15",
+		"end_time": "20:50",
+		"kilometres": 1.8,
+		"position": "昆明理工大学食堂",
+		"kilometress": 1.4,
+		"positions": "昆明理工大学女生楼1楼304室",
+		"userss": "李同学",
+		"order_status":3
+	},
+	{
+		"id":"2",
+		"text_name": "北京烤鸭(待取货为0)",
+		"product_image": "../../static/product_image.jpg",
+		"all_time": 20,
+		"start_time": "20:15",
+		"end_time": "20:50",
+		"kilometres": 1.1,
+		"position": "昆明理工大学食堂",
+		"kilometress": 1.1,
+		"positions": "昆明理工大学女生楼3楼304室",
+		"userss": "方同学",
+		"order_status":3
+	},
+	{
+		"id":"3",
+		"text_name": "北京烤鸭(待取货为0)",
+		"product_image": "../../static/product_image.jpg",
+		"all_time": 20,
+		"start_time": "20:15",
+		"end_time": "20:50",
+		"kilometres": 1.1,
+		"position": "昆明理工大学食堂",
+		"kilometress": 1.1,
+		"positions": "昆明理工大学女生楼3楼304室",
+		"userss": "曲同学",
+		"order_status":3
+	},
+	{
+		"id":"4",
+		"text_name": "北京烤鸭(待取货为0)",
+		"product_image": "../../static/product_image.jpg",
+		"all_time": 20,
+		"start_time": "20:15",
+		"end_time": "20:50",
+		"kilometres": 1.1,
+		"position": "昆明理工大学食堂",
+		"kilometress": 1.1,
+		"positions": "昆明理工大学女生楼7楼704室",
+		"userss": "赵同学",
+		"order_status":3
+	},
+	{
+		"id":"4",
+		"text_name": "北京烤鸭(待取货为0)",
+		"product_image": "../../static/product_image.jpg",
+		"all_time": 20,
+	"start_time": "20:15",
+	"end_time": "20:50",
+		"kilometres": 1.8,
+		"position": "昆明理工大学食堂",
+		"kilometress": 1.4,
+		"positions": "昆明理工大学女生楼1楼304室",
+		"userss": "李同学",
+		"order_status":3
+	},
+	{
+		"id":"5",
+		"text_name": "北京烤鸭(待取货为0)",
+		"product_image": "../../static/product_image.jpg",
+		"all_time": 20,
+		"start_time": "20:15",
+		"end_time": "20:50",
+		"kilometres": 1.1,
+		"position": "昆明理工大学食堂",
+		"kilometress": 1.1,
+		"positions": "昆明理工大学女生楼3楼304室",
+		"userss": "方同学",
+		"order_status":3
+	},
+	{
+		"id":"6",
+		"text_name": "北京烤鸭(待取货为0)",
+		"product_image": "../../static/product_image.jpg",
+		"all_time": 20,
+		"start_time": "20:15",
+		"end_time": "20:50",
+		"kilometres": 1.1,
+		"position": "昆明理工大学食堂",
+		"kilometress": 1.1,
+		"positions": "昆明理工大学女生楼3楼304室",
+		"userss": "曲同学",
+		"order_status":3
+	},
+	{
+		"id":"7",
+		"text_name": "北京烤鸭(待取货为0)",
+		"product_image": "../../static/product_image.jpg",
+		"all_time": 20,
+		"start_time": "20:15",
+		"end_time": "20:50",
+		"kilometres": 1.1,
+		"position": "昆明理工大学食堂",
+		"kilometress": 1.1,
+		"positions": "昆明理工大学女生楼7楼704室",
+		"userss": "赵同学",
+		"order_status":3
+	}
+]
+
 export default {
 	carouselList,
 	cartList,
@@ -657,5 +772,6 @@ export default {
 	shareList,
 	goodsList,
 	orderList,
-	cateList
+	cateList,
+	history
 }

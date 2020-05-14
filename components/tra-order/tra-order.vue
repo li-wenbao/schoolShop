@@ -24,6 +24,11 @@
 						<input placeholder="输入手机号" name="input" v-model="phone"></input>
 					</view>
 				</view>
+				<view class="flex justify-center">
+					<button class="flex justify-center" @click="trchangOrder">
+						立即转单
+					</button>
+				</view>
 			</view>
 			<view class="action margin-top-xl" @click="hideModal">
 				<text class="cuIcon-roundclose text-red text-xxl" style="font-size: 56rpx;"></text>
@@ -36,22 +41,27 @@
 	export default {
 		name: 'traOrder',
 		data() {
-			// return {
-			// 	modalName: null,
-			// }
+			return {
+				modalName: this.setModalName,
+				phone: this.setPhone,
+			}
 		},
 		props: {
 			modalName:{
-				type: Object,
-				value:""
+				type: String,
+				default:""
 			},
 			phone:{
-				type:Number
+				type: String,
+				default:""
 			}
 		},
 		methods: {
-			hideModal(e){
-				this.$emit("hideModal",e)
+			hideModal(){
+				this.$emit("hideModal",this.phone)
+			},
+			trchangOrder(e){
+				this.$emit("trchangOrder",this.modalName)
 			}
 		}
 	}

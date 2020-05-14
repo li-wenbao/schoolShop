@@ -49,12 +49,6 @@
 	box-sizing: border-box;
 }
 
-.width100 {
-	width: 100%;
-	width: 750upx;
-	box-sizing: border-box;
-}
-
 .Image {
 	width: 36rpx;
 	height: 36rpx;
@@ -77,6 +71,8 @@
 	height: 64upx;
 	line-height: 64upx;
 }
+
+/* 边框线 */
 .border{
 	border: 1rpx solid #e8e8e8;
 }

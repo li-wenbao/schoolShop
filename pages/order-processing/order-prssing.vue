@@ -96,10 +96,11 @@
 							</view>
 							<view v-if="item.order_status=='1'">
 								<button class="cu-btn margin-xs line-blue" @click="_goDetails">详情</button>
+								<button class="cu-btn margin-xs line-blue" @click="_goDetails">送达</button>
 							</view>
 							<view v-if="item.order_status=='2'">
 								<button class="cu-btn margin-xs line-blue" @click="_goDetails">详情</button>
-								<button class="cu-btn margin-xs line-blue" @click="_changOrder">抢单</button>
+								<button class="cu-btn margin-xs line-blue" @click="_grabSheet">抢单</button>
 								<button class="cu-btn margin-xs line-blue" data-target="Modal" @click="_changOrder">转单</button>
 							</view>
 							<view v-if="item.order_status=='3'">
@@ -110,21 +111,60 @@
 							</view>
 						</view>
 					</view>
-					<view v-if="loading" class="cu-load bg-blue loading"></view>
-					<view v-if="over" class="cu-load bg-grey over"></view>
+					<view v-if="loading" class="cu-load loading"></view>
+					<view v-if="over" class="cu-load over text-gray"></view>
 				</view>
-				<view v-else>暂无订单,一大波美食正在袭来~</view>
+				<!-- 空白页 -->
+				<!-- <empty v-else v-if="tabItem.loaded === true && tabItem.orderList.length === 0"></empty> -->
+				<empty v-else></empty>
 			</scroll-view>
 		</view>
-		<tra-order @hideModal="hideModal" :modalName="modalName"></tra-order>
+		<!-- <tra-order @hideModal="hideModal" @trchangOrder ="_trchangOrder" :modalName="modalName"></tra-order> -->
+		<!-- 模态窗口设置 -->
+		<view class="cu-modal" :class="modalName=='Modal'?'show':''">
+			<view class="cu-dialog radius30" style="background: none;">
+				<view class="bg-white radius30">
+					<view class="cu-bar bg-blue justify-end">
+						<view class="content">转单求助</view>
+					</view>
+					<view class="padding-sm margin-top-sm">
+						<text class="text-left text-red">*</text>
+						<text class="text-left">
+							转单求助持续5分钟，如无人应答，转单将被取消，仍需自己配送，如果有指定人员接单，请输入他的手机号，他将直接收到你的转单求助。
+						</text>
+					</view>
+					<view class="padding-sm margin-top-sm">
+						<text class="text-xxl">- 指定骑手 -</text>
+					</view>
+					<view class="flex justify-center">
+						<view class="cu-form-group margin-sm radius50" style="border: 1px #e8e8e8 solid;">
+							<view class="title">
+								<text class="cuIcon-people text-xxl" style="font-size: 36rpx;"></text>
+							</view>
+							<input placeholder="输入手机号" name="phone" @input="limit" v-model="phone"></input>
+						</view>
+					</view>
+					<view class="flex justify-center">
+						<button class="flex justify-center" @click="_trchangOrder">
+							立即转单
+						</button>
+					</view>
+				</view>
+				<view class="action margin-top-xl" @click="hideModal">
+					<text class="cuIcon-roundclose text-red text-xxl" style="font-size: 56rpx;"></text>
+				</view>
+			</view>
+		</view>
 	</view>
 </template>
 
 <script>
-	import traOrder from '@/components/tra-order/tra-order.vue';
+	// import traOrder from '@/components/tra-order/tra-order.vue';
+	import empty from "@/components/empty";
 	export default {
 		components: {
-			traOrder
+			// traOrder,
+			empty
 		},
 		data() {
 			return {
@@ -138,7 +178,10 @@
 				over: false,
 				count: 0,
 				modalName: null,
-				leg: 0
+				phoneNumber:'',
+				phone: "",
+				leg: 0,
+				emptyContent: "无数据~~~"
 			};
 		},
 		computed: {
@@ -146,10 +189,12 @@
 				let CustomBar = this.CustomBar;
 				return `height:calc(100vh - ${CustomBar}px - 45px);`;
 			}
+
 		},
 		onLoad: function() {
 			console.log("this.CustomBar==", this.CustomBar)
 			this.TabCur = 2;
+			this.emptyContent
 			this.getqiShouOrderList()
 		},
 		onShow: function() {
@@ -210,16 +255,48 @@
 			},
 			//到店
 			_InStore(e) {
-				console.log("骑手到店取货", e)
+				// console.log("骑手到店取货", e)
+				uni.showToast({
+					title: '骑手到店取货',
+					duration: 2000
+				});
+			},
+
+			//抢单
+			_grabSheet(e) {
+				uni.showToast({
+					title: '抢单了~!',
+					duration: 2000
+				});
 			},
 
 			//转单
 			_changOrder(e) {
 				console.log("转单+++++:", e.currentTarget.dataset.target)
 				this.modalName = e.currentTarget.dataset.target
-
 			},
 
+			// 确认转单
+			_trchangOrder() {
+				console.log("this.phone+++++:",this.phone)
+				this.hideModal()
+				uni.showToast({
+					title: "您转给了"+this.phone,
+					duration: 2000
+				});
+				// this.modalName = e.currentTarget.dataset.target
+			},
+
+			limit(e) {
+				e.target.value = e.target.value.replace(/[^\d]/g, '')
+				console.log('value值-----' + e.target.value)
+				console.log('model值-----' + this.phone)
+				
+			},
+			// 打开模态框
+			// showModal(e) {
+			// 	this.modalName = e.currentTarget.dataset.target
+			// },
 			// 关闭模态窗口
 			hideModal(e) {
 				this.modalName = null
