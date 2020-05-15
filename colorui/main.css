@@ -905,6 +905,12 @@ button.cuIcon.lg {
 	font-size: 2em;
 }
 
+.cu-avatar.xsl {
+	width: 100upx;
+	height: 100upx;
+	font-size: 2em;
+}
+
 .cu-avatar.xl {
 	width: 128upx;
 	height: 128upx;
@@ -3746,6 +3752,9 @@ scroll-view.cu-steps .cu-item {
           文本
  ==================== */
 
+.text-xxs {
+	font-size: 16upx;
+}
 .text-xs {
 	font-size: 20upx;
 }
@@ -3758,6 +3767,10 @@ scroll-view.cu-steps .cu-item {
 	font-size: 28upx;
 }
 
+.text-xsl {
+	font-size: 30upx;
+}
+
 .text-lg {
 	font-size: 32upx;
 }
@@ -3765,16 +3778,17 @@ scroll-view.cu-steps .cu-item {
 .text-xl {
 	font-size: 36upx;
 }
-
+.text-sxl {
+	font-size: 40upx;
+}
 .text-xxl {
 	font-size: 44upx;
 }
-
 .text-sl {
-	font-size: 80upx;
+	font-size: 64upx;
 }
 
-.text-xsl {
+.text-ssl {
 	font-size: 120upx;
 }
 

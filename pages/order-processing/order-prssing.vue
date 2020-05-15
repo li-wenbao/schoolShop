@@ -7,7 +7,6 @@
 				{{tabList[index]}}
 			</view>
 		</scroll-view>
-
 		<!-- 导航栏结束 -->
 		<!-- 全部订单开始 -->
 		<view v-if="tabCur == index" style="margin-top:45px " v-for="(item,index) in tabList" :key="index">
@@ -32,13 +31,17 @@
 							<view class="flex border-bottom">
 								<view class="flex flex-sub">
 									<view class="padding-sm">
-										<view class="cu-avatar xl round bg-blue">
+										<view class="cu-avatar xsl round bg-blue">
 											<text class="text-xxl">取</text>
 										</view>
 									</view>
-									<view class="flex-twice padding-sm">
-										<view class="padding-left-sm border-left">
-											<view class="text-blue margin-top-xs">
+									<view class="flex-twice">
+										<view class="padding-left-sm ">
+											<view class="order-get-users">
+												<text class="cuIcon-shop"></text>
+												<text class="text-xsl text-black text-bold margin-left-xs">{{item.store}}</text>
+											</view>
+											<view class="text-blue">
 												<text class="text-sm">{{item.kilometres}}km</text>
 											</view>
 											<view class="text-black">
@@ -48,6 +51,7 @@
 									</view>
 								</view>
 								<view class="flex align-center padding-sm">
+									
 									<view class="icon-box bg-blue text-center" @click="_tel">
 										<text class="cuIcon-phone"></text>
 									</view>
@@ -59,15 +63,15 @@
 							<view class="flex border-bottom">
 								<view class="flex flex-sub">
 									<view class="padding-sm">
-										<view class="cu-avatar xl round bg-orange">
+										<view class="cu-avatar xsl round bg-orange">
 											<text class="text-xxl">送</text>
 										</view>
 									</view>
-									<view class="flex-twice padding-sm">
-										<view class="padding-left-sm border-left">
+									<view class="flex-twice">
+										<view class="padding-left-sm">
 											<view class="order-get-users">
 												<text class="cuIcon-people"></text>
-												<text class="users-text text-xs">{{item.userss}}</text>
+												<text class="text-xsl text-black text-bold margin-left-xs">{{item.userss}}</text>
 											</view>
 											<view class="text-blue">
 												<text class="text-sm">{{item.kilometress}}km</text>
@@ -161,6 +165,7 @@
 <script>
 	// import traOrder from '@/components/tra-order/tra-order.vue';
 	import empty from "@/components/empty";
+	import Json from "../../Json.js";
 	export default {
 		components: {
 			// traOrder,
@@ -201,19 +206,28 @@
 			console.log("pages/order/home");
 		},
 		methods: {
-
 			// 后添加的东西
 			// 订单数据请求
 			getqiShouOrderList: function() {
-				this.$api.qiShouOrderListApi({
-					"order_status": this.tabCur,
-				}).then(res => {
-					console.log('数据:' + JSON.stringify(res.data));
-					this.orderList = res.data;
-					this.leg = this.orderList.length;
-					console.log("所在当前的列表数据条数", this.leg)
-
-				})
+				let qiShouOrderList = Json.qiShouOrderList
+				// console.log("qiShouOrderListOOOOO=",qiShouOrderList)
+				
+				// console.log("this.tabCur=",this.tabCur)
+				let orderList = []
+				for (var i = 0; i < qiShouOrderList.length; i++) {
+					if(qiShouOrderList[i].order_status==this.tabCur){
+						orderList.push(qiShouOrderList[i])
+					}
+				}
+				this.orderList = orderList
+				// this.$api.qiShouOrderListApi({
+				// 	"order_status": this.tabCur,
+				// }).then(res => {
+				// 	console.log('数据:' + JSON.stringify(res.data));
+				// 	this.orderList = res.data;
+				// 	this.leg = this.orderList.length;
+				// 	console.log("所在当前的列表数据条数", this.leg)
+				// })
 			},
 
 			tabSelect(e) {

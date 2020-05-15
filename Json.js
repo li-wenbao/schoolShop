@@ -322,8 +322,7 @@ const lazyLoadList = [{
 	},
 ]
 
-const orderList = [
-	{
+const orderList = [{
 		time: '2019-04-06 11:37',
 		state: 1,
 		goodsList: [{
@@ -648,9 +647,8 @@ const cateList = [{
 	},
 ]
 
-const history=[
-	{
-		"id":"1",
+const history = [{
+		"id": "1",
 		"text_name": "北京烤鸭(待取货为0)",
 		"product_image": "../../static/product_image.jpg",
 		"all_time": 20,
@@ -661,10 +659,10 @@ const history=[
 		"kilometress": 1.4,
 		"positions": "昆明理工大学女生楼1楼304室",
 		"userss": "李同学",
-		"order_status":3
+		"order_status": 3
 	},
 	{
-		"id":"2",
+		"id": "2",
 		"text_name": "北京烤鸭(待取货为0)",
 		"product_image": "../../static/product_image.jpg",
 		"all_time": 20,
@@ -675,10 +673,10 @@ const history=[
 		"kilometress": 1.1,
 		"positions": "昆明理工大学女生楼3楼304室",
 		"userss": "方同学",
-		"order_status":3
+		"order_status": 3
 	},
 	{
-		"id":"3",
+		"id": "3",
 		"text_name": "北京烤鸭(待取货为0)",
 		"product_image": "../../static/product_image.jpg",
 		"all_time": 20,
@@ -689,10 +687,10 @@ const history=[
 		"kilometress": 1.1,
 		"positions": "昆明理工大学女生楼3楼304室",
 		"userss": "曲同学",
-		"order_status":3
+		"order_status": 3
 	},
 	{
-		"id":"4",
+		"id": "4",
 		"text_name": "北京烤鸭(待取货为0)",
 		"product_image": "../../static/product_image.jpg",
 		"all_time": 20,
@@ -703,24 +701,24 @@ const history=[
 		"kilometress": 1.1,
 		"positions": "昆明理工大学女生楼7楼704室",
 		"userss": "赵同学",
-		"order_status":3
+		"order_status": 3
 	},
 	{
-		"id":"4",
+		"id": "4",
 		"text_name": "北京烤鸭(待取货为0)",
 		"product_image": "../../static/product_image.jpg",
 		"all_time": 20,
-	"start_time": "20:15",
-	"end_time": "20:50",
+		"start_time": "20:15",
+		"end_time": "20:50",
 		"kilometres": 1.8,
 		"position": "昆明理工大学食堂",
 		"kilometress": 1.4,
 		"positions": "昆明理工大学女生楼1楼304室",
 		"userss": "李同学",
-		"order_status":3
+		"order_status": 3
 	},
 	{
-		"id":"5",
+		"id": "5",
 		"text_name": "北京烤鸭(待取货为0)",
 		"product_image": "../../static/product_image.jpg",
 		"all_time": 20,
@@ -731,10 +729,10 @@ const history=[
 		"kilometress": 1.1,
 		"positions": "昆明理工大学女生楼3楼304室",
 		"userss": "方同学",
-		"order_status":3
+		"order_status": 3
 	},
 	{
-		"id":"6",
+		"id": "6",
 		"text_name": "北京烤鸭(待取货为0)",
 		"product_image": "../../static/product_image.jpg",
 		"all_time": 20,
@@ -745,10 +743,10 @@ const history=[
 		"kilometress": 1.1,
 		"positions": "昆明理工大学女生楼3楼304室",
 		"userss": "曲同学",
-		"order_status":3
+		"order_status": 3
 	},
 	{
-		"id":"7",
+		"id": "7",
 		"text_name": "北京烤鸭(待取货为0)",
 		"product_image": "../../static/product_image.jpg",
 		"all_time": 20,
@@ -759,8 +757,1089 @@ const history=[
 		"kilometress": 1.1,
 		"positions": "昆明理工大学女生楼7楼704室",
 		"userss": "赵同学",
-		"order_status":3
+		"order_status": 3
 	}
+]
+
+const qiShouOrderList = [
+	//  order_status 0待取货 1配送中 2 强任务  3有异常  4已完成 5已取消 6已超时
+	
+	{
+		"text_name": "北京烤鸭(待取货为0)",
+		"product_image": "../../static/product_image.jpg",
+		"about_time": 50,
+		"kilometres": 1.1,
+		"position": "昆明理工大学",
+		"kilometress": 1.1,
+		"positions": "昆明理工大学",
+		"store": "过桥米线",
+		"userss": "李同学",
+		"order_status": 0
+	},
+	{
+		"text_name": "烤鸭(配送中为1)",
+		"product_image": "../../static/product_image.jpg",
+		"about_time": 50,
+		"kilometres": 1.1,
+		"position": "昆明理工大学",
+		"kilometress": 1.1,
+		"positions": "昆明理工大学",
+		"store": "过桥米线",
+		"userss": "方同学",
+		"order_status": 1
+	},
+	{
+		"text_name": "米线(抢任务为2)",
+		"product_image": "../../static/product_image.jpg",
+		"about_time": 50,
+		"kilometres": 1.1,
+		"position": "昆明理工大学",
+		"kilometress": 1.1,
+		"positions": "昆明理工大学",
+		"store": "麻婆豆腐",
+		"userss": "方同学",
+		"order_status": 2
+	},
+	{
+		"text_name": "米线(异常为3)",
+		"product_image": "../../static/product_image.jpg",
+		"about_time": 50,
+		"kilometres": 1.6,
+		"position": "云南大学",
+		"kilometress": 1.1,
+		"positions": "昆明理工大学",
+		"store": "老麻抄手",
+		"userss": "老毛",
+		"order_status": 3
+	},
+	{
+		"text_name": "小锅米线(完成为4)",
+		"product_image": "../../static/product_image.jpg",
+		"about_time": 50,
+		"kilometres": 1.1,
+		"position": "昆明理工大学",
+		"kilometress": 1.1,
+		"positions": "昆明理工大学",
+		"store": "炒面",
+		"userss": "老王",
+		"order_status": 3
+	}
+]
+
+
+const monthill=[
+	//  order_status 0待取货 1配送中 2 强任务  3有异常  4已完成 5已取消 6已超时
+	{
+		"month":"2020年5月",
+		"complete_order":"400",
+		"cancel_order":"0",
+		"ontime_order":"100",
+		"orderList":[
+			{
+				"ontime_order":"10:50",
+				"start_time":"10:30",
+				"end_time":"10:50",
+				"uerse_tiem":"20",
+				"start_address": "昆明理工大学食堂",
+				"kilometress": 1.4,
+				"end_address": "昆明理工大学女生楼1楼304室",
+				"order_status":4
+			},
+			{
+				"ontime_order":"10:50",
+				"start_time":"10:30",
+				"end_time":"10:50",
+				"uerse_tiem":"20",
+				"start_address": "昆明理工大学食堂",
+				"kilometress": 1.4,
+				"end_address": "昆明理工大学女生楼1楼304室",
+				"order_status":4
+			},
+			{
+				"ontime_order":"10:50",
+				"start_time":"10:30",
+				"end_time":"10:50",
+				"uerse_tiem":"20",
+				"start_address": "昆明理工大学食堂",
+				"kilometress": 1.4,
+				"end_address": "昆明理工大学女生楼1楼304室",
+				"order_status":3
+			},
+			{
+				"ontime_order":"10:50",
+				"start_time":"10:30",
+				"end_time":"10:50",
+				"uerse_tiem":"20",
+				"start_address": "昆明理工大学三楼食堂",
+				"kilometress": 1.4,
+				"end_address": "昆明理工大学男生楼1楼304室",
+				"order_status":2
+			},
+			{
+				"ontime_order":"10:50",
+				"start_time":"10:30",
+				"end_time":"10:50",
+				"uerse_tiem":"20",
+				"start_address": "昆明理工大学三楼食堂",
+				"kilometress": 1.4,
+				"end_address": "昆明理工大学男生楼6楼604室",
+				"order_status":5
+			},
+			{
+				"ontime_order":"10:50",
+				"start_time":"10:30",
+				"end_time":"10:50",
+				"uerse_tiem":"20",
+				"start_address": "昆明理工大学食堂",
+				"kilometress": 1.4,
+				"end_address": "昆明理工大学女生楼6楼604室",
+				"order_status":4
+			},
+			{
+				"ontime_order":"10:50",
+				"start_time":"10:30",
+				"end_time":"10:50",
+				"uerse_tiem":"20",
+				"start_address": "昆明理工大学食堂",
+				"kilometress": 1.4,
+				"end_address": "昆明理工大学女生楼1楼304室",
+				"order_status":4
+			},
+			{
+				"ontime_order":"10:50",
+				"start_time":"10:30",
+				"end_time":"10:50",
+				"uerse_tiem":"20",
+				"start_address": "昆明理工大学食堂",
+				"kilometress": 1.4,
+				"end_address": "昆明理工大学女生楼1楼304室",
+				"order_status":4
+			},
+			{
+				"ontime_order":"10:50",
+				"start_time":"10:30",
+				"end_time":"10:50",
+				"uerse_tiem":"20",
+				"start_address": "昆明理工大学食堂",
+				"kilometress": 1.4,
+				"end_address": "昆明理工大学女生楼1楼304室",
+				"order_status":4
+			},
+			{
+				"ontime_order":"10:50",
+				"start_time":"10:30",
+				"end_time":"10:50",
+				"uerse_tiem":"20",
+				"start_address": "昆明理工大学附楼食堂",
+				"kilometress": 1.4,
+				"end_address": "昆明理工大学男生楼3楼304室",
+				"order_status":6
+			}
+		]
+	},
+	{
+		"month":"2020年4月",
+		"complete_order":"312",
+		"cancel_order":"1",
+		"ontime_order":"98",
+		"orderList":[
+			{
+				"ontime_order":"10:50",
+				"start_time":"10:30",
+				"end_time":"10:50",
+				"uerse_tiem":"20",
+				"start_address": "昆明理工大学食堂",
+				"kilometress": 1.4,
+				"end_address": "昆明理工大学女生楼1楼304室",
+			"order_status":4
+			},
+			{
+				"ontime_order":"10:50",
+				"start_time":"10:30",
+				"end_time":"10:50",
+				"uerse_tiem":"20",
+				"start_address": "昆明理工大学食堂",
+				"kilometress": 1.4,
+				"end_address": "昆明理工大学女生楼1楼304室",
+				"order_status":4
+			},
+			{
+				"ontime_order":"10:50",
+				"start_time":"10:30",
+				"end_time":"10:50",
+				"uerse_tiem":"20",
+				"start_address": "昆明理工大学食堂",
+				"kilometress": 1.4,
+				"end_address": "昆明理工大学女生楼1楼304室",
+				"order_status":4
+			},
+			{
+				"ontime_order":"10:50",
+				"start_time":"10:30",
+				"end_time":"10:50",
+				"uerse_tiem":"20",
+				"start_address": "昆明理工大学食堂",
+				"kilometress": 1.4,
+				"end_address": "昆明理工大学女生楼1楼304室",
+				"order_status":4
+			},
+			{
+				"ontime_order":"10:50",
+				"start_time":"10:30",
+				"end_time":"10:50",
+				"uerse_tiem":"20",
+				"start_address": "昆明理工大学食堂",
+				"kilometress": 1.4,
+				"end_address": "昆明理工大学女生楼1楼304室",
+				"order_status":4
+			},
+			{
+				"ontime_order":"10:50",
+				"start_time":"10:30",
+				"end_time":"10:50",
+				"uerse_tiem":"20",
+				"start_address": "昆明理工大学食堂",
+				"kilometress": 1.4,
+				"end_address": "昆明理工大学女生楼1楼304室",
+				"order_status":3
+			},
+			{
+				"ontime_order":"10:50",
+				"start_time":"10:30",
+				"end_time":"10:50",
+				"uerse_tiem":"20",
+				"start_address": "昆明理工大学食堂",
+				"kilometress": 1.4,
+				"end_address": "昆明理工大学女生楼1楼304室",
+				"order_status":5
+			},
+			{
+				"ontime_order":"10:50",
+				"start_time":"10:30",
+				"end_time":"10:50",
+				"uerse_tiem":"20",
+				"start_address": "昆明理工大学食堂",
+				"kilometress": 1.4,
+				"end_address": "昆明理工大学女生楼1楼304室",
+				"order_status":3
+			},
+			{
+				"ontime_order":"10:50",
+				"start_time":"10:30",
+				"end_time":"10:50",
+				"uerse_tiem":"20",
+				"start_address": "昆明理工大学食堂",
+				"kilometress": 1.4,
+				"end_address": "昆明理工大学女生楼1楼304室",
+				"order_status":3
+			},
+			{
+				"ontime_order":"10:50",
+				"start_time":"10:30",
+				"end_time":"10:50",
+				"uerse_tiem":"20",
+				"start_address": "昆明理工大学食堂",
+				"kilometress": 1.4,
+				"end_address": "昆明理工大学女生楼1楼304室",
+				"order_status":6
+			}
+		]
+	},
+	{
+		"month":"2020年3月",
+		"complete_order":"250",
+		"cancel_order":"0",
+		"ontime_order":"100",
+		"orderList":[
+			{
+				"ontime_order":"10:50",
+				"start_time":"10:30",
+				"end_time":"10:50",
+				"uerse_tiem":"20",
+				"start_address": "昆明理工大学食堂",
+				"kilometress": 1.4,
+				"end_address": "昆明理工大学女生楼1楼304室",
+				"order_status":4
+			},
+			{
+				"ontime_order":"10:50",
+				"start_time":"10:30",
+				"end_time":"10:50",
+				"uerse_tiem":"20",
+				"start_address": "昆明理工大学食堂",
+				"kilometress": 1.4,
+				"end_address": "昆明理工大学女生楼1楼304室",
+				"order_status":4
+			},
+			{
+				"ontime_order":"10:50",
+				"start_time":"10:30",
+				"end_time":"10:50",
+				"uerse_tiem":"20",
+				"start_address": "昆明理工大学食堂",
+				"kilometress": 1.4,
+				"end_address": "昆明理工大学女生楼1楼304室",
+				"order_status":4
+			},
+			{
+				"ontime_order":"10:50",
+				"start_time":"10:30",
+				"end_time":"10:50",
+				"uerse_tiem":"20",
+				"start_address": "昆明理工大学食堂",
+				"kilometress": 1.4,
+				"end_address": "昆明理工大学女生楼1楼304室",
+				"order_status":2
+			},
+			{
+				"ontime_order":"10:50",
+				"start_time":"10:30",
+				"end_time":"10:50",
+				"uerse_tiem":"20",
+				"start_address": "昆明理工大学食堂",
+				"kilometress": 1.4,
+				"end_address": "昆明理工大学女生楼1楼304室",
+				"order_status":5
+			},
+			{
+				"ontime_order":"10:50",
+				"start_time":"10:30",
+				"end_time":"10:50",
+				"uerse_tiem":"20",
+				"start_address": "昆明理工大学食堂",
+				"kilometress": 1.4,
+				"end_address": "昆明理工大学女生楼1楼304室",
+				"order_status":3
+			},
+			{
+				"ontime_order":"10:50",
+				"start_time":"10:30",
+				"end_time":"10:50",
+				"uerse_tiem":"20",
+				"start_address": "昆明理工大学食堂",
+				"kilometress": 1.4,
+				"end_address": "昆明理工大学女生楼1楼304室",
+				"order_status":4
+			},
+			{
+				"ontime_order":"10:50",
+				"start_time":"10:30",
+				"end_time":"10:50",
+				"uerse_tiem":"20",
+				"start_address": "昆明理工大学食堂",
+				"kilometress": 1.4,
+				"end_address": "昆明理工大学女生楼1楼304室",
+				"order_status":3
+			},
+			{
+				"ontime_order":"10:50",
+				"start_time":"10:30",
+				"end_time":"10:50",
+				"uerse_tiem":"20",
+				"start_address": "昆明理工大学食堂",
+				"kilometress": 1.4,
+				"end_address": "昆明理工大学女生楼1楼304室",
+				"order_status":4
+			},
+			{
+				"ontime_order":"10:50",
+				"start_time":"10:30",
+				"end_time":"10:50",
+				"uerse_tiem":"20",
+				"start_address": "昆明理工大学食堂",
+				"kilometress": 1.4,
+				"end_address": "昆明理工大学女生楼1楼304室",
+				"order_status":4
+			}
+		]
+	},
+	
+	{
+		"month":"2020年2月",
+		"complete_order":"802",
+		"cancel_order":"1",
+		"ontime_order":"90",
+		"orderList":[
+			{
+				"start_time":"10:30",
+				"end_time":"10:50",
+				"uerse_tiem":"20",
+				"start_address": "昆明理工大学食堂",
+				"kilometress": 1.4,
+				"end_address": "昆明理工大学女生楼1楼304室",
+				"order_status":4
+			},
+			{
+				"start_time":"10:30",
+				"end_time":"10:50",
+				"uerse_tiem":"20",
+				"start_address": "昆明理工大学食堂",
+				"kilometress": 1.4,
+				"end_address": "昆明理工大学女生楼1楼304室",
+				"order_status":1
+			},
+			{
+				"start_time":"10:30",
+				"end_time":"10:50",
+				"uerse_tiem":"20",
+				"start_address": "昆明理工大学食堂",
+				"kilometress": 1.4,
+				"end_address": "昆明理工大学女生楼1楼304室",
+				"order_status":4
+			},
+			{
+				"start_time":"10:30",
+				"end_time":"10:50",
+				"uerse_tiem":"20",
+				"start_address": "昆明理工大学食堂",
+				"kilometress": 1.4,
+				"end_address": "昆明理工大学女生楼1楼304室",
+				"order_status":2
+			},
+			{
+				"start_time":"10:30",
+				"end_time":"10:50",
+				"uerse_tiem":"20",
+				"start_address": "昆明理工大学食堂",
+				"kilometress": 1.4,
+				"end_address": "昆明理工大学女生楼1楼304室",
+				"order_status":4
+			},
+			{
+				"start_time":"10:30",
+				"end_time":"10:50",
+				"uerse_tiem":"20",
+				"start_address": "昆明理工大学食堂",
+				"kilometress": 1.4,
+				"end_address": "昆明理工大学女生楼1楼304室",
+				"order_status":3
+			},
+			{
+				"start_time":"10:30",
+				"end_time":"10:50",
+				"uerse_tiem":"20",
+				"start_address": "昆明理工大学食堂",
+				"kilometress": 1.4,
+				"end_address": "昆明理工大学女生楼1楼304室",
+				"order_status":5
+			},
+			{
+				"start_time":"10:30",
+				"end_time":"10:50",
+				"uerse_tiem":"20",
+				"start_address": "昆明理工大学食堂",
+				"kilometress": 1.4,
+				"end_address": "昆明理工大学女生楼1楼304室",
+				"order_status":6
+			},
+			{
+				"start_time":"10:30",
+				"end_time":"10:50",
+				"uerse_tiem":"20",
+				"start_address": "昆明理工大学食堂",
+				"kilometress": 1.4,
+				"end_address": "昆明理工大学女生楼1楼304室",
+				"order_status":4
+			},
+			{
+				"start_time":"10:30",
+				"end_time":"10:50",
+				"uerse_tiem":"20",
+				"start_address": "昆明理工大学食堂",
+				"kilometress": 1.4,
+				"end_address": "昆明理工大学女生楼1楼304室",
+				"order_status":4
+			}
+		]
+	},
+	{
+		"month":"2020年1月",
+		"complete_order":"300",
+		"cancel_order":"5",
+		"ontime_order":"80",
+		"orderList":[
+			{
+				"start_time":"10:30",
+				"end_time":"10:50",
+				"uerse_tiem":"20",
+				"start_address": "昆明理工大学食堂",
+				"kilometress": 1.4,
+				"end_address": "昆明理工大学女生楼1楼304室",
+				"order_status":4
+			},
+			{
+				"start_time":"10:30",
+				"end_time":"10:50",
+				"uerse_tiem":"20",
+				"start_address": "昆明理工大学食堂",
+				"kilometress": 1.4,
+				"end_address": "昆明理工大学女生楼1楼304室",
+				"order_status":1
+			},
+			{
+				"start_time":"10:30",
+				"end_time":"10:50",
+				"uerse_tiem":"20",
+				"start_address": "昆明理工大学食堂",
+				"kilometress": 1.4,
+				"end_address": "昆明理工大学女生楼1楼304室",
+				"order_status":4
+			},
+			{
+				"start_time":"10:30",
+				"end_time":"10:50",
+				"uerse_tiem":"20",
+				"start_address": "昆明理工大学食堂",
+				"kilometress": 1.4,
+				"end_address": "昆明理工大学女生楼1楼304室",
+				"order_status":4
+			},
+			{
+				"start_time":"10:30",
+				"end_time":"10:50",
+				"uerse_tiem":"20",
+				"start_address": "昆明理工大学食堂",
+				"kilometress": 1.4,
+				"end_address": "昆明理工大学女生楼1楼304室",
+				"order_status":2
+			},
+			{
+				"start_time":"10:30",
+				"end_time":"10:50",
+				"uerse_tiem":"20",
+				"start_address": "昆明理工大学食堂",
+				"kilometress": 1.4,
+				"end_address": "昆明理工大学女生楼1楼304室",
+				"order_status":5
+			},
+			{
+				"start_time":"10:30",
+				"end_time":"10:50",
+				"uerse_tiem":"20",
+				"start_address": "昆明理工大学食堂",
+				"kilometress": 1.4,
+				"end_address": "昆明理工大学女生楼1楼304室",
+				"order_status":4
+			},
+			{
+				"start_time":"10:30",
+				"end_time":"10:50",
+				"uerse_tiem":"20",
+				"start_address": "昆明理工大学食堂",
+				"kilometress": 1.4,
+				"end_address": "昆明理工大学女生楼1楼304室",
+				"order_status":4
+			},
+			{
+				"start_time":"10:30",
+				"end_time":"10:50",
+				"uerse_tiem":"20",
+				"start_address": "昆明理工大学食堂",
+				"kilometress": 1.4,
+				"end_address": "昆明理工大学女生楼1楼304室",
+				"order_status":4
+			},
+			{
+				"start_time":"10:30",
+				"end_time":"10:50",
+				"uerse_tiem":"20",
+				"start_address": "昆明理工大学食堂",
+				"kilometress": 1.4,
+				"end_address": "昆明理工大学女生楼1楼304室",
+				"order_status":4
+			}
+		]
+	},
+	{
+		"month":"2019年12月",
+		"complete_order":"400",
+		"cancel_order":"0",
+		"ontime_order":"100",
+		"orderList":[
+			{
+				"start_time":"10:30",
+				"end_time":"10:50",
+				"uerse_tiem":"20",
+				"start_address": "昆明理工大学食堂",
+				"kilometress": 1.4,
+				"end_address": "昆明理工大学女生楼1楼304室",
+				"order_status":4
+			},
+			{
+				"start_time":"10:30",
+				"end_time":"10:50",
+				"uerse_tiem":"20",
+				"start_address": "昆明理工大学食堂",
+				"kilometress": 1.4,
+				"end_address": "昆明理工大学女生楼1楼304室",
+				"order_status":4
+			},
+			{
+				"start_time":"10:30",
+				"end_time":"10:50",
+				"uerse_tiem":"20",
+				"start_address": "昆明理工大学食堂",
+				"kilometress": 1.4,
+				"end_address": "昆明理工大学女生楼1楼304室",
+				"order_status":4
+			},
+			{
+				"start_time":"10:30",
+				"end_time":"10:50",
+				"uerse_tiem":"20",
+				"start_address": "昆明理工大学食堂",
+				"kilometress": 1.4,
+				"end_address": "昆明理工大学女生楼1楼304室",
+				"order_status":2
+			},
+			{
+				"start_time":"10:30",
+				"end_time":"10:50",
+				"uerse_tiem":"20",
+				"start_address": "昆明理工大学食堂",
+				"kilometress": 1.4,
+				"end_address": "昆明理工大学女生楼1楼304室",
+				"order_status":4
+			},
+			{
+				"start_time":"10:30",
+				"end_time":"10:50",
+				"uerse_tiem":"20",
+				"start_address": "昆明理工大学食堂",
+				"kilometress": 1.4,
+				"end_address": "昆明理工大学女生楼1楼304室",
+				"order_status":4
+			},
+			{
+				"start_time":"10:30",
+				"end_time":"10:50",
+				"uerse_tiem":"20",
+				"start_address": "昆明理工大学食堂",
+				"kilometress": 1.4,
+				"end_address": "昆明理工大学女生楼1楼304室",
+				"order_status":4
+			},
+			{
+				"start_time":"10:30",
+				"end_time":"10:50",
+				"uerse_tiem":"20",
+				"start_address": "昆明理工大学食堂",
+				"kilometress": 1.4,
+				"end_address": "昆明理工大学女生楼1楼304室",
+				"order_status":4
+			},
+			{
+				"start_time":"10:30",
+				"end_time":"10:50",
+				"uerse_tiem":"20",
+				"start_address": "昆明理工大学食堂",
+				"kilometress": 1.4,
+				"end_address": "昆明理工大学女生楼1楼304室",
+				"order_status":4
+			},
+			{
+				"start_time":"10:30",
+				"end_time":"10:50",
+				"uerse_tiem":"20",
+				"start_address": "昆明理工大学食堂",
+				"kilometress": 1.4,
+				"end_address": "昆明理工大学女生楼1楼304室",
+				"order_status":4
+			}
+		]
+	},
+	{
+		"month":"2019年11月",
+		"complete_order":"300",
+		"cancel_order":"5",
+		"ontime_order":"80",
+		"orderList":[
+			{
+				"start_time":"10:30",
+				"end_time":"10:50",
+				"uerse_tiem":"20",
+				"start_address": "昆明理工大学食堂",
+				"kilometress": 1.4,
+				"end_address": "昆明理工大学女生楼1楼304室",
+				"order_status":4
+			},
+			{
+				"start_time":"10:30",
+				"end_time":"10:50",
+				"uerse_tiem":"20",
+				"start_address": "昆明理工大学食堂",
+				"kilometress": 1.4,
+				"end_address": "昆明理工大学女生楼1楼304室",
+				"order_status":4
+			},
+			{
+				"start_time":"10:30",
+				"end_time":"10:50",
+				"uerse_tiem":"20",
+				"start_address": "昆明理工大学食堂",
+				"kilometress": 1.4,
+				"end_address": "昆明理工大学女生楼1楼304室",
+				"order_status":4
+			},
+			{
+				"start_time":"10:30",
+				"end_time":"10:50",
+				"uerse_tiem":"20",
+				"start_address": "昆明理工大学食堂",
+				"kilometress": 1.4,
+				"end_address": "昆明理工大学女生楼1楼304室",
+				"order_status":4
+			},
+			{
+				"start_time":"10:30",
+				"end_time":"10:50",
+				"uerse_tiem":"20",
+				"start_address": "昆明理工大学食堂",
+				"kilometress": 1.4,
+				"end_address": "昆明理工大学女生楼1楼304室",
+				"order_status":2
+			},
+			{
+				"start_time":"10:30",
+				"end_time":"10:50",
+				"uerse_tiem":"20",
+				"start_address": "昆明理工大学食堂",
+				"kilometress": 1.4,
+				"end_address": "昆明理工大学女生楼1楼304室",
+				"order_status":4
+			},
+			{
+				"start_time":"10:30",
+				"end_time":"10:50",
+				"uerse_tiem":"20",
+				"start_address": "昆明理工大学食堂",
+				"kilometress": 1.4,
+				"end_address": "昆明理工大学女生楼1楼304室",
+				"order_status":3
+			},
+			{
+				"start_time":"10:30",
+				"end_time":"10:50",
+				"uerse_tiem":"20",
+				"start_address": "昆明理工大学食堂",
+				"kilometress": 1.4,
+				"end_address": "昆明理工大学女生楼1楼304室",
+				"order_status":4
+			},
+			{
+				"start_time":"10:30",
+				"end_time":"10:50",
+				"uerse_tiem":"20",
+				"start_address": "昆明理工大学食堂",
+				"kilometress": 1.4,
+				"end_address": "昆明理工大学女生楼1楼304室",
+				"order_status":3
+			},
+			{
+				"start_time":"10:30",
+				"end_time":"10:50",
+				"uerse_tiem":"20",
+				"start_address": "昆明理工大学食堂",
+				"kilometress": 1.4,
+				"end_address": "昆明理工大学女生楼1楼304室",
+				"order_status":4
+			}
+		]
+	},
+	{
+		"month":"2019年10月",
+		"complete_order":"802",
+		"cancel_order":"1",
+		"ontime_order":"90",
+		"orderList":[
+			{
+				"start_time":"10:30",
+				"end_time":"10:50",
+				"uerse_tiem":"20",
+				"start_address": "昆明理工大学食堂",
+				"kilometress": 1.4,
+				"end_address": "昆明理工大学女生楼1楼304室",
+				"order_status":4
+			},
+			{
+				"start_time":"10:30",
+				"end_time":"10:50",
+				"uerse_tiem":"20",
+				"start_address": "昆明理工大学食堂",
+				"kilometress": 1.4,
+				"end_address": "昆明理工大学女生楼1楼304室",
+				"order_status":4
+			},
+			{
+				"start_time":"10:30",
+				"end_time":"10:50",
+				"uerse_tiem":"20",
+				"start_address": "昆明理工大学食堂",
+				"kilometress": 1.4,
+				"end_address": "昆明理工大学女生楼1楼304室",
+				"order_status":3
+			},
+			{
+				"start_time":"10:30",
+				"end_time":"10:50",
+				"uerse_tiem":"20",
+				"start_address": "昆明理工大学食堂",
+				"kilometress": 1.4,
+				"end_address": "昆明理工大学女生楼1楼304室",
+				"order_status":2
+			},
+			{
+				"start_time":"10:30",
+				"end_time":"10:50",
+				"uerse_tiem":"20",
+				"start_address": "昆明理工大学食堂",
+				"kilometress": 1.4,
+				"end_address": "昆明理工大学女生楼1楼304室",
+				"order_status":2
+			},
+			{
+				"start_time":"10:30",
+				"end_time":"10:50",
+				"uerse_tiem":"20",
+				"start_address": "昆明理工大学食堂",
+				"kilometress": 1.4,
+				"end_address": "昆明理工大学女生楼1楼304室",
+				"order_status":3
+			},
+			{
+				"start_time":"10:30",
+				"end_time":"10:50",
+				"uerse_tiem":"20",
+				"start_address": "昆明理工大学食堂",
+				"kilometress": 1.4,
+				"end_address": "昆明理工大学女生楼1楼304室",
+				"order_status":3
+			},
+			{
+				"start_time":"10:30",
+				"end_time":"10:50",
+				"uerse_tiem":"20",
+				"start_address": "昆明理工大学食堂",
+				"kilometress": 1.4,
+				"end_address": "昆明理工大学女生楼1楼304室",
+				"order_status":3
+			},
+			{
+				"start_time":"10:30",
+				"end_time":"10:50",
+				"uerse_tiem":"20",
+				"start_address": "昆明理工大学食堂",
+				"kilometress": 1.4,
+				"end_address": "昆明理工大学女生楼1楼304室",
+				"order_status":3
+			},
+			{
+				"start_time":"10:30",
+				"end_time":"10:50",
+				"uerse_tiem":"20",
+				"start_address": "昆明理工大学食堂",
+				"kilometress": 1.4,
+				"end_address": "昆明理工大学女生楼1楼304室",
+				"order_status":3
+			}
+		]
+	},
+	{
+		"month":"2019年9月",
+		"complete_order":"250",
+		"cancel_order":"0",
+		"ontime_order":"100",
+		"orderList":[
+			{
+				"start_time":"10:30",
+				"end_time":"10:50",
+				"uerse_tiem":"20",
+				"start_address": "昆明理工大学食堂",
+				"kilometress": 1.4,
+				"end_address": "昆明理工大学女生楼1楼304室",
+				"order_status":3
+			},
+			{
+				"start_time":"10:30",
+				"end_time":"10:50",
+				"uerse_tiem":"20",
+				"start_address": "昆明理工大学食堂",
+				"kilometress": 1.4,
+				"end_address": "昆明理工大学女生楼1楼304室",
+				"order_status":1
+			},
+			{
+				"start_time":"10:30",
+				"end_time":"10:50",
+				"uerse_tiem":"20",
+				"start_address": "昆明理工大学食堂",
+				"kilometress": 1.4,
+				"end_address": "昆明理工大学女生楼1楼304室",
+				"order_status":3
+			},
+			{
+				"start_time":"10:30",
+				"end_time":"10:50",
+				"uerse_tiem":"20",
+				"start_address": "昆明理工大学食堂",
+				"kilometress": 1.4,
+				"end_address": "昆明理工大学女生楼1楼304室",
+				"order_status":2
+			},
+			{
+				"start_time":"10:30",
+				"end_time":"10:50",
+				"uerse_tiem":"20",
+				"start_address": "昆明理工大学食堂",
+				"kilometress": 1.4,
+				"end_address": "昆明理工大学女生楼1楼304室",
+				"order_status":2
+			},
+			{
+				"start_time":"10:30",
+				"end_time":"10:50",
+				"uerse_tiem":"20",
+				"start_address": "昆明理工大学食堂",
+				"kilometress": 1.4,
+				"end_address": "昆明理工大学女生楼1楼304室",
+				"order_status":3
+			},
+			{
+				"start_time":"10:30",
+				"end_time":"10:50",
+				"uerse_tiem":"20",
+				"start_address": "昆明理工大学食堂",
+				"kilometress": 1.4,
+				"end_address": "昆明理工大学女生楼1楼304室",
+				"order_status":3
+			},
+			{
+				"start_time":"10:30",
+				"end_time":"10:50",
+				"uerse_tiem":"20",
+				"start_address": "昆明理工大学食堂",
+				"kilometress": 1.4,
+				"end_address": "昆明理工大学女生楼1楼304室",
+				"order_status":3
+			},
+			{
+				"start_time":"10:30",
+				"end_time":"10:50",
+				"uerse_tiem":"20",
+				"start_address": "昆明理工大学食堂",
+				"kilometress": 1.4,
+				"end_address": "昆明理工大学女生楼1楼304室",
+				"order_status":3
+			},
+			{
+				"start_time":"10:30",
+				"end_time":"10:50",
+				"uerse_tiem":"20",
+				"start_address": "昆明理工大学食堂",
+				"kilometress": 1.4,
+				"end_address": "昆明理工大学女生楼1楼304室",
+				"order_status":3
+			}
+		]
+	},
+	{
+		"month":"2019年8月",
+		"complete_order":"312",
+		"cancel_order":"1",
+		"ontime_order":"98",
+		"orderList":[
+			{
+				"start_time":"10:30",
+				"end_time":"10:50",
+				"uerse_tiem":"20",
+				"start_address": "昆明理工大学食堂",
+				"kilometress": 1.4,
+				"end_address": "昆明理工大学女生楼1楼304室",
+				"order_status":3
+			},
+			{
+				"start_time":"10:30",
+				"end_time":"10:50",
+				"uerse_tiem":"20",
+				"start_address": "昆明理工大学食堂",
+				"kilometress": 1.4,
+				"end_address": "昆明理工大学女生楼1楼304室",
+				"order_status":1
+			},
+			{
+				"start_time":"10:30",
+				"end_time":"10:50",
+				"uerse_tiem":"20",
+				"start_address": "昆明理工大学食堂",
+				"kilometress": 1.4,
+				"end_address": "昆明理工大学女生楼1楼304室",
+				"order_status":3
+			},
+			{
+				"start_time":"10:30",
+				"end_time":"10:50",
+				"uerse_tiem":"20",
+				"start_address": "昆明理工大学食堂",
+				"kilometress": 1.4,
+				"end_address": "昆明理工大学女生楼1楼304室",
+				"order_status":2
+			},
+			{
+				"start_time":"10:30",
+				"end_time":"10:50",
+				"uerse_tiem":"20",
+				"start_address": "昆明理工大学食堂",
+				"kilometress": 1.4,
+				"end_address": "昆明理工大学女生楼1楼304室",
+				"order_status":2
+			},
+			{
+				"start_time":"10:30",
+				"end_time":"10:50",
+				"uerse_tiem":"20",
+				"start_address": "昆明理工大学食堂",
+				"kilometress": 1.4,
+				"end_address": "昆明理工大学女生楼1楼304室",
+				"order_status":3
+			},
+			{
+				"start_time":"10:30",
+				"end_time":"10:50",
+				"uerse_tiem":"20",
+				"start_address": "昆明理工大学食堂",
+				"kilometress": 1.4,
+				"end_address": "昆明理工大学女生楼1楼304室",
+				"order_status":3
+			},
+			{
+				"start_time":"10:30",
+				"end_time":"10:50",
+				"uerse_tiem":"20",
+				"start_address": "昆明理工大学食堂",
+				"kilometress": 1.4,
+				"end_address": "昆明理工大学女生楼1楼304室",
+				"order_status":3
+			},
+			{
+				"start_time":"10:30",
+				"end_time":"10:50",
+				"uerse_tiem":"20",
+				"start_address": "昆明理工大学食堂",
+				"kilometress": 1.4,
+				"end_address": "昆明理工大学女生楼1楼304室",
+				"order_status":3
+			},
+			{
+				"start_time":"10:30",
+				"end_time":"10:50",
+				"uerse_tiem":"20",
+				"start_address": "昆明理工大学食堂",
+				"kilometress": 1.4,
+				"end_address": "昆明理工大学女生楼1楼304室",
+				"order_status":3
+			}
+		]
+	},
 ]
 
 export default {
@@ -773,5 +1852,7 @@ export default {
 	goodsList,
 	orderList,
 	cateList,
-	history
+	history,
+	qiShouOrderList,
+	monthill
 }
