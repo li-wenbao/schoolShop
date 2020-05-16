@@ -149,6 +149,9 @@
 </script>
 
 <style>
+	page{
+		background: #FFFFFF;
+	}
 	.action-row {
 		display: flex;
 		flex-direction: row;

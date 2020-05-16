@@ -194,6 +194,9 @@
     flex-direction: row;
     align-items: center;
   }
+  input:focus{
+	  border: #007AFF 1px solid;
+  }
 
   .cmd-input-input {
     flex: 1;

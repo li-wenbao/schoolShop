@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "uni-load-more": "/components/uni-load-more/uni-load-more",
+    "tra-order": "/components/tra-order/tra-order"
+  }
+}

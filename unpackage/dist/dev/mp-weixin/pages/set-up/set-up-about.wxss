@@ -1,0 +1,26 @@
+
+.action-row {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: row;
+	        flex-direction: row;
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+	        justify-content: center;
+	color: #39B54A;
+}
+.action-row navigator {
+	color: #39B54A;
+	padding: 0 10px;
+}
+.logo {
+	width: 180rpx;
+	height: 180rpx;
+	/* border-radius: 50%; */
+	margin: 50px auto 20px auto;
+}
+
+

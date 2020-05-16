@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "修改密码",
+  "usingComponents": {
+    "cmd-page-body": "/components/cmd-page-body/cmd-page-body",
+    "cmd-transition": "/components/cmd-transition/cmd-transition",
+    "cmd-input": "/components/cmd-input/cmd-input",
+    "cmd-nav-bar": "/components/cmd-nav-bar/cmd-nav-bar"
+  }
+}

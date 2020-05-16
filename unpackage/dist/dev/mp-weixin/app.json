@@ -1,15 +1,26 @@
 {
   "pages": [
-    "pages/order-processing/order-processing",
+    "pages/login/login",
+    "pages/order-processing/order-prssing",
+    "pages/order/order",
+    "pages/order-processing/order-prssingtest",
+    "pages/set-up/set-up",
+    "pages/set-up/set-up-account",
+    "pages/set-up/set-up-about",
+    "pages/set-up/set-up-access",
+    "pages/login/capLogin",
+    "pages/login/login-reste-pwd",
+    "pages/set-up/set-up-info",
+    "pages/order-processing/details",
     "pages/order-history/order-history",
     "pages/set-up/set-up",
     "pages/map/map"
   ],
   "subPackages": [],
   "window": {
-    "navigationBarTextStyle": "black",
-    "navigationBarTitleText": "uni-app",
-    "navigationBarBackgroundColor": "#F8F8F8",
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "校园骑手",
+    "navigationBarBackgroundColor": "#0099FF",
     "backgroundColor": "#F8F8F8"
   },
   "tabBar": {
@@ -20,7 +31,7 @@
     "selectedColor": "#333333",
     "list": [
       {
-        "pagePath": "pages/order-processing/order-processing",
+        "pagePath": "pages/order-processing/order-prssing",
         "text": "订单处理",
         "iconPath": "static/order-processing.png",
         "selectedIconPath": "static/order-processing-hover.png"
@@ -39,6 +50,7 @@
       }
     ]
   },
-  "usingComponents": {},
-  "sitemapLocation": "sitemap85.json"
+  "usingComponents": {
+    "cu-custom": "/colorui/components/cu-custom"
+  }
 }

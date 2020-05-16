@@ -5,7 +5,7 @@
 				<view v-if="status">
 					<view class="login-phone">
 						<cmd-input v-model="mobile.phone" type="number" focus maxlength="11" placeholder="请输入手机号"></cmd-input>
-						<view class="login-phone-getcode" @tap="!safety.state ? fnGetPhoneCode() : ''">{{!safety.state&&'获取验证码'||(safety.time+' s')}}</view>
+						<view :class="!rightPhone ?'login-phone-nocode':'login-phone-getcode'" @tap="!safety.state ? fnGetPhoneCode() : ''">{{!safety.state&&'获取验证码'||(safety.time+' s')}}</view>
 					</view>
 					<view class="login-code">
 						<cmd-input v-model="mobile.code" type="number" maxlength="6" placeholder="请输入短信验证码"></cmd-input>
@@ -89,7 +89,11 @@
 				deep: true
 			}
 		},
-
+		computed: {
+			rightPhone() {
+				return /^1\d{10}$/.test(this.mobile.phone)
+			}
+		},
 		methods: {
 			/**
 			 * 登录按钮点击执行
@@ -182,6 +186,9 @@
 </script>
 
 <style>
+	page{
+		background: #FFFFFF;
+	}
 	.login {
 		margin-top: 56upx;
 		margin-right: 72upx;
@@ -206,6 +213,12 @@
 		border-bottom: 2upx #dedede solid;
 		margin-top: 56upx;
 		margin-bottom: 40upx;
+	}
+
+	.login-phone-nocode {
+		color: #DDDDDD;
+		text-align: center;
+		min-width: 140upx;
 	}
 
 	.login-phone-getcode {

@@ -1,0 +1,55 @@
+
+.forgot {
+	margin-top: 118rpx;
+	margin-right: 50rpx;
+	margin-left: 50rpx;
+}
+.forgot-phone {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: row;
+	        flex-direction: row;
+	-webkit-box-pack: justify;
+	-webkit-justify-content: space-between;
+	        justify-content: space-between;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	        align-items: center;
+	border-bottom: 2rpx #dedede solid;
+	margin-top: 118rpx;
+	margin-bottom: 40rpx;
+}
+.forgot-phone-getcode {
+	color: #3F51B5;
+	text-align: center;
+	min-width: 140rpx;
+}
+.forgot-password,
+.forgot-code {
+	margin-bottom: 40rpx;
+	border-bottom: 2rpx #dedede solid;
+}
+.btn-forgot {
+	margin-top: 100rpx;
+	border-radius: 50rpx;
+	font-size: 32rpx;
+	line-height: 88rpx;
+	color: #FFFFFF;
+	background: -webkit-linear-gradient(left, #c0c0c0, #c0c0c0);
+	background: linear-gradient(to right, #c0c0c0, #c0c0c0);
+}
+.btn-forgot-active {
+	background: -webkit-linear-gradient(left, #0099ff, #0099ff);
+	background: linear-gradient(to right, #0099ff, #0099ff);
+}
+.btn-forgot-hover {
+	background: -webkit-linear-gradient(left, #0099ff, #0099ff);
+	background: linear-gradient(to right, #0099ff, #0099ff);
+}
+button[disabled] {
+	color: #fff;
+}
+

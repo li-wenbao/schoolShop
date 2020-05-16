@@ -8,7 +8,7 @@
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.createApp = createApp;exports.createComponent = createComponent;exports.createPage = createPage;exports.default = void 0;var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _slicedToArray(arr, i) {return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest();}function _nonIterableRest() {throw new TypeError("Invalid attempt to destructure non-iterable instance");}function _iterableToArrayLimit(arr, i) {var _arr = [];var _n = true;var _d = false;var _e = undefined;try {for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) {_arr.push(_s.value);if (i && _arr.length === i) break;}} catch (err) {_d = true;_e = err;} finally {try {if (!_n && _i["return"] != null) _i["return"]();} finally {if (_d) throw _e;}}return _arr;}function _arrayWithHoles(arr) {if (Array.isArray(arr)) return arr;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}function _toConsumableArray(arr) {return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread();}function _nonIterableSpread() {throw new TypeError("Invalid attempt to spread non-iterable instance");}function _iterableToArray(iter) {if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter);}function _arrayWithoutHoles(arr) {if (Array.isArray(arr)) {for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) {arr2[i] = arr[i];}return arr2;}}
+Object.defineProperty(exports, "__esModule", { value: true });exports.createApp = createApp;exports.createComponent = createComponent;exports.createPage = createPage;exports.default = void 0;var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function ownKeys(object, enumerableOnly) {var keys = Object.keys(object);if (Object.getOwnPropertySymbols) {var symbols = Object.getOwnPropertySymbols(object);if (enumerableOnly) symbols = symbols.filter(function (sym) {return Object.getOwnPropertyDescriptor(object, sym).enumerable;});keys.push.apply(keys, symbols);}return keys;}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};if (i % 2) {ownKeys(Object(source), true).forEach(function (key) {_defineProperty(target, key, source[key]);});} else if (Object.getOwnPropertyDescriptors) {Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));} else {ownKeys(Object(source)).forEach(function (key) {Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));});}}return target;}function _slicedToArray(arr, i) {return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest();}function _nonIterableRest() {throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");}function _iterableToArrayLimit(arr, i) {if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return;var _arr = [];var _n = true;var _d = false;var _e = undefined;try {for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) {_arr.push(_s.value);if (i && _arr.length === i) break;}} catch (err) {_d = true;_e = err;} finally {try {if (!_n && _i["return"] != null) _i["return"]();} finally {if (_d) throw _e;}}return _arr;}function _arrayWithHoles(arr) {if (Array.isArray(arr)) return arr;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}function _toConsumableArray(arr) {return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread();}function _nonIterableSpread() {throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");}function _unsupportedIterableToArray(o, minLen) {if (!o) return;if (typeof o === "string") return _arrayLikeToArray(o, minLen);var n = Object.prototype.toString.call(o).slice(8, -1);if (n === "Object" && o.constructor) n = o.constructor.name;if (n === "Map" || n === "Set") return Array.from(n);if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen);}function _iterableToArray(iter) {if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter);}function _arrayWithoutHoles(arr) {if (Array.isArray(arr)) return _arrayLikeToArray(arr);}function _arrayLikeToArray(arr, len) {if (len == null || len > arr.length) len = arr.length;for (var i = 0, arr2 = new Array(len); i < len; i++) {arr2[i] = arr[i];}return arr2;}
 
 var _toString = Object.prototype.toString;
 var hasOwnProperty = Object.prototype.hasOwnProperty;
@@ -241,17 +241,19 @@ var promiseInterceptor = {
 
 
 var SYNC_API_RE =
-/^\$|restoreGlobal|getCurrentSubNVue|getMenuButtonBoundingClientRect|^report|interceptors|Interceptor$|getSubNVueById|requireNativePlugin|upx2px|hideKeyboard|canIUse|^create|Sync$|Manager$|base64ToArrayBuffer|arrayBufferToBase64/;
+/^\$|sendNativeEvent|restoreGlobal|getCurrentSubNVue|getMenuButtonBoundingClientRect|^report|interceptors|Interceptor$|getSubNVueById|requireNativePlugin|upx2px|hideKeyboard|canIUse|^create|Sync$|Manager$|base64ToArrayBuffer|arrayBufferToBase64/;
 
 var CONTEXT_API_RE = /^create|Manager$/;
 
-var CALLBACK_API_RE = /^on/;
+var ASYNC_API = ['createBLEConnection'];
+
+var CALLBACK_API_RE = /^on|^off/;
 
 function isContextApi(name) {
   return CONTEXT_API_RE.test(name);
 }
 function isSyncApi(name) {
-  return SYNC_API_RE.test(name);
+  return SYNC_API_RE.test(name) && ASYNC_API.indexOf(name) === -1;
 }
 
 function isCallbackApi(name) {
@@ -276,6 +278,19 @@ function shouldPromise(name) {
   return true;
 }
 
+/* eslint-disable no-extend-native */
+if (!Promise.prototype.finally) {
+  Promise.prototype.finally = function (callback) {
+    var promise = this.constructor;
+    return this.then(
+    function (value) {return promise.resolve(callback()).then(function () {return value;});},
+    function (reason) {return promise.resolve(callback()).then(function () {
+        throw reason;
+      });});
+
+  };
+}
+
 function promisify(name, api) {
   if (!shouldPromise(name)) {
     return api;
@@ -289,18 +304,6 @@ function promisify(name, api) {
         success: resolve,
         fail: reject })].concat(
       params));
-      /* eslint-disable no-extend-native */
-      if (!Promise.prototype.finally) {
-        Promise.prototype.finally = function (callback) {
-          var promise = this.constructor;
-          return this.then(
-          function (value) {return promise.resolve(callback()).then(function () {return value;});},
-          function (reason) {return promise.resolve(callback()).then(function () {
-              throw reason;
-            });});
-
-        };
-      }
     })));
   };
 }
@@ -1327,9 +1330,10 @@ function parseBaseComponent(vueComponentOptions)
 {var _ref5 = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {},isPage = _ref5.isPage,initRelation = _ref5.initRelation;var _initVueComponent =
   initVueComponent(_vue.default, vueComponentOptions),_initVueComponent2 = _slicedToArray(_initVueComponent, 2),VueComponent = _initVueComponent2[0],vueOptions = _initVueComponent2[1];
 
-  var options = {
+  var options = _objectSpread({
     multipleSlots: true,
-    addGlobalClass: true };
+    addGlobalClass: true },
+  vueOptions.options || {});
 
 
   {
@@ -1551,7 +1555,1951 @@ uni$1;exports.default = _default;
 
 /***/ }),
 
-/***/ 14:
+/***/ 118:
+/*!*******************************************************!*\
+  !*** F:/projects/schoolShop/js_sdk/lyn4ever-gaode.js ***!
+  \*******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+//高德key
+var key = '3d78fb7261cb6e8af4cc6522a1e19bae';
+
+var amapFile = __webpack_require__(/*! ./amap-uni.js */ 119);
+/*
+                                         调用高德地图api进行路线规划时,
+                                         高德对途经点的坐标格式如下:
+                                         
+                                         116.441063,39.91903;
+                                         116.39622,39.912057;
+                                         116.39622,39.912057;
+                                         116.39622,39.912057;
+                                         116.39622,39.912057;
+                                         116.39622,39.912057;
+                                         116.39622,39.912057;
+                                         116.39622,39.912057
+                                         
+                                         也就是说每个点的经纬度之间用;分隔,所以请提前格式化好您的坐标格式
+                                         
+                                         */
+
+
+function PlanningRoute(start, end, _waypoints, result, _fail) {
+  var that = this;
+  var myAmapFun = new amapFile.AMapWX({
+    key: key });
+
+
+  myAmapFun.getDrivingRoute({
+    origin: start,
+    destination: end,
+    waypoints: _waypoints,
+    success: function success(data) {
+      var points = [];
+      if (data.paths && data.paths[0] && data.paths[0].steps) {
+        var steps = data.paths[0].steps;
+        for (var i = 0; i < steps.length; i++) {
+          var poLen = steps[i].polyline.split(';');
+          for (var j = 0; j < poLen.length; j++) {
+            points.push({
+              longitude: parseFloat(poLen[j].split(',')[0]),
+              latitude: parseFloat(poLen[j].split(',')[1]) });
+
+          }
+        }
+      }
+      //这个返回结果就是对应的路线坐标,其他属性页面自己配置,请参照uniapp地图组件一章节
+      //https://uniapp.dcloud.io/component/map
+      result({
+        points: points,
+        color: "#0606ff",
+        width: 8 });
+
+    },
+    fail: function fail(info) {
+      _fail(info);
+    } });
+
+}
+//标记标记点
+function Makemarkers(startpoi, endpoi, waypoints, success) {
+  var markers = [];
+
+  //起点
+  var start = {
+    iconPath: "/static/start.png",
+    id: 0,
+    longitude: startpoi.split(",")[0],
+    latitude: startpoi.split(",")[1],
+    width: 23,
+    height: 33 };
+
+  markers.push(start);
+  //终点
+  var end = {
+    iconPath: "/static/end.png",
+    id: 1,
+    longitude: endpoi.split(",")[0],
+    latitude: endpoi.split(",")[1],
+    width: 23,
+    height: 33 };
+
+  markers.push(end);
+  //途经点,先将其分隔成为数组
+  var _waypoints = waypoints.split(';');
+  for (var i = 0, _len = _waypoints.length; i < _len; i++) {
+    var point = {
+      iconPath: "/static/tjd.png",
+      id: i,
+      longitude: parseFloat(_waypoints[i].split(",")[0]),
+      latitude: parseFloat(_waypoints[i].split(",")[1]),
+      width: 23,
+      height: 33 };
+
+    markers.push(point);
+  }
+
+  //统一风格为回调方式,也可以直接返回这个markers
+  success(markers);
+
+}
+
+module.exports = {
+  line: PlanningRoute,
+  markers: Makemarkers };
+
+/***/ }),
+
+/***/ 119:
+/*!*************************************************!*\
+  !*** F:/projects/schoolShop/js_sdk/amap-uni.js ***!
+  \*************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+/* WEBPACK VAR INJECTION */(function(uni) {function AMapWX(a) {
+  this.key = a.key, this.requestConfig = {
+    key: a.key,
+    s: "rsx",
+    platform: "WXJS",
+    appname: a.key,
+    sdkversion: "1.2.0",
+    logversion: "2.0" };
+
+}
+AMapWX.prototype.getWxLocation = function (a, b) {
+  uni.getLocation({
+    type: "gcj02",
+    success: function success(a) {
+      var c = a.longitude + "," + a.latitude;
+      uni.setStorage({
+        key: "userLocation",
+        data: c }),
+      b(c);
+    },
+    fail: function fail(c) {
+      uni.getStorage({
+        key: "userLocation",
+        success: function success(a) {
+          a.data && b(a.data);
+        } }),
+      a.fail({
+        errCode: "0",
+        errMsg: c.errMsg || "" });
+
+    } });
+
+}, AMapWX.prototype.getRegeo = function (a) {
+  function c(c) {
+    var d = b.requestConfig;
+    uni.request({
+      url: "https://restapi.amap.com/v3/geocode/regeo",
+      data: {
+        key: b.key,
+        location: c,
+        extensions: "all",
+        s: d.s,
+        platform: d.platform,
+        appname: b.key,
+        sdkversion: d.sdkversion,
+        logversion: d.logversion },
+
+      method: "GET",
+      header: {
+        "content-type": "application/json" },
+
+      success: function success(b) {
+        var d, e, f, g, h, i, j, k, l;
+        b.data.status && "1" == b.data.status ? (d = b.data.regeocode, e = d.addressComponent, f = [], g = "", d && d.roads[
+        0] && d.roads[0].name && (g = d.roads[0].name + "附近"), h = c.split(",")[0], i = c.split(",")[1], d.pois && d.
+        pois[0] && (g = d.pois[0].name + "附近", j = d.pois[0].location, j && (h = parseFloat(j.split(",")[0]), i =
+        parseFloat(j.split(",")[1]))), e.provice && f.push(e.provice), e.city && f.push(e.city), e.district && f.push(
+        e.district), e.streetNumber && e.streetNumber.street && e.streetNumber.number ? (f.push(e.streetNumber.street),
+        f.push(e.streetNumber.number)) : (k = "", d && d.roads[0] && d.roads[0].name && (k = d.roads[0].name), f.push(
+        k)), f = f.join(""), l = [{
+          iconPath: a.iconPath,
+          width: a.iconWidth,
+          height: a.iconHeight,
+          name: f,
+          desc: g,
+          longitude: h,
+          latitude: i,
+          id: 0,
+          regeocodeData: d }],
+        a.success(l)) : a.fail({
+          errCode: b.data.infocode,
+          errMsg: b.data.info });
+
+      },
+      fail: function fail(b) {
+        a.fail({
+          errCode: "0",
+          errMsg: b.errMsg || "" });
+
+      } });
+
+  }
+  var b = this;
+  a.location ? c(a.location) : b.getWxLocation(a, function (a) {
+    c(a);
+  });
+}, AMapWX.prototype.getWeather = function (a) {
+  function d(d) {
+    var e = "base";
+    a.type && "forecast" == a.type && (e = "all"), uni.request({
+      url: "https://restapi.amap.com/v3/weather/weatherInfo",
+      data: {
+        key: b.key,
+        city: d,
+        extensions: e,
+        s: c.s,
+        platform: c.platform,
+        appname: b.key,
+        sdkversion: c.sdkversion,
+        logversion: c.logversion },
+
+      method: "GET",
+      header: {
+        "content-type": "application/json" },
+
+      success: function success(b) {
+        function c(a) {
+          var b = {
+            city: {
+              text: "城市",
+              data: a.city },
+
+            weather: {
+              text: "天气",
+              data: a.weather },
+
+            temperature: {
+              text: "温度",
+              data: a.temperature },
+
+            winddirection: {
+              text: "风向",
+              data: a.winddirection + "风" },
+
+            windpower: {
+              text: "风力",
+              data: a.windpower + "级" },
+
+            humidity: {
+              text: "湿度",
+              data: a.humidity + "%" } };
+
+
+          return b;
+        }
+        var d, e;
+        b.data.status && "1" == b.data.status ? b.data.lives ? (d = b.data.lives, d && d.length > 0 && (d = d[0], e = c(
+        d), e["liveData"] = d, a.success(e))) : b.data.forecasts && b.data.forecasts[0] && a.success({
+          forecast: b.data.forecasts[0] }) :
+        a.fail({
+          errCode: b.data.infocode,
+          errMsg: b.data.info });
+
+      },
+      fail: function fail(b) {
+        a.fail({
+          errCode: "0",
+          errMsg: b.errMsg || "" });
+
+      } });
+
+  }
+
+  function e(e) {
+    uni.request({
+      url: "https://restapi.amap.com/v3/geocode/regeo",
+      data: {
+        key: b.key,
+        location: e,
+        extensions: "all",
+        s: c.s,
+        platform: c.platform,
+        appname: b.key,
+        sdkversion: c.sdkversion,
+        logversion: c.logversion },
+
+      method: "GET",
+      header: {
+        "content-type": "application/json" },
+
+      success: function success(b) {
+        var c, e;
+        b.data.status && "1" == b.data.status ? (e = b.data.regeocode, e.addressComponent ? c = e.addressComponent.adcode :
+        e.aois && e.aois.length > 0 && (c = e.aois[0].adcode), d(c)) : a.fail({
+          errCode: b.data.infocode,
+          errMsg: b.data.info });
+
+      },
+      fail: function fail(b) {
+        a.fail({
+          errCode: "0",
+          errMsg: b.errMsg || "" });
+
+      } });
+
+  }
+  var b = this,
+  c = b.requestConfig;
+  a.city ? d(a.city) : b.getWxLocation(a, function (a) {
+    e(a);
+  });
+}, AMapWX.prototype.getPoiAround = function (a) {
+  function d(d) {
+    var e = {
+      key: b.key,
+      location: d,
+      s: c.s,
+      platform: c.platform,
+      appname: b.key,
+      sdkversion: c.sdkversion,
+      logversion: c.logversion };
+
+    a.querytypes && (e["types"] = a.querytypes), a.querykeywords && (e["keywords"] = a.querykeywords), uni.request({
+      url: "https://restapi.amap.com/v3/place/around",
+      data: e,
+      method: "GET",
+      header: {
+        "content-type": "application/json" },
+
+      success: function success(b) {
+        var c, d, e, f;
+        if (b.data.status && "1" == b.data.status) {
+          if (b = b.data, b && b.pois) {
+            for (c = [], d = 0; d < b.pois.length; d++) {e = 0 == d ? a.iconPathSelected : a.iconPath, c.push({
+                latitude: parseFloat(b.pois[d].location.split(",")[1]),
+                longitude: parseFloat(b.pois[d].location.split(",")[0]),
+                iconPath: e,
+                width: 22,
+                height: 32,
+                id: d,
+                name: b.pois[d].name,
+                address: b.pois[d].address });}
+
+            f = {
+              markers: c,
+              poisData: b.pois },
+            a.success(f);
+          }
+        } else a.fail({
+          errCode: b.data.infocode,
+          errMsg: b.data.info });
+
+      },
+      fail: function fail(b) {
+        a.fail({
+          errCode: "0",
+          errMsg: b.errMsg || "" });
+
+      } });
+
+  }
+  var b = this,
+  c = b.requestConfig;
+  a.location ? d(a.location) : b.getWxLocation(a, function (a) {
+    d(a);
+  });
+}, AMapWX.prototype.getStaticmap = function (a) {
+  function f(b) {
+    c.push("location=" + b), a.zoom && c.push("zoom=" + a.zoom), a.size && c.push("size=" + a.size), a.scale && c.push(
+    "scale=" + a.scale), a.markers && c.push("markers=" + a.markers), a.labels && c.push("labels=" + a.labels), a.paths &&
+    c.push("paths=" + a.paths), a.traffic && c.push("traffic=" + a.traffic);
+    var e = d + c.join("&");
+    a.success({
+      url: e });
+
+  }
+  var e,b = this,
+  c = [],
+  d = "https://restapi.amap.com/v3/staticmap?";
+  c.push("key=" + b.key), e = b.requestConfig, c.push("s=" + e.s), c.push("platform=" + e.platform), c.push("appname=" +
+  e.appname), c.push("sdkversion=" + e.sdkversion), c.push("logversion=" + e.logversion), a.location ? f(a.location) :
+  b.getWxLocation(a, function (a) {
+    f(a);
+  });
+}, AMapWX.prototype.getInputtips = function (a) {
+  var b = this,
+  c = b.requestConfig,
+  d = {
+    key: b.key,
+    s: c.s,
+    platform: c.platform,
+    appname: b.key,
+    sdkversion: c.sdkversion,
+    logversion: c.logversion };
+
+  a.location && (d["location"] = a.location), a.keywords && (d["keywords"] = a.keywords), a.type && (d["type"] = a.type),
+  a.city && (d["city"] = a.city), a.citylimit && (d["citylimit"] = a.citylimit), uni.request({
+    url: "https://restapi.amap.com/v3/assistant/inputtips",
+    data: d,
+    method: "GET",
+    header: {
+      "content-type": "application/json" },
+
+    success: function success(b) {
+      b && b.data && b.data.tips && a.success({
+        tips: b.data.tips });
+
+    },
+    fail: function fail(b) {
+      a.fail({
+        errCode: "0",
+        errMsg: b.errMsg || "" });
+
+    } });
+
+}, AMapWX.prototype.getDrivingRoute = function (a) {
+  var b = this,
+  c = b.requestConfig,
+  d = {
+    key: b.key,
+    s: c.s,
+    platform: c.platform,
+    appname: b.key,
+    sdkversion: c.sdkversion,
+    logversion: c.logversion };
+
+  a.origin && (d["origin"] = a.origin),
+  a.destination && (d["destination"] = a.destination),
+  a.strategy && (d["strategy"] = a.strategy),
+  a.waypoints && (d["waypoints"] = a.waypoints),
+  a.avoidpolygons && (d["avoidpolygons"] = a.avoidpolygons),
+  a.avoidroad && (d["avoidroad"] = a.avoidroad),
+  uni.request({
+    url: "https://restapi.amap.com/v3/direction/driving",
+    data: d,
+    method: "GET",
+    header: {
+      "content-type": "application/json" },
+
+    success: function success(b) {
+      b && b.data && b.data.route && a.success({
+        paths: b.data.route.paths,
+        taxi_cost: b.data.route.taxi_cost || "" });
+
+    },
+    fail: function fail(b) {
+      a.fail({
+        errCode: "0",
+        errMsg: b.errMsg || "" });
+
+    } });
+
+}, AMapWX.prototype.getWalkingRoute = function (a) {
+  var b = this,
+  c = b.requestConfig,
+  d = {
+    key: b.key,
+    s: c.s,
+    platform: c.platform,
+    appname: b.key,
+    sdkversion: c.sdkversion,
+    logversion: c.logversion };
+
+  a.origin && (d["origin"] = a.origin), a.destination && (d["destination"] = a.destination), uni.request({
+    url: "https://restapi.amap.com/v3/direction/walking",
+    data: d,
+    method: "GET",
+    header: {
+      "content-type": "application/json" },
+
+    success: function success(b) {
+      b && b.data && b.data.route && a.success({
+        paths: b.data.route.paths });
+
+    },
+    fail: function fail(b) {
+      a.fail({
+        errCode: "0",
+        errMsg: b.errMsg || "" });
+
+    } });
+
+}, AMapWX.prototype.getTransitRoute = function (a) {
+  var b = this,
+  c = b.requestConfig,
+  d = {
+    key: b.key,
+    s: c.s,
+    platform: c.platform,
+    appname: b.key,
+    sdkversion: c.sdkversion,
+    logversion: c.logversion };
+
+  a.origin && (d["origin"] = a.origin), a.destination && (d["destination"] = a.destination), a.strategy && (d[
+  "strategy"] = a.strategy), a.city && (d["city"] = a.city), a.cityd && (d["cityd"] = a.cityd), uni.request({
+    url: "https://restapi.amap.com/v3/direction/transit/integrated",
+    data: d,
+    method: "GET",
+    header: {
+      "content-type": "application/json" },
+
+    success: function success(b) {
+      if (b && b.data && b.data.route) {
+        var c = b.data.route;
+        a.success({
+          distance: c.distance || "",
+          taxi_cost: c.taxi_cost || "",
+          transits: c.transits });
+
+      }
+    },
+    fail: function fail(b) {
+      a.fail({
+        errCode: "0",
+        errMsg: b.errMsg || "" });
+
+    } });
+
+}, AMapWX.prototype.getRidingRoute = function (a) {
+  var b = this,
+  c = b.requestConfig,
+  d = {
+    key: b.key,
+    s: c.s,
+    platform: c.platform,
+    appname: b.key,
+    sdkversion: c.sdkversion,
+    logversion: c.logversion };
+
+  a.origin && (d["origin"] = a.origin), a.destination && (d["destination"] = a.destination), uni.request({
+    url: "https://restapi.amap.com/v4/direction/bicycling",
+    data: d,
+    method: "GET",
+    header: {
+      "content-type": "application/json" },
+
+    success: function success(b) {
+      b && b.data && b.data.data && a.success({
+        paths: b.data.data.paths });
+
+    },
+    fail: function fail(b) {
+      a.fail({
+        errCode: "0",
+        errMsg: b.errMsg || "" });
+
+    } });
+
+}, module.exports.AMapWX = AMapWX;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
+
+/***/ }),
+
+/***/ 12:
+/*!********************************************!*\
+  !*** ./node_modules/vuex/dist/vuex.esm.js ***!
+  \********************************************/
+/*! exports provided: Store, install, mapState, mapMutations, mapGetters, mapActions, createNamespacedHelpers, default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Store", function() { return Store; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "install", function() { return install; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "mapState", function() { return mapState; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "mapMutations", function() { return mapMutations; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "mapGetters", function() { return mapGetters; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "mapActions", function() { return mapActions; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createNamespacedHelpers", function() { return createNamespacedHelpers; });
+/**
+ * vuex v3.0.1
+ * (c) 2017 Evan You
+ * @license MIT
+ */
+var applyMixin = function (Vue) {
+  var version = Number(Vue.version.split('.')[0]);
+
+  if (version >= 2) {
+    Vue.mixin({ beforeCreate: vuexInit });
+  } else {
+    // override init and inject vuex init procedure
+    // for 1.x backwards compatibility.
+    var _init = Vue.prototype._init;
+    Vue.prototype._init = function (options) {
+      if ( options === void 0 ) options = {};
+
+      options.init = options.init
+        ? [vuexInit].concat(options.init)
+        : vuexInit;
+      _init.call(this, options);
+    };
+  }
+
+  /**
+   * Vuex init hook, injected into each instances init hooks list.
+   */
+
+  function vuexInit () {
+    var options = this.$options;
+    // store injection
+    if (options.store) {
+      this.$store = typeof options.store === 'function'
+        ? options.store()
+        : options.store;
+    } else if (options.parent && options.parent.$store) {
+      this.$store = options.parent.$store;
+    }
+  }
+};
+
+var devtoolHook =
+  typeof window !== 'undefined' &&
+  window.__VUE_DEVTOOLS_GLOBAL_HOOK__;
+
+function devtoolPlugin (store) {
+  if (!devtoolHook) { return }
+
+  store._devtoolHook = devtoolHook;
+
+  devtoolHook.emit('vuex:init', store);
+
+  devtoolHook.on('vuex:travel-to-state', function (targetState) {
+    store.replaceState(targetState);
+  });
+
+  store.subscribe(function (mutation, state) {
+    devtoolHook.emit('vuex:mutation', mutation, state);
+  });
+}
+
+/**
+ * Get the first item that pass the test
+ * by second argument function
+ *
+ * @param {Array} list
+ * @param {Function} f
+ * @return {*}
+ */
+/**
+ * Deep copy the given object considering circular structure.
+ * This function caches all nested objects and its copies.
+ * If it detects circular structure, use cached copy to avoid infinite loop.
+ *
+ * @param {*} obj
+ * @param {Array<Object>} cache
+ * @return {*}
+ */
+
+
+/**
+ * forEach for object
+ */
+function forEachValue (obj, fn) {
+  Object.keys(obj).forEach(function (key) { return fn(obj[key], key); });
+}
+
+function isObject (obj) {
+  return obj !== null && typeof obj === 'object'
+}
+
+function isPromise (val) {
+  return val && typeof val.then === 'function'
+}
+
+function assert (condition, msg) {
+  if (!condition) { throw new Error(("[vuex] " + msg)) }
+}
+
+var Module = function Module (rawModule, runtime) {
+  this.runtime = runtime;
+  this._children = Object.create(null);
+  this._rawModule = rawModule;
+  var rawState = rawModule.state;
+  this.state = (typeof rawState === 'function' ? rawState() : rawState) || {};
+};
+
+var prototypeAccessors$1 = { namespaced: { configurable: true } };
+
+prototypeAccessors$1.namespaced.get = function () {
+  return !!this._rawModule.namespaced
+};
+
+Module.prototype.addChild = function addChild (key, module) {
+  this._children[key] = module;
+};
+
+Module.prototype.removeChild = function removeChild (key) {
+  delete this._children[key];
+};
+
+Module.prototype.getChild = function getChild (key) {
+  return this._children[key]
+};
+
+Module.prototype.update = function update (rawModule) {
+  this._rawModule.namespaced = rawModule.namespaced;
+  if (rawModule.actions) {
+    this._rawModule.actions = rawModule.actions;
+  }
+  if (rawModule.mutations) {
+    this._rawModule.mutations = rawModule.mutations;
+  }
+  if (rawModule.getters) {
+    this._rawModule.getters = rawModule.getters;
+  }
+};
+
+Module.prototype.forEachChild = function forEachChild (fn) {
+  forEachValue(this._children, fn);
+};
+
+Module.prototype.forEachGetter = function forEachGetter (fn) {
+  if (this._rawModule.getters) {
+    forEachValue(this._rawModule.getters, fn);
+  }
+};
+
+Module.prototype.forEachAction = function forEachAction (fn) {
+  if (this._rawModule.actions) {
+    forEachValue(this._rawModule.actions, fn);
+  }
+};
+
+Module.prototype.forEachMutation = function forEachMutation (fn) {
+  if (this._rawModule.mutations) {
+    forEachValue(this._rawModule.mutations, fn);
+  }
+};
+
+Object.defineProperties( Module.prototype, prototypeAccessors$1 );
+
+var ModuleCollection = function ModuleCollection (rawRootModule) {
+  // register root module (Vuex.Store options)
+  this.register([], rawRootModule, false);
+};
+
+ModuleCollection.prototype.get = function get (path) {
+  return path.reduce(function (module, key) {
+    return module.getChild(key)
+  }, this.root)
+};
+
+ModuleCollection.prototype.getNamespace = function getNamespace (path) {
+  var module = this.root;
+  return path.reduce(function (namespace, key) {
+    module = module.getChild(key);
+    return namespace + (module.namespaced ? key + '/' : '')
+  }, '')
+};
+
+ModuleCollection.prototype.update = function update$1 (rawRootModule) {
+  update([], this.root, rawRootModule);
+};
+
+ModuleCollection.prototype.register = function register (path, rawModule, runtime) {
+    var this$1 = this;
+    if ( runtime === void 0 ) runtime = true;
+
+  if (true) {
+    assertRawModule(path, rawModule);
+  }
+
+  var newModule = new Module(rawModule, runtime);
+  if (path.length === 0) {
+    this.root = newModule;
+  } else {
+    var parent = this.get(path.slice(0, -1));
+    parent.addChild(path[path.length - 1], newModule);
+  }
+
+  // register nested modules
+  if (rawModule.modules) {
+    forEachValue(rawModule.modules, function (rawChildModule, key) {
+      this$1.register(path.concat(key), rawChildModule, runtime);
+    });
+  }
+};
+
+ModuleCollection.prototype.unregister = function unregister (path) {
+  var parent = this.get(path.slice(0, -1));
+  var key = path[path.length - 1];
+  if (!parent.getChild(key).runtime) { return }
+
+  parent.removeChild(key);
+};
+
+function update (path, targetModule, newModule) {
+  if (true) {
+    assertRawModule(path, newModule);
+  }
+
+  // update target module
+  targetModule.update(newModule);
+
+  // update nested modules
+  if (newModule.modules) {
+    for (var key in newModule.modules) {
+      if (!targetModule.getChild(key)) {
+        if (true) {
+          console.warn(
+            "[vuex] trying to add a new module '" + key + "' on hot reloading, " +
+            'manual reload is needed'
+          );
+        }
+        return
+      }
+      update(
+        path.concat(key),
+        targetModule.getChild(key),
+        newModule.modules[key]
+      );
+    }
+  }
+}
+
+var functionAssert = {
+  assert: function (value) { return typeof value === 'function'; },
+  expected: 'function'
+};
+
+var objectAssert = {
+  assert: function (value) { return typeof value === 'function' ||
+    (typeof value === 'object' && typeof value.handler === 'function'); },
+  expected: 'function or object with "handler" function'
+};
+
+var assertTypes = {
+  getters: functionAssert,
+  mutations: functionAssert,
+  actions: objectAssert
+};
+
+function assertRawModule (path, rawModule) {
+  Object.keys(assertTypes).forEach(function (key) {
+    if (!rawModule[key]) { return }
+
+    var assertOptions = assertTypes[key];
+
+    forEachValue(rawModule[key], function (value, type) {
+      assert(
+        assertOptions.assert(value),
+        makeAssertionMessage(path, key, type, value, assertOptions.expected)
+      );
+    });
+  });
+}
+
+function makeAssertionMessage (path, key, type, value, expected) {
+  var buf = key + " should be " + expected + " but \"" + key + "." + type + "\"";
+  if (path.length > 0) {
+    buf += " in module \"" + (path.join('.')) + "\"";
+  }
+  buf += " is " + (JSON.stringify(value)) + ".";
+  return buf
+}
+
+var Vue; // bind on install
+
+var Store = function Store (options) {
+  var this$1 = this;
+  if ( options === void 0 ) options = {};
+
+  // Auto install if it is not done yet and `window` has `Vue`.
+  // To allow users to avoid auto-installation in some cases,
+  // this code should be placed here. See #731
+  if (!Vue && typeof window !== 'undefined' && window.Vue) {
+    install(window.Vue);
+  }
+
+  if (true) {
+    assert(Vue, "must call Vue.use(Vuex) before creating a store instance.");
+    assert(typeof Promise !== 'undefined', "vuex requires a Promise polyfill in this browser.");
+    assert(this instanceof Store, "Store must be called with the new operator.");
+  }
+
+  var plugins = options.plugins; if ( plugins === void 0 ) plugins = [];
+  var strict = options.strict; if ( strict === void 0 ) strict = false;
+
+  var state = options.state; if ( state === void 0 ) state = {};
+  if (typeof state === 'function') {
+    state = state() || {};
+  }
+
+  // store internal state
+  this._committing = false;
+  this._actions = Object.create(null);
+  this._actionSubscribers = [];
+  this._mutations = Object.create(null);
+  this._wrappedGetters = Object.create(null);
+  this._modules = new ModuleCollection(options);
+  this._modulesNamespaceMap = Object.create(null);
+  this._subscribers = [];
+  this._watcherVM = new Vue();
+
+  // bind commit and dispatch to self
+  var store = this;
+  var ref = this;
+  var dispatch = ref.dispatch;
+  var commit = ref.commit;
+  this.dispatch = function boundDispatch (type, payload) {
+    return dispatch.call(store, type, payload)
+  };
+  this.commit = function boundCommit (type, payload, options) {
+    return commit.call(store, type, payload, options)
+  };
+
+  // strict mode
+  this.strict = strict;
+
+  // init root module.
+  // this also recursively registers all sub-modules
+  // and collects all module getters inside this._wrappedGetters
+  installModule(this, state, [], this._modules.root);
+
+  // initialize the store vm, which is responsible for the reactivity
+  // (also registers _wrappedGetters as computed properties)
+  resetStoreVM(this, state);
+
+  // apply plugins
+  plugins.forEach(function (plugin) { return plugin(this$1); });
+
+  if (Vue.config.devtools) {
+    devtoolPlugin(this);
+  }
+};
+
+var prototypeAccessors = { state: { configurable: true } };
+
+prototypeAccessors.state.get = function () {
+  return this._vm._data.$$state
+};
+
+prototypeAccessors.state.set = function (v) {
+  if (true) {
+    assert(false, "Use store.replaceState() to explicit replace store state.");
+  }
+};
+
+Store.prototype.commit = function commit (_type, _payload, _options) {
+    var this$1 = this;
+
+  // check object-style commit
+  var ref = unifyObjectStyle(_type, _payload, _options);
+    var type = ref.type;
+    var payload = ref.payload;
+    var options = ref.options;
+
+  var mutation = { type: type, payload: payload };
+  var entry = this._mutations[type];
+  if (!entry) {
+    if (true) {
+      console.error(("[vuex] unknown mutation type: " + type));
+    }
+    return
+  }
+  this._withCommit(function () {
+    entry.forEach(function commitIterator (handler) {
+      handler(payload);
+    });
+  });
+  this._subscribers.forEach(function (sub) { return sub(mutation, this$1.state); });
+
+  if (
+     true &&
+    options && options.silent
+  ) {
+    console.warn(
+      "[vuex] mutation type: " + type + ". Silent option has been removed. " +
+      'Use the filter functionality in the vue-devtools'
+    );
+  }
+};
+
+Store.prototype.dispatch = function dispatch (_type, _payload) {
+    var this$1 = this;
+
+  // check object-style dispatch
+  var ref = unifyObjectStyle(_type, _payload);
+    var type = ref.type;
+    var payload = ref.payload;
+
+  var action = { type: type, payload: payload };
+  var entry = this._actions[type];
+  if (!entry) {
+    if (true) {
+      console.error(("[vuex] unknown action type: " + type));
+    }
+    return
+  }
+
+  this._actionSubscribers.forEach(function (sub) { return sub(action, this$1.state); });
+
+  return entry.length > 1
+    ? Promise.all(entry.map(function (handler) { return handler(payload); }))
+    : entry[0](payload)
+};
+
+Store.prototype.subscribe = function subscribe (fn) {
+  return genericSubscribe(fn, this._subscribers)
+};
+
+Store.prototype.subscribeAction = function subscribeAction (fn) {
+  return genericSubscribe(fn, this._actionSubscribers)
+};
+
+Store.prototype.watch = function watch (getter, cb, options) {
+    var this$1 = this;
+
+  if (true) {
+    assert(typeof getter === 'function', "store.watch only accepts a function.");
+  }
+  return this._watcherVM.$watch(function () { return getter(this$1.state, this$1.getters); }, cb, options)
+};
+
+Store.prototype.replaceState = function replaceState (state) {
+    var this$1 = this;
+
+  this._withCommit(function () {
+    this$1._vm._data.$$state = state;
+  });
+};
+
+Store.prototype.registerModule = function registerModule (path, rawModule, options) {
+    if ( options === void 0 ) options = {};
+
+  if (typeof path === 'string') { path = [path]; }
+
+  if (true) {
+    assert(Array.isArray(path), "module path must be a string or an Array.");
+    assert(path.length > 0, 'cannot register the root module by using registerModule.');
+  }
+
+  this._modules.register(path, rawModule);
+  installModule(this, this.state, path, this._modules.get(path), options.preserveState);
+  // reset store to update getters...
+  resetStoreVM(this, this.state);
+};
+
+Store.prototype.unregisterModule = function unregisterModule (path) {
+    var this$1 = this;
+
+  if (typeof path === 'string') { path = [path]; }
+
+  if (true) {
+    assert(Array.isArray(path), "module path must be a string or an Array.");
+  }
+
+  this._modules.unregister(path);
+  this._withCommit(function () {
+    var parentState = getNestedState(this$1.state, path.slice(0, -1));
+    Vue.delete(parentState, path[path.length - 1]);
+  });
+  resetStore(this);
+};
+
+Store.prototype.hotUpdate = function hotUpdate (newOptions) {
+  this._modules.update(newOptions);
+  resetStore(this, true);
+};
+
+Store.prototype._withCommit = function _withCommit (fn) {
+  var committing = this._committing;
+  this._committing = true;
+  fn();
+  this._committing = committing;
+};
+
+Object.defineProperties( Store.prototype, prototypeAccessors );
+
+function genericSubscribe (fn, subs) {
+  if (subs.indexOf(fn) < 0) {
+    subs.push(fn);
+  }
+  return function () {
+    var i = subs.indexOf(fn);
+    if (i > -1) {
+      subs.splice(i, 1);
+    }
+  }
+}
+
+function resetStore (store, hot) {
+  store._actions = Object.create(null);
+  store._mutations = Object.create(null);
+  store._wrappedGetters = Object.create(null);
+  store._modulesNamespaceMap = Object.create(null);
+  var state = store.state;
+  // init all modules
+  installModule(store, state, [], store._modules.root, true);
+  // reset vm
+  resetStoreVM(store, state, hot);
+}
+
+function resetStoreVM (store, state, hot) {
+  var oldVm = store._vm;
+
+  // bind store public getters
+  store.getters = {};
+  var wrappedGetters = store._wrappedGetters;
+  var computed = {};
+  forEachValue(wrappedGetters, function (fn, key) {
+    // use computed to leverage its lazy-caching mechanism
+    computed[key] = function () { return fn(store); };
+    Object.defineProperty(store.getters, key, {
+      get: function () { return store._vm[key]; },
+      enumerable: true // for local getters
+    });
+  });
+
+  // use a Vue instance to store the state tree
+  // suppress warnings just in case the user has added
+  // some funky global mixins
+  var silent = Vue.config.silent;
+  Vue.config.silent = true;
+  store._vm = new Vue({
+    data: {
+      $$state: state
+    },
+    computed: computed
+  });
+  Vue.config.silent = silent;
+
+  // enable strict mode for new vm
+  if (store.strict) {
+    enableStrictMode(store);
+  }
+
+  if (oldVm) {
+    if (hot) {
+      // dispatch changes in all subscribed watchers
+      // to force getter re-evaluation for hot reloading.
+      store._withCommit(function () {
+        oldVm._data.$$state = null;
+      });
+    }
+    Vue.nextTick(function () { return oldVm.$destroy(); });
+  }
+}
+
+function installModule (store, rootState, path, module, hot) {
+  var isRoot = !path.length;
+  var namespace = store._modules.getNamespace(path);
+
+  // register in namespace map
+  if (module.namespaced) {
+    store._modulesNamespaceMap[namespace] = module;
+  }
+
+  // set state
+  if (!isRoot && !hot) {
+    var parentState = getNestedState(rootState, path.slice(0, -1));
+    var moduleName = path[path.length - 1];
+    store._withCommit(function () {
+      Vue.set(parentState, moduleName, module.state);
+    });
+  }
+
+  var local = module.context = makeLocalContext(store, namespace, path);
+
+  module.forEachMutation(function (mutation, key) {
+    var namespacedType = namespace + key;
+    registerMutation(store, namespacedType, mutation, local);
+  });
+
+  module.forEachAction(function (action, key) {
+    var type = action.root ? key : namespace + key;
+    var handler = action.handler || action;
+    registerAction(store, type, handler, local);
+  });
+
+  module.forEachGetter(function (getter, key) {
+    var namespacedType = namespace + key;
+    registerGetter(store, namespacedType, getter, local);
+  });
+
+  module.forEachChild(function (child, key) {
+    installModule(store, rootState, path.concat(key), child, hot);
+  });
+}
+
+/**
+ * make localized dispatch, commit, getters and state
+ * if there is no namespace, just use root ones
+ */
+function makeLocalContext (store, namespace, path) {
+  var noNamespace = namespace === '';
+
+  var local = {
+    dispatch: noNamespace ? store.dispatch : function (_type, _payload, _options) {
+      var args = unifyObjectStyle(_type, _payload, _options);
+      var payload = args.payload;
+      var options = args.options;
+      var type = args.type;
+
+      if (!options || !options.root) {
+        type = namespace + type;
+        if ( true && !store._actions[type]) {
+          console.error(("[vuex] unknown local action type: " + (args.type) + ", global type: " + type));
+          return
+        }
+      }
+
+      return store.dispatch(type, payload)
+    },
+
+    commit: noNamespace ? store.commit : function (_type, _payload, _options) {
+      var args = unifyObjectStyle(_type, _payload, _options);
+      var payload = args.payload;
+      var options = args.options;
+      var type = args.type;
+
+      if (!options || !options.root) {
+        type = namespace + type;
+        if ( true && !store._mutations[type]) {
+          console.error(("[vuex] unknown local mutation type: " + (args.type) + ", global type: " + type));
+          return
+        }
+      }
+
+      store.commit(type, payload, options);
+    }
+  };
+
+  // getters and state object must be gotten lazily
+  // because they will be changed by vm update
+  Object.defineProperties(local, {
+    getters: {
+      get: noNamespace
+        ? function () { return store.getters; }
+        : function () { return makeLocalGetters(store, namespace); }
+    },
+    state: {
+      get: function () { return getNestedState(store.state, path); }
+    }
+  });
+
+  return local
+}
+
+function makeLocalGetters (store, namespace) {
+  var gettersProxy = {};
+
+  var splitPos = namespace.length;
+  Object.keys(store.getters).forEach(function (type) {
+    // skip if the target getter is not match this namespace
+    if (type.slice(0, splitPos) !== namespace) { return }
+
+    // extract local getter type
+    var localType = type.slice(splitPos);
+
+    // Add a port to the getters proxy.
+    // Define as getter property because
+    // we do not want to evaluate the getters in this time.
+    Object.defineProperty(gettersProxy, localType, {
+      get: function () { return store.getters[type]; },
+      enumerable: true
+    });
+  });
+
+  return gettersProxy
+}
+
+function registerMutation (store, type, handler, local) {
+  var entry = store._mutations[type] || (store._mutations[type] = []);
+  entry.push(function wrappedMutationHandler (payload) {
+    handler.call(store, local.state, payload);
+  });
+}
+
+function registerAction (store, type, handler, local) {
+  var entry = store._actions[type] || (store._actions[type] = []);
+  entry.push(function wrappedActionHandler (payload, cb) {
+    var res = handler.call(store, {
+      dispatch: local.dispatch,
+      commit: local.commit,
+      getters: local.getters,
+      state: local.state,
+      rootGetters: store.getters,
+      rootState: store.state
+    }, payload, cb);
+    if (!isPromise(res)) {
+      res = Promise.resolve(res);
+    }
+    if (store._devtoolHook) {
+      return res.catch(function (err) {
+        store._devtoolHook.emit('vuex:error', err);
+        throw err
+      })
+    } else {
+      return res
+    }
+  });
+}
+
+function registerGetter (store, type, rawGetter, local) {
+  if (store._wrappedGetters[type]) {
+    if (true) {
+      console.error(("[vuex] duplicate getter key: " + type));
+    }
+    return
+  }
+  store._wrappedGetters[type] = function wrappedGetter (store) {
+    return rawGetter(
+      local.state, // local state
+      local.getters, // local getters
+      store.state, // root state
+      store.getters // root getters
+    )
+  };
+}
+
+function enableStrictMode (store) {
+  store._vm.$watch(function () { return this._data.$$state }, function () {
+    if (true) {
+      assert(store._committing, "Do not mutate vuex store state outside mutation handlers.");
+    }
+  }, { deep: true, sync: true });
+}
+
+function getNestedState (state, path) {
+  return path.length
+    ? path.reduce(function (state, key) { return state[key]; }, state)
+    : state
+}
+
+function unifyObjectStyle (type, payload, options) {
+  if (isObject(type) && type.type) {
+    options = payload;
+    payload = type;
+    type = type.type;
+  }
+
+  if (true) {
+    assert(typeof type === 'string', ("Expects string as the type, but found " + (typeof type) + "."));
+  }
+
+  return { type: type, payload: payload, options: options }
+}
+
+function install (_Vue) {
+  if (Vue && _Vue === Vue) {
+    if (true) {
+      console.error(
+        '[vuex] already installed. Vue.use(Vuex) should be called only once.'
+      );
+    }
+    return
+  }
+  Vue = _Vue;
+  applyMixin(Vue);
+}
+
+var mapState = normalizeNamespace(function (namespace, states) {
+  var res = {};
+  normalizeMap(states).forEach(function (ref) {
+    var key = ref.key;
+    var val = ref.val;
+
+    res[key] = function mappedState () {
+      var state = this.$store.state;
+      var getters = this.$store.getters;
+      if (namespace) {
+        var module = getModuleByNamespace(this.$store, 'mapState', namespace);
+        if (!module) {
+          return
+        }
+        state = module.context.state;
+        getters = module.context.getters;
+      }
+      return typeof val === 'function'
+        ? val.call(this, state, getters)
+        : state[val]
+    };
+    // mark vuex getter for devtools
+    res[key].vuex = true;
+  });
+  return res
+});
+
+var mapMutations = normalizeNamespace(function (namespace, mutations) {
+  var res = {};
+  normalizeMap(mutations).forEach(function (ref) {
+    var key = ref.key;
+    var val = ref.val;
+
+    res[key] = function mappedMutation () {
+      var args = [], len = arguments.length;
+      while ( len-- ) args[ len ] = arguments[ len ];
+
+      var commit = this.$store.commit;
+      if (namespace) {
+        var module = getModuleByNamespace(this.$store, 'mapMutations', namespace);
+        if (!module) {
+          return
+        }
+        commit = module.context.commit;
+      }
+      return typeof val === 'function'
+        ? val.apply(this, [commit].concat(args))
+        : commit.apply(this.$store, [val].concat(args))
+    };
+  });
+  return res
+});
+
+var mapGetters = normalizeNamespace(function (namespace, getters) {
+  var res = {};
+  normalizeMap(getters).forEach(function (ref) {
+    var key = ref.key;
+    var val = ref.val;
+
+    val = namespace + val;
+    res[key] = function mappedGetter () {
+      if (namespace && !getModuleByNamespace(this.$store, 'mapGetters', namespace)) {
+        return
+      }
+      if ( true && !(val in this.$store.getters)) {
+        console.error(("[vuex] unknown getter: " + val));
+        return
+      }
+      return this.$store.getters[val]
+    };
+    // mark vuex getter for devtools
+    res[key].vuex = true;
+  });
+  return res
+});
+
+var mapActions = normalizeNamespace(function (namespace, actions) {
+  var res = {};
+  normalizeMap(actions).forEach(function (ref) {
+    var key = ref.key;
+    var val = ref.val;
+
+    res[key] = function mappedAction () {
+      var args = [], len = arguments.length;
+      while ( len-- ) args[ len ] = arguments[ len ];
+
+      var dispatch = this.$store.dispatch;
+      if (namespace) {
+        var module = getModuleByNamespace(this.$store, 'mapActions', namespace);
+        if (!module) {
+          return
+        }
+        dispatch = module.context.dispatch;
+      }
+      return typeof val === 'function'
+        ? val.apply(this, [dispatch].concat(args))
+        : dispatch.apply(this.$store, [val].concat(args))
+    };
+  });
+  return res
+});
+
+var createNamespacedHelpers = function (namespace) { return ({
+  mapState: mapState.bind(null, namespace),
+  mapGetters: mapGetters.bind(null, namespace),
+  mapMutations: mapMutations.bind(null, namespace),
+  mapActions: mapActions.bind(null, namespace)
+}); };
+
+function normalizeMap (map) {
+  return Array.isArray(map)
+    ? map.map(function (key) { return ({ key: key, val: key }); })
+    : Object.keys(map).map(function (key) { return ({ key: key, val: map[key] }); })
+}
+
+function normalizeNamespace (fn) {
+  return function (namespace, map) {
+    if (typeof namespace !== 'string') {
+      map = namespace;
+      namespace = '';
+    } else if (namespace.charAt(namespace.length - 1) !== '/') {
+      namespace += '/';
+    }
+    return fn(namespace, map)
+  }
+}
+
+function getModuleByNamespace (store, helper, namespace) {
+  var module = store._modulesNamespaceMap[namespace];
+  if ( true && !module) {
+    console.error(("[vuex] module namespace not found in " + helper + "(): " + namespace));
+  }
+  return module
+}
+
+var index_esm = {
+  Store: Store,
+  install: install,
+  version: '3.0.1',
+  mapState: mapState,
+  mapMutations: mapMutations,
+  mapGetters: mapGetters,
+  mapActions: mapActions,
+  createNamespacedHelpers: createNamespacedHelpers
+};
+
+
+/* harmony default export */ __webpack_exports__["default"] = (index_esm);
+
+
+/***/ }),
+
+/***/ 13:
+/*!*********************************************!*\
+  !*** F:/projects/schoolShop/utils/utils.js ***!
+  \*********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;function ownKeys(object, enumerableOnly) {var keys = Object.keys(object);if (Object.getOwnPropertySymbols) {var symbols = Object.getOwnPropertySymbols(object);if (enumerableOnly) symbols = symbols.filter(function (sym) {return Object.getOwnPropertyDescriptor(object, sym).enumerable;});keys.push.apply(keys, symbols);}return keys;}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};if (i % 2) {ownKeys(Object(source), true).forEach(function (key) {_defineProperty(target, key, source[key]);});} else if (Object.getOwnPropertyDescriptors) {Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));} else {ownKeys(Object(source)).forEach(function (key) {Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));});}}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}var utils = {
+  showToast: function showToast(params) {
+    if (params != undefined && params.title != undefined && params.title.length > 0) {
+      if (params.icon == undefined) {
+        params.icon = 'none';
+      }
+      if (params.mask === undefined) {
+        params.mask = true;
+      }
+      uni.showToast(_objectSpread({
+        duration: 2000 },
+      params));
+
+    }
+  },
+
+  showLoading: function showLoading(params) {
+    params = _objectSpread({}, params);
+
+    if (params.title == undefined || params.title.length < 1) {
+      params.title = '加载中...';
+    }
+    if (params.mask === undefined) {
+      params.mask = true;
+    }
+    uni.showLoading(_objectSpread({},
+    params));
+
+  },
+
+  hideLoading: function hideLoading() {
+    uni.hideLoading();
+  },
+
+  showModal: function showModal(params) {
+    if (params != undefined && params.content != undefined &&
+    params.content.length > 0) {
+      if (!params.title || params.title.length == 0) {
+        params.title = '提示';
+      }
+      uni.showModal(_objectSpread({},
+      params));
+
+    }
+  },
+
+  showActionSheet: function showActionSheet(params) {
+    if (params != undefined && params.itemList != undefined && params.itemList.length > 0) {
+      uni.showActionSheet(_objectSpread({},
+      params));
+
+    }
+  },
+
+  SHA1: function SHA1(msg) {
+    function rotate_left(n, s) {
+      var t4 = n << s | n >>> 32 - s;
+      return t4;
+    };
+    function lsb_hex(val) {
+      var str = "";
+      var i;
+      var vh;
+      var vl;
+
+      for (i = 0; i <= 6; i += 2) {
+        vh = val >>> i * 4 + 4 & 0x0f;
+        vl = val >>> i * 4 & 0x0f;
+        str += vh.toString(16) + vl.toString(16);
+      }
+      return str;
+    };
+
+    function cvt_hex(val) {
+      var str = "";
+      var i;
+      var v;
+
+      for (i = 7; i >= 0; i--) {
+        v = val >>> i * 4 & 0x0f;
+        str += v.toString(16);
+      }
+      return str;
+    };
+
+
+    function Utf8Encode(string) {
+      string = string.replace(/\r\n/g, "\n");
+      var utftext = "";
+
+      for (var n = 0; n < string.length; n++) {
+
+        var c = string.charCodeAt(n);
+
+        if (c < 128) {
+          utftext += String.fromCharCode(c);
+        } else if (c > 127 && c < 2048) {
+          utftext += String.fromCharCode(c >> 6 | 192);
+          utftext += String.fromCharCode(c & 63 | 128);
+        } else {
+          utftext += String.fromCharCode(c >> 12 | 224);
+          utftext += String.fromCharCode(c >> 6 & 63 | 128);
+          utftext += String.fromCharCode(c & 63 | 128);
+        }
+
+      }
+
+      return utftext;
+    };
+
+    var blockstart;
+    var i, j;
+    var W = new Array(80);
+    var H0 = 0x67452301;
+    var H1 = 0xEFCDAB89;
+    var H2 = 0x98BADCFE;
+    var H3 = 0x10325476;
+    var H4 = 0xC3D2E1F0;
+    var A, B, C, D, E;
+    var temp;
+
+    msg = Utf8Encode(msg);
+
+    var msg_len = msg.length;
+
+    var word_array = new Array();
+    for (i = 0; i < msg_len - 3; i += 4) {
+      j = msg.charCodeAt(i) << 24 | msg.charCodeAt(i + 1) << 16 |
+      msg.charCodeAt(i + 2) << 8 | msg.charCodeAt(i + 3);
+      word_array.push(j);
+    }
+
+    switch (msg_len % 4) {
+      case 0:
+        i = 0x080000000;
+        break;
+      case 1:
+        i = msg.charCodeAt(msg_len - 1) << 24 | 0x0800000;
+        break;
+
+      case 2:
+        i = msg.charCodeAt(msg_len - 2) << 24 | msg.charCodeAt(msg_len - 1) << 16 | 0x08000;
+        break;
+
+      case 3:
+        i = msg.charCodeAt(msg_len - 3) << 24 | msg.charCodeAt(msg_len - 2) << 16 | msg.charCodeAt(msg_len - 1) << 8 |
+        0x80;
+        break;}
+
+
+    word_array.push(i);
+
+    while (word_array.length % 16 != 14) {word_array.push(0);}
+
+    word_array.push(msg_len >>> 29);
+    word_array.push(msg_len << 3 & 0x0ffffffff);
+
+
+    for (blockstart = 0; blockstart < word_array.length; blockstart += 16) {
+
+      for (i = 0; i < 16; i++) {W[i] = word_array[blockstart + i];}
+      for (i = 16; i <= 79; i++) {W[i] = rotate_left(W[i - 3] ^ W[i - 8] ^ W[i - 14] ^ W[i - 16], 1);}
+
+      A = H0;
+      B = H1;
+      C = H2;
+      D = H3;
+      E = H4;
+
+      for (i = 0; i <= 19; i++) {
+        temp = rotate_left(A, 5) + (B & C | ~B & D) + E + W[i] + 0x5A827999 & 0x0ffffffff;
+        E = D;
+        D = C;
+        C = rotate_left(B, 30);
+        B = A;
+        A = temp;
+      }
+
+      for (i = 20; i <= 39; i++) {
+        temp = rotate_left(A, 5) + (B ^ C ^ D) + E + W[i] + 0x6ED9EBA1 & 0x0ffffffff;
+        E = D;
+        D = C;
+        C = rotate_left(B, 30);
+        B = A;
+        A = temp;
+      }
+
+      for (i = 40; i <= 59; i++) {
+        temp = rotate_left(A, 5) + (B & C | B & D | C & D) + E + W[i] + 0x8F1BBCDC & 0x0ffffffff;
+        E = D;
+        D = C;
+        C = rotate_left(B, 30);
+        B = A;
+        A = temp;
+      }
+
+      for (i = 60; i <= 79; i++) {
+        temp = rotate_left(A, 5) + (B ^ C ^ D) + E + W[i] + 0xCA62C1D6 & 0x0ffffffff;
+        E = D;
+        D = C;
+        C = rotate_left(B, 30);
+        B = A;
+        A = temp;
+      }
+
+      H0 = H0 + A & 0x0ffffffff;
+      H1 = H1 + B & 0x0ffffffff;
+      H2 = H2 + C & 0x0ffffffff;
+      H3 = H3 + D & 0x0ffffffff;
+      H4 = H4 + E & 0x0ffffffff;
+
+    }
+
+    var temp = cvt_hex(H0) + cvt_hex(H1) + cvt_hex(H2) + cvt_hex(H3) + cvt_hex(H4);
+
+    return temp.toLowerCase();
+
+  },
+
+  friendlyDate: function friendlyDate(timestamp) {
+    var formats = {
+      'year': '%n% 年前',
+      'month': '%n% 月前',
+      'day': '%n% 天前',
+      'hour': '%n% 小时前',
+      'minute': '%n% 分钟前',
+      'second': '%n% 秒前' };
+
+
+    var now = Date.now();
+    var seconds = Math.floor((now - timestamp) / 1000);
+    var minutes = Math.floor(seconds / 60);
+    var hours = Math.floor(minutes / 60);
+    var days = Math.floor(hours / 24);
+    var months = Math.floor(days / 30);
+    var years = Math.floor(months / 12);
+
+    var diffType = '';
+    var diffValue = 0;
+    if (years > 0) {
+      diffType = 'year';
+      diffValue = years;
+    } else {
+      if (months > 0) {
+        diffType = 'month';
+        diffValue = months;
+      } else {
+        if (days > 0) {
+          diffType = 'day';
+          diffValue = days;
+        } else {
+          if (hours > 0) {
+            diffType = 'hour';
+            diffValue = hours;
+          } else {
+            if (minutes > 0) {
+              diffType = 'minute';
+              diffValue = minutes;
+            } else {
+              diffType = 'second';
+              diffValue = seconds === 0 ? seconds = 1 : seconds;
+            }
+          }
+        }
+      }
+    }
+    return formats[diffType].replace('%n%', diffValue);
+  },
+  isWeiXinBrowser: function isWeiXinBrowser() {
+
+
+
+
+
+
+
+
+
+
+
+
+    return false;
+
+  },
+  weixinWlogin: function weixinWlogin(wxAppId, wxInfoByBackUrl) {
+    var redirect_uri = encodeURIComponent(wxInfoByBackUrl);
+    var scope = "snsapi_userinfo";
+    var state = "b";
+    var url = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=" + wxAppId + "&redirect_uri=" + redirect_uri +
+    "&response_type=code&scope=" + scope + "&state=" + state + "&connect_redirect=1#wechat_redirect";
+    window.location.href = url;
+  },
+  //获取地址栏参数，name:参数名称
+  getUrlParms: function getUrlParms(name) {
+    console.info(window.location.search);
+    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+    var r = window.location.search.substr(1).match(reg);
+    if (r != null)
+    return unescape(r[2]);
+    return null;
+  },
+  /**
+      * 微信登陆
+      */
+  checkWxLogin: function checkWxLogin(wxAppId, wxInfoByCode) {
+    //检查是否登陆
+    var backUrl = window.location.href;
+    // utils.weixinWlogin(wxAppId,backUrl);
+    if (utils.isWeiXinBrowser()) {
+      //检查 wxUserInfo 是否 存在
+      var wxInfo = uni.getStorageSync("wxUserInfo");
+      if (wxInfo && wxInfo.openId) {
+
+
+
+      } else {
+        var code = utils.getUrlParms("code");
+        if (!code) {
+          utils.weixinWlogin(wxAppId, backUrl);
+        } else {
+          utils.getWxInfoByCode(code, wxAppId, wxInfoByCode);
+        }
+      }
+    } else {}
+  },
+  getWxInfoByCode: function getWxInfoByCode(code, wxAppId, wxInfoByCode) {
+    uni.request({
+      url: wxInfoByCode,
+      data: {
+        appId: wxAppId,
+        code: code },
+
+      success: function success(res) {
+        if (res.data.code == 100) {
+          uni.setStorageSync('wxUserInfo', res.data.content);
+        } else {
+
+        }
+      },
+      fail: function fail(res) {} });
+
+  },
+  /*除法函数，用来得到精确的除法结果
+     	 说明：javascript的除法结果会有误差，在两个浮点数相除的时候会比较明显。这个函数返回较为精确的除法结果。
+     	 调用：accDiv(arg1,arg2)
+     	 返回值：arg1除以arg2的精确结果*/
+  accDiv: function accDiv(arg1, arg2) {
+    var t1 = 0,
+    t2 = 0,
+    r1,r2;
+    try {
+      t1 = arg1.toString().split(".")[1].length;
+      console.log(t1);
+    } catch (e) {}
+    try {
+      t2 = arg2.toString().split(".")[1].length;
+      console.log(t2);
+    } catch (e) {}
+    // with (Math) {
+    r1 = Number(arg1.toString().replace(".", ""));
+    r2 = Number(arg2.toString().replace(".", ""));
+    return r1 / r2 * Math.pow(10, t2 - t1);
+    // }
+  },
+  /*乘法函数，用来得到精确的乘法结果
+     	 说明：javascript的乘法结果会有误差，在两个浮点数相乘的时候会比较明显。这个函数返回较为精确的乘法结果。
+     	 调用：accMul(arg1,arg2)
+     	 返回值：arg1乘以arg2的精确结果*/
+
+  accMul: function accMul(arg1, arg2) {
+    var m = 0,
+    s1 = arg1.toString(),
+    s2 = arg2.toString();
+    try {
+      m += s1.split(".")[1].length;
+    } catch (e) {}
+    try {
+      m += s2.split(".")[1].length;
+    } catch (e) {}
+    return Number(s1.replace(".", "")) * Number(s2.replace(".", "")) / Math.pow(10, m);
+  },
+  /*加法函数，用来得到精确的加法结果
+     	 说明：javascript的加法结果会有误差，在两个浮点数相加的时候会比较明显。这个函数返回较为精确的加法结果。
+     	 调用：accAdd(arg1,arg2)
+     	 返回值：arg1加上arg2的精确结果*/
+
+  accAdd: function accAdd(arg1, arg2) {
+    var r1, r2, m;
+    try {
+      r1 = arg1.toString().split(".")[1].length;
+    } catch (e) {
+      r1 = 0;
+    }
+    try {
+      r2 = arg2.toString().split(".")[1].length;
+    } catch (e) {
+      r2 = 0;
+    }
+    m = Math.pow(10, Math.max(r1, r2));
+    return (arg1 * m + arg2 * m) / m;
+  },
+  /*减法函数，用来得到精确的减法结果
+     	 说明：javascript的减法结果会有误差，在两个浮点数相加的时候会比较明显。这个函数返回较为精确的减法结果
+     	 调用：accSubtr(arg1,arg2)
+     	 返回值：arg1减去arg2的精确结果*/
+
+  accSubtr: function accSubtr(arg1, arg2) {
+    var r1, r2, m, n;
+    try {
+      r1 = arg1.toString().split(".")[1].length;
+    } catch (e) {
+      r1 = 0;
+    }
+    try {
+      r2 = arg2.toString().split(".")[1].length;
+    } catch (e) {
+      r2 = 0;
+    }
+    m = Math.pow(10, Math.max(r1, r2));
+    /*动态控制精度长度*/
+    n = r1 >= r2 ? r1 : r2;
+    return ((arg1 * m - arg2 * m) / m).toFixed(n);
+  } };var _default =
+
+
+utils;exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
+
+/***/ }),
+
+/***/ 16:
 /*!**********************************************************************************************************!*\
   !*** ./node_modules/@dcloudio/vue-cli-plugin-uni/packages/vue-loader/lib/runtime/componentNormalizer.js ***!
   \**********************************************************************************************************/
@@ -1586,7 +3534,15 @@ function normalizeComponent (
 
   // fixed by xxxxxx auto components
   if (components) {
-    options.components = Object.assign(components, options.components || {})
+    if (!options.components) {
+      options.components = {}
+    }
+    var hasOwn = Object.prototype.hasOwnProperty
+    for (var name in components) {
+      if (hasOwn.call(components, name) && !hasOwn.call(options.components, name)) {
+        options.components[name] = components[name]
+      }
+    }
   }
   // fixed by xxxxxx renderjs
   if (renderjs) {
@@ -1672,6 +3628,2652 @@ function normalizeComponent (
 
 /***/ }),
 
+/***/ 17:
+/*!**************************************!*\
+  !*** F:/projects/schoolShop/Json.js ***!
+  \**************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; /* 用户 */
+var userInfo = {
+  status: 1,
+  data: {
+    id: 1,
+    mobile: 18888888888,
+    nickname: 'Leo yo',
+    portrait: 'http://img.61ef.cn/news/201409/28/2014092805595807.jpg' },
+
+  msg: '提示' };
+
+/* 首页轮播图 */
+var carouselList = [{
+  src: "/static/temp/banner3.jpg",
+  background: "rgb(203, 87, 60)" },
+
+{
+  src: "/static/temp/banner2.jpg",
+  background: "rgb(205, 215, 218)" },
+
+{
+  src: "/static/temp/banner4.jpg",
+  background: "rgb(183, 73, 69)" }];
+
+
+/* 商品列表 */
+var goodsList = [{
+  image: "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1553187020783&di=bac9dd78b36fd984502d404d231011c0&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201609%2F26%2F20160926173213_s5adi.jpeg",
+  image2: "http://pic.rmb.bdstatic.com/819a044daa66718c2c40a48c1ba971e6.jpeg",
+  image3: "http://img001.hc360.cn/y5/M00/1B/45/wKhQUVYFE0uEZ7zVAAAAAMj3H1w418.jpg",
+  title: "古黛妃 短袖t恤女夏装2019新款韩版宽松",
+  price: 179,
+  sales: 61 },
+
+{
+  image: "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=4031878334,2682695508&fm=11&gp=0.jpg",
+  image2: "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1554013048&di=a3dc9fd1406dd7bad7fbb97b5489ec04&imgtype=jpg&er=1&src=http%3A%2F%2Fimg009.hc360.cn%2Fhb%2FnKo44ac2656F831c684507E3Da0E3a26841.jpg",
+  image3: "http://img.zcool.cn/community/017a4e58b4eab6a801219c77084373.jpg",
+  title: "潘歌针织连衣裙",
+  price: 78,
+  sales: 16 },
+
+{
+  image: "https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=1620020012,789258862&fm=26&gp=0.jpg",
+  image2: "http://m.360buyimg.com/n12/jfs/t247/42/1078640382/162559/3628a0b/53f5ad09N0dd79894.jpg%21q70.jpg",
+  image3: "http://ikids.61kids.com.cn/upload/2018-12-29/1546070626796114.jpg",
+  title: "巧谷2019春夏季新品新款女装",
+  price: 108.8,
+  sales: 5 },
+{
+  image: "https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=756705744,3505936868&fm=11&gp=0.jpg",
+  image2: "http://images.jaadee.com/images/201702/goods_img/30150_d85aed83521.jpg",
+  image3: "http://img13.360buyimg.com/popWaterMark/jfs/t865/120/206320620/138889/dcc94caa/550acedcN613e2a9d.jpg",
+  title: "私萱连衣裙",
+  price: 265,
+  sales: 88 },
+{
+  image: "https://img13.360buyimg.com/n8/jfs/t1/30343/20/1029/481370/5c449438Ecb46a15b/2b2adccb6dc742fd.jpg",
+  image2: "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1553418265666&di=d4a7f7eb0ae3c859edeb921641ee1c3a&imgtype=0&src=http%3A%2F%2Fimg003.hc360.cn%2Fy3%2FM02%2FF8%2F9F%2FwKhQh1TuSkGELIlQAAAAAPuLl4M987.jpg",
+  image3: "http://img.ef43.com.cn/product/2016/8/05100204b0c.jpg",
+  title: "娇诗茹 ulzzang原宿风学生潮韩版春夏短",
+  price: 422,
+  sales: 137 },
+{
+  image: "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1553187020783&di=bac9dd78b36fd984502d404d231011c0&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201609%2F26%2F20160926173213_s5adi.jpeg",
+  image2: "http://image5.suning.cn/uimg/b2c/newcatentries/0070158827-000000000622091973_2_800x800.jpg",
+  image3: "http://img.61ef.cn/news/201903/20/2019032009251784.jpg",
+  title: "古黛妃 短袖t恤女夏装2019新款韩版宽松",
+  price: 179,
+  sales: 95 }];
+
+
+
+/* 购物车 */
+var cartList = [{
+  id: 1,
+  image: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1553005139&di=3368549edf9eee769a9bcb3fbbed2504&imgtype=jpg&er=1&src=http%3A%2F%2Fimg002.hc360.cn%2Fy3%2FM01%2F5F%2FDB%2FwKhQh1T7iceEGRdWAAAAADQvqk8733.jpg',
+  attr_val: '春装款 L',
+  stock: 15,
+  title: 'OVBE 长袖风衣',
+  price: 278.00,
+  number: 1 },
+
+{
+  id: 3,
+  image: 'https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2319343996,1107396922&fm=26&gp=0.jpg',
+  attr_val: '激光导航 扫拖一体',
+  stock: 3,
+  title: '科沃斯 Ecovacs 扫地机器人',
+  price: 1348.00,
+  number: 5 },
+
+{
+  id: 4,
+  image: 'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2668268226,1765897385&fm=26&gp=0.jpg',
+  attr_val: 'XL',
+  stock: 55,
+  title: '朵绒菲小西装',
+  price: 175.88,
+  number: 1 },
+
+{
+  id: 5,
+  image: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1552410549432&di=06dd3758053fb6d6362516f30a42d055&imgtype=0&src=http%3A%2F%2Fimgcache.mysodao.com%2Fimg3%2FM0A%2F67%2F42%2FCgAPD1vNSsHNm-TnAAEy61txQb4543_400x400x2.JPG',
+  attr_val: '520 #粉红色',
+  stock: 15,
+  title: '迪奥（Dior）烈艳唇膏',
+  price: 1089.00,
+  number: 1 },
+
+{
+  id: 6,
+  image: 'https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=1031875829,2994442603&fm=26&gp=0.jpg',
+  attr_val: '樱花味润手霜 30ml',
+  stock: 15,
+  title: "欧舒丹（L'OCCITANE）乳木果",
+  price: 128,
+  number: 1 },
+
+{
+  id: 7,
+  image: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1553007107&di=390915aa8a022cf0b03c03340881b0e7&imgtype=jpg&er=1&src=http%3A%2F%2Fimg13.360buyimg.com%2Fn0%2Fjfs%2Ft646%2F285%2F736444951%2F480473%2Faa701c97%2F548176feN10c9ed7b.jpg',
+  attr_val: '特级 12个',
+  stock: 7,
+  title: '新疆阿克苏苹果 特级',
+  price: 58.8,
+  number: 10 },
+
+{
+  id: 8,
+  image: 'https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2319343996,1107396922&fm=26&gp=0.jpg',
+  attr_val: '激光导航 扫拖一体',
+  stock: 15,
+  title: '科沃斯 Ecovacs 扫地机器人',
+  price: 1348.00,
+  number: 1 },
+
+{
+  id: 9,
+  image: 'https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2668268226,1765897385&fm=26&gp=0.jpg',
+  attr_val: 'XL',
+  stock: 55,
+  title: '朵绒菲小西装',
+  price: 175.88,
+  number: 1 },
+
+{
+  id: 10,
+  image: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1552410549432&di=06dd3758053fb6d6362516f30a42d055&imgtype=0&src=http%3A%2F%2Fimgcache.mysodao.com%2Fimg3%2FM0A%2F67%2F42%2FCgAPD1vNSsHNm-TnAAEy61txQb4543_400x400x2.JPG',
+  attr_val: '520 #粉红色',
+  stock: 15,
+  title: '迪奥（Dior）烈艳唇膏',
+  price: 1089.00,
+  number: 1 },
+
+{
+  id: 11,
+  image: 'https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=1031875829,2994442603&fm=26&gp=0.jpg',
+  attr_val: '樱花味润手霜 30ml',
+  stock: 15,
+  title: "欧舒丹（L'OCCITANE）乳木果",
+  price: 128,
+  number: 1 },
+
+{
+  id: 12,
+  image: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1553007107&di=390915aa8a022cf0b03c03340881b0e7&imgtype=jpg&er=1&src=http%3A%2F%2Fimg13.360buyimg.com%2Fn0%2Fjfs%2Ft646%2F285%2F736444951%2F480473%2Faa701c97%2F548176feN10c9ed7b.jpg',
+  attr_val: '特级 12个',
+  stock: 7,
+  title: '新疆阿克苏苹果 特级',
+  price: 58.8,
+  number: 10 },
+
+{
+  id: 13,
+  image: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1552405266625&di=a703f2b2cdb0fe7f3f05f62dd91307ab&imgtype=0&src=http%3A%2F%2Fwww.78.cn%2Fzixun%2Fnews%2Fupload%2F20190214%2F1550114706486250.jpg',
+  attr_val: '春装款/m',
+  stock: 15,
+  title: '女装2019春秋新款',
+  price: 420.00,
+  number: 1 }];
+
+
+//详情展示页面
+var detailData = {
+  title: '纯种金毛幼犬活体有血统证书',
+  title2: '拆家小能手 你值得拥有',
+  favorite: true,
+  imgList: [{
+    src: 'http://img0.imgtn.bdimg.com/it/u=2396068252,4277062836&fm=26&gp=0.jpg' },
+
+  {
+    src: 'http://img.pconline.com.cn/images/upload/upc/tx/itbbs/1309/06/c4/25310541_1378426131583.jpg' },
+
+  {
+    src: 'http://img.pconline.com.cn/images/upload/upc/tx/photoblog/1610/26/c4/28926240_1477451226577_mthumb.jpg' },
+
+  {
+    src: 'http://picture.ik123.com/uploads/allimg/190219/12-1Z219105139.jpg' }],
+
+
+  episodeList: [
+  1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24],
+
+  guessList: [{
+    src: 'http://img.52z.com/upload/news/image/20180530/20180530081619_31029.jpg',
+    title: '猫眼指甲油',
+    title2: '独树一帜的免照灯猫眼指甲' },
+
+  {
+    src: 'http://m.china-7.net/uploads/14778449362891.jpg',
+    title: '创意屋',
+    title2: '创意屋形上下双层高低床' },
+
+  {
+    src: 'http://www.k73.com/up/allimg/130415/22-130415093527.jpg',
+    title: 'MissCandy 指甲油',
+    title2: '十分适合喜欢素净的妹纸，尽显淡雅的气质' },
+
+  {
+    src: 'http://img0.imgtn.bdimg.com/it/u=2108933440,2194129200&fm=214&gp=0.jpg	',
+    title: 'RMK 2017星空海蓝唇釉',
+    title2: '唇釉质地，上唇后很滋润。少女也会心动的蓝色，透明液体形状。' }],
+
+
+  evaList: [{
+    src: 'http://gss0.baidu.com/-fo3dSag_xI4khGko9WTAnF6hhy/zhidao/pic/item/77c6a7efce1b9d1663174705fbdeb48f8d546486.jpg',
+    nickname: 'Ranth Allngal',
+    time: '09-20 12:54',
+    zan: '54',
+    content: '评论不要太苛刻，不管什么产品都会有瑕疵，客服也说了可以退货并且商家承担运费，我觉得至少态度就可以给五星。' },
+
+  {
+    src: 'http://img0.imgtn.bdimg.com/it/u=2396068252,4277062836&fm=26&gp=0.jpg',
+    nickname: 'Ranth Allngal',
+    time: '09-20 12:54',
+    zan: '54',
+    content: '楼上说的好有道理。' }] };
+
+
+
+var shareList = [{
+  type: 1,
+  icon: '/static/temp/share_wechat.png',
+  text: '微信好友' },
+
+{
+  type: 2,
+  icon: '/static/temp/share_moment.png',
+  text: '朋友圈' },
+
+{
+  type: 3,
+  icon: '/static/temp/share_qq.png',
+  text: 'QQ好友' },
+
+{
+  type: 4,
+  icon: '/static/temp/share_qqzone.png',
+  text: 'QQ空间' }];
+
+
+var lazyLoadList = [{
+  src: 'http://img0.imgtn.bdimg.com/it/u=2396068252,4277062836&fm=26&gp=0.jpg' },
+
+{
+  src: 'http://img.pconline.com.cn/images/upload/upc/tx/itbbs/1309/06/c4/25310541_1378426131583.jpg' },
+
+{
+  src: 'http://img.pconline.com.cn/images/upload/upc/tx/photoblog/1610/26/c4/28926240_1477451226577_mthumb.jpg' },
+
+{
+  src: 'http://picture.ik123.com/uploads/allimg/190219/12-1Z219105139.jpg' },
+
+{
+  src: 'http://img5.imgtn.bdimg.com/it/u=2904900134,438461613&fm=26&gp=0.jpg' },
+
+{
+  src: 'http://img1.imgtn.bdimg.com/it/u=1690475408,2565370337&fm=26&gp=0.jpg' },
+
+{
+  src: 'http://img.99114.com/group1/M00/7F/99/wKgGS1kVrPGAe5LmAAU2KrJmb3Q923_600_600.jpg' },
+
+{
+  src: 'http://img4.imgtn.bdimg.com/it/u=261047209,372231813&fm=26&gp=0.jpg' },
+
+{
+  src: 'http://i2.17173cdn.com/i7mz64/YWxqaGBf/tu17173com/20150107/eMyVMObjlbcvDEv.jpg' },
+
+{
+  src: 'http://img008.hc360.cn/m4/M02/E7/87/wKhQ6FSrfU6EfUoyAAAAAITAfyc280.jpg' },
+
+{
+  src: 'http://pic1.win4000.com/wallpaper/d/5991569950166.jpg' },
+
+{
+  src: 'http://gss0.baidu.com/9fo3dSag_xI4khGko9WTAnF6hhy/zhidao/pic/item/6f061d950a7b0208f9fe945e60d9f2d3572cc85e.jpg' },
+
+{
+  src: 'http://pic41.nipic.com/20140429/18169759_125841756000_2.jpg' },
+
+{
+  src: 'http://www.k73.com/up/allimg/130415/22-130415093527.jpg' },
+
+{
+  src: 'http://img.52z.com/upload/news/image/20180530/20180530081619_31029.jpg' },
+
+{
+  src: 'http://b-ssl.duitang.com/uploads/item/201410/02/20141002111638_tXAzU.jpeg' },
+
+{
+  src: 'http://img2.ph.126.net/C4JW6f57QWSB21-8jh2UGQ==/1762596304262286698.jpg' },
+
+{
+  src: 'http://att.bbs.duowan.com/forum/201405/17/190257nzcvkkdg6w2e8226.jpg' },
+
+{
+  src: 'http://attach.bbs.miui.com/forum/201504/10/223644v3intigyvva0vgym.jpg' },
+
+{
+  src: 'http://pic1.win4000.com/mobile/3/57888a298d61d.jpg' }];
+
+
+
+var orderList = [{
+  time: '2019-04-06 11:37',
+  state: 1,
+  goodsList: [{
+    image: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1553187020783&di=bac9dd78b36fd984502d404d231011c0&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201609%2F26%2F20160926173213_s5adi.jpeg' },
+
+  {
+    image: 'https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=4031878334,2682695508&fm=11&gp=0.jpg' },
+
+  {
+    image: 'https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=1620020012,789258862&fm=26&gp=0.jpg' },
+
+  {
+    image: 'https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=4031878334,2682695508&fm=11&gp=0.jpg' },
+
+  {
+    image: 'https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=1620020012,789258862&fm=26&gp=0.jpg' },
+
+  {
+    image: 'https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=4031878334,2682695508&fm=11&gp=0.jpg' },
+
+  {
+    image: 'https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=1620020012,789258862&fm=26&gp=0.jpg' }] },
+
+
+
+{
+  time: '2019-04-06 11:37',
+  state: 9,
+  goodsList: [{
+    title: '古黛妃 短袖t恤女 春夏装2019新款韩版宽松',
+    price: 179.5,
+    image: 'https://img13.360buyimg.com/n8/jfs/t1/30343/20/1029/481370/5c449438Ecb46a15b/2b2adccb6dc742fd.jpg',
+    number: 1,
+    attr: '珊瑚粉 M' }] },
+
+
+{
+  time: '2019-04-06 11:37',
+  state: 1,
+  goodsList: [{
+    image: 'https://img.alicdn.com/imgextra/https://img.alicdn.com/imgextra/i2/2120460599/O1CN01LBPS4C1GINkwsOTXS_!!2120460599.jpg_430x430q90.jpg' },
+
+  {
+    image: 'https://img.alicdn.com/imgextra/i2/1069876356/TB2ocTQG4WYBuNjy1zkXXXGGpXa_!!1069876356.jpg_430x430q90.jpg' },
+
+  {
+    image: 'https://img.alicdn.com/imgextra/https://img.alicdn.com/imgextra/i4/2120460599/O1CN01YsmgwZ1GINkv38rkn_!!2120460599.jpg_430x430q90.jpg' }] },
+
+
+
+{
+  time: '2019-04-06 11:37',
+  state: 1,
+  goodsList: [{
+    title: '回力女鞋高帮帆布鞋女学生韩版鞋子女2019潮鞋女鞋新款春季板鞋女',
+    price: 69,
+    image: 'https://img.alicdn.com/imgextra/i3/2128794607/TB2gzzoc41YBuNjy1zcXXbNcXXa_!!2128794607.jpg_430x430q90.jpg',
+    number: 1,
+    attr: '白色-高帮 39' }] },
+
+
+{
+  time: '2019-04-06 11:37',
+  state: 1,
+  goodsList: [{
+    image: 'https://img.alicdn.com/imgextra/https://img.alicdn.com/imgextra/i4/3358098495/O1CN01dhYyid2Ccl5MWLDok_!!3358098495.jpg_430x430q90.jpg' },
+
+  {
+    image: 'https://img.alicdn.com/imgextra/https://img.alicdn.com/imgextra/i3/3358098495/O1CN01AWsnFA2Ccl5OzvqsL_!!3358098495.jpg_430x430q90.jpg' }] },
+
+
+
+{
+  time: '2019-04-06 11:37',
+  state: 1,
+  goodsList: [{
+    image: 'https://img.alicdn.com/imgextra/i4/3470687433/O1CN0124mMQOSERr18L1h_!!3470687433.jpg_430x430q90.jpg' },
+
+  {
+    image: 'https://img.alicdn.com/imgextra/i3/2888462616/O1CN01ERra5J1VCAbZaKI5n_!!0-item_pic.jpg_430x430q90.jpg' },
+
+  {
+    image: 'https://gd3.alicdn.com/imgextra/i3/819381730/O1CN01YV4mXj1OeNhQIhQlh_!!819381730.jpg_400x400.jpg' }] }];
+
+
+
+
+
+var cateList = [{
+  id: 1,
+  name: '手机数码' },
+
+{
+  id: 2,
+  name: '礼品鲜花' },
+
+{
+  id: 3,
+  name: '男装女装' },
+
+{
+  id: 4,
+  name: '母婴用品' },
+
+{
+  id: 5,
+  pid: 1,
+  name: '手机通讯' },
+
+{
+  id: 6,
+  pid: 1,
+  name: '运营商' },
+
+{
+  id: 8,
+  pid: 5,
+  name: '全面屏手机',
+  picture: '/static/temp/cate2.jpg' },
+
+{
+  id: 9,
+  pid: 5,
+  name: '游戏手机',
+  picture: '/static/temp/cate3.jpg' },
+
+{
+  id: 10,
+  pid: 5,
+  name: '老人机',
+  picture: '/static/temp/cate1.jpg' },
+
+{
+  id: 11,
+  pid: 5,
+  name: '拍照手机',
+  picture: '/static/temp/cate4.jpg' },
+
+{
+  id: 12,
+  pid: 5,
+  name: '女性手机',
+  picture: '/static/temp/cate5.jpg' },
+
+{
+  id: 14,
+  pid: 6,
+  name: '合约机',
+  picture: '/static/temp/cate1.jpg' },
+
+{
+  id: 15,
+  pid: 6,
+  name: '选好卡',
+  picture: '/static/temp/cate4.jpg' },
+
+{
+  id: 16,
+  pid: 6,
+  name: '办套餐',
+  picture: '/static/temp/cate5.jpg' },
+
+{
+  id: 17,
+  pid: 2,
+  name: '礼品' },
+
+{
+  id: 18,
+  pid: 2,
+  name: '鲜花' },
+
+{
+  id: 19,
+  pid: 17,
+  name: '公益摆件',
+  picture: '/static/temp/cate7.jpg' },
+
+{
+  id: 20,
+  pid: 17,
+  name: '创意礼品',
+  picture: '/static/temp/cate8.jpg' },
+
+{
+  id: 21,
+  pid: 18,
+  name: '鲜花',
+  picture: '/static/temp/cate9.jpg' },
+
+{
+  id: 22,
+  pid: 18,
+  name: '每周一花',
+  picture: '/static/temp/cate10.jpg' },
+
+{
+  id: 23,
+  pid: 18,
+  name: '卡通花束',
+  picture: '/static/temp/cate11.jpg' },
+
+{
+  id: 24,
+  pid: 18,
+  name: '永生花',
+  picture: '/static/temp/cate12.jpg' },
+
+{
+  id: 25,
+  pid: 3,
+  name: '男装' },
+
+{
+  id: 26,
+  pid: 3,
+  name: '女装' },
+
+{
+  id: 27,
+  pid: 25,
+  name: '男士T恤',
+  picture: '/static/temp/cate13.jpg' },
+
+{
+  id: 28,
+  pid: 25,
+  name: '男士外套',
+  picture: '/static/temp/cate14.jpg' },
+
+{
+  id: 29,
+  pid: 26,
+  name: '裙装',
+  picture: '/static/temp/cate15.jpg' },
+
+{
+  id: 30,
+  pid: 26,
+  name: 'T恤',
+  picture: '/static/temp/cate16.jpg' },
+
+{
+  id: 31,
+  pid: 26,
+  name: '上装',
+  picture: '/static/temp/cate15.jpg' },
+
+{
+  id: 32,
+  pid: 26,
+  name: '下装',
+  picture: '/static/temp/cate16.jpg' },
+
+{
+  id: 33,
+  pid: 4,
+  name: '奶粉' },
+
+{
+  id: 34,
+  pid: 4,
+  name: '营养辅食' },
+
+{
+  id: 35,
+  pid: 4,
+  name: '童装' },
+
+{
+  id: 39,
+  pid: 4,
+  name: '喂养用品' },
+
+{
+  id: 36,
+  pid: 33,
+  name: '有机奶粉',
+  picture: '/static/temp/cate17.jpg' },
+
+{
+  id: 37,
+  pid: 34,
+  name: '果泥/果汁',
+  picture: '/static/temp/cate18.jpg' },
+
+{
+  id: 39,
+  pid: 34,
+  name: '面条/粥',
+  picture: '/static/temp/cate20.jpg' },
+
+{
+  id: 42,
+  pid: 35,
+  name: '婴童衣橱',
+  picture: '/static/temp/cate19.jpg' },
+
+{
+  id: 43,
+  pid: 39,
+  name: '吸奶器',
+  picture: '/static/temp/cate21.jpg' },
+
+{
+  id: 44,
+  pid: 39,
+  name: '儿童餐具',
+  picture: '/static/temp/cate22.jpg' },
+
+{
+  id: 45,
+  pid: 39,
+  name: '牙胶安抚',
+  picture: '/static/temp/cate23.jpg' },
+
+{
+  id: 46,
+  pid: 39,
+  name: '围兜',
+  picture: '/static/temp/cate24.jpg' }];
+
+
+
+var history = [{
+  "id": "1",
+  "text_name": "北京烤鸭(待取货为0)",
+  "product_image": "../../static/product_image.jpg",
+  "all_time": 20,
+  "start_time": "20:15",
+  "end_time": "20:50",
+  "kilometres": 1.8,
+  "position": "昆明理工大学食堂",
+  "kilometress": 1.4,
+  "positions": "昆明理工大学女生楼1楼304室",
+  "userss": "李同学",
+  "order_status": 3 },
+
+{
+  "id": "2",
+  "text_name": "北京烤鸭(待取货为0)",
+  "product_image": "../../static/product_image.jpg",
+  "all_time": 20,
+  "start_time": "20:15",
+  "end_time": "20:50",
+  "kilometres": 1.1,
+  "position": "昆明理工大学食堂",
+  "kilometress": 1.1,
+  "positions": "昆明理工大学女生楼3楼304室",
+  "userss": "方同学",
+  "order_status": 3 },
+
+{
+  "id": "3",
+  "text_name": "北京烤鸭(待取货为0)",
+  "product_image": "../../static/product_image.jpg",
+  "all_time": 20,
+  "start_time": "20:15",
+  "end_time": "20:50",
+  "kilometres": 1.1,
+  "position": "昆明理工大学食堂",
+  "kilometress": 1.1,
+  "positions": "昆明理工大学女生楼3楼304室",
+  "userss": "曲同学",
+  "order_status": 3 },
+
+{
+  "id": "4",
+  "text_name": "北京烤鸭(待取货为0)",
+  "product_image": "../../static/product_image.jpg",
+  "all_time": 20,
+  "start_time": "20:15",
+  "end_time": "20:50",
+  "kilometres": 1.1,
+  "position": "昆明理工大学食堂",
+  "kilometress": 1.1,
+  "positions": "昆明理工大学女生楼7楼704室",
+  "userss": "赵同学",
+  "order_status": 3 },
+
+{
+  "id": "4",
+  "text_name": "北京烤鸭(待取货为0)",
+  "product_image": "../../static/product_image.jpg",
+  "all_time": 20,
+  "start_time": "20:15",
+  "end_time": "20:50",
+  "kilometres": 1.8,
+  "position": "昆明理工大学食堂",
+  "kilometress": 1.4,
+  "positions": "昆明理工大学女生楼1楼304室",
+  "userss": "李同学",
+  "order_status": 3 },
+
+{
+  "id": "5",
+  "text_name": "北京烤鸭(待取货为0)",
+  "product_image": "../../static/product_image.jpg",
+  "all_time": 20,
+  "start_time": "20:15",
+  "end_time": "20:50",
+  "kilometres": 1.1,
+  "position": "昆明理工大学食堂",
+  "kilometress": 1.1,
+  "positions": "昆明理工大学女生楼3楼304室",
+  "userss": "方同学",
+  "order_status": 3 },
+
+{
+  "id": "6",
+  "text_name": "北京烤鸭(待取货为0)",
+  "product_image": "../../static/product_image.jpg",
+  "all_time": 20,
+  "start_time": "20:15",
+  "end_time": "20:50",
+  "kilometres": 1.1,
+  "position": "昆明理工大学食堂",
+  "kilometress": 1.1,
+  "positions": "昆明理工大学女生楼3楼304室",
+  "userss": "曲同学",
+  "order_status": 3 },
+
+{
+  "id": "7",
+  "text_name": "北京烤鸭(待取货为0)",
+  "product_image": "../../static/product_image.jpg",
+  "all_time": 20,
+  "start_time": "20:15",
+  "end_time": "20:50",
+  "kilometres": 1.1,
+  "position": "昆明理工大学食堂",
+  "kilometress": 1.1,
+  "positions": "昆明理工大学女生楼7楼704室",
+  "userss": "赵同学",
+  "order_status": 3 }];
+
+
+
+var qiShouOrderList = [
+//  order_status 0待取货 1配送中 2 强任务  3有异常  4已完成 5已取消 6已超时
+
+{
+  "text_name": "北京烤鸭(待取货为0)",
+  "product_image": "../../static/product_image.jpg",
+  "about_time": 50,
+  "kilometres": 1.1,
+  "position": "昆明理工大学",
+  "kilometress": 1.1,
+  "positions": "昆明理工大学",
+  "store": "过桥米线",
+  "userss": "李同学",
+  "order_status": 0 },
+
+{
+  "text_name": "烤鸭(配送中为1)",
+  "product_image": "../../static/product_image.jpg",
+  "about_time": 50,
+  "kilometres": 1.1,
+  "position": "昆明理工大学",
+  "kilometress": 1.1,
+  "positions": "昆明理工大学",
+  "store": "过桥米线",
+  "userss": "方同学",
+  "order_status": 1 },
+
+{
+  "text_name": "米线(抢任务为2)",
+  "product_image": "../../static/product_image.jpg",
+  "about_time": 50,
+  "kilometres": 1.1,
+  "position": "昆明理工大学",
+  "kilometress": 1.1,
+  "positions": "昆明理工大学",
+  "store": "麻婆豆腐",
+  "userss": "方同学",
+  "order_status": 2 },
+
+{
+  "text_name": "米线(异常为3)",
+  "product_image": "../../static/product_image.jpg",
+  "about_time": 50,
+  "kilometres": 1.6,
+  "position": "云南大学",
+  "kilometress": 1.1,
+  "positions": "昆明理工大学",
+  "store": "老麻抄手",
+  "userss": "老毛",
+  "order_status": 3 },
+
+{
+  "text_name": "小锅米线(完成为4)",
+  "product_image": "../../static/product_image.jpg",
+  "about_time": 50,
+  "kilometres": 1.1,
+  "position": "昆明理工大学",
+  "kilometress": 1.1,
+  "positions": "昆明理工大学",
+  "store": "炒面",
+  "userss": "老王",
+  "order_status": 3 }];
+
+
+
+
+var monthill = [
+//  order_status 0待取货 1配送中 2 强任务  3有异常  4已完成 5已取消 6已超时
+{
+  "month": "2020年5月",
+  "complete_order": "400",
+  "cancel_order": "0",
+  "ontime_order": "100",
+  "orderList": [
+  {
+    "ontime_order": "10:50",
+    "start_time": "10:30",
+    "end_time": "10:50",
+    "uerse_tiem": "20",
+    "start_address": "昆明理工大学食堂",
+    "kilometress": 1.4,
+    "end_address": "昆明理工大学女生楼1楼304室",
+    "order_status": 4 },
+
+  {
+    "ontime_order": "10:50",
+    "start_time": "10:30",
+    "end_time": "10:50",
+    "uerse_tiem": "20",
+    "start_address": "昆明理工大学食堂",
+    "kilometress": 1.4,
+    "end_address": "昆明理工大学女生楼1楼304室",
+    "order_status": 4 },
+
+  {
+    "ontime_order": "10:50",
+    "start_time": "10:30",
+    "end_time": "10:50",
+    "uerse_tiem": "20",
+    "start_address": "昆明理工大学食堂",
+    "kilometress": 1.4,
+    "end_address": "昆明理工大学女生楼1楼304室",
+    "order_status": 3 },
+
+  {
+    "ontime_order": "10:50",
+    "start_time": "10:30",
+    "end_time": "10:50",
+    "uerse_tiem": "20",
+    "start_address": "昆明理工大学三楼食堂",
+    "kilometress": 1.4,
+    "end_address": "昆明理工大学男生楼1楼304室",
+    "order_status": 2 },
+
+  {
+    "ontime_order": "10:50",
+    "start_time": "10:30",
+    "end_time": "10:50",
+    "uerse_tiem": "20",
+    "start_address": "昆明理工大学三楼食堂",
+    "kilometress": 1.4,
+    "end_address": "昆明理工大学男生楼6楼604室",
+    "order_status": 5 },
+
+  {
+    "ontime_order": "10:50",
+    "start_time": "10:30",
+    "end_time": "10:50",
+    "uerse_tiem": "20",
+    "start_address": "昆明理工大学食堂",
+    "kilometress": 1.4,
+    "end_address": "昆明理工大学女生楼6楼604室",
+    "order_status": 4 },
+
+  {
+    "ontime_order": "10:50",
+    "start_time": "10:30",
+    "end_time": "10:50",
+    "uerse_tiem": "20",
+    "start_address": "昆明理工大学食堂",
+    "kilometress": 1.4,
+    "end_address": "昆明理工大学女生楼1楼304室",
+    "order_status": 4 },
+
+  {
+    "ontime_order": "10:50",
+    "start_time": "10:30",
+    "end_time": "10:50",
+    "uerse_tiem": "20",
+    "start_address": "昆明理工大学食堂",
+    "kilometress": 1.4,
+    "end_address": "昆明理工大学女生楼1楼304室",
+    "order_status": 4 },
+
+  {
+    "ontime_order": "10:50",
+    "start_time": "10:30",
+    "end_time": "10:50",
+    "uerse_tiem": "20",
+    "start_address": "昆明理工大学食堂",
+    "kilometress": 1.4,
+    "end_address": "昆明理工大学女生楼1楼304室",
+    "order_status": 4 },
+
+  {
+    "ontime_order": "10:50",
+    "start_time": "10:30",
+    "end_time": "10:50",
+    "uerse_tiem": "20",
+    "start_address": "昆明理工大学附楼食堂",
+    "kilometress": 1.4,
+    "end_address": "昆明理工大学男生楼3楼304室",
+    "order_status": 6 }] },
+
+
+
+{
+  "month": "2020年4月",
+  "complete_order": "312",
+  "cancel_order": "1",
+  "ontime_order": "98",
+  "orderList": [
+  {
+    "ontime_order": "10:50",
+    "start_time": "10:30",
+    "end_time": "10:50",
+    "uerse_tiem": "20",
+    "start_address": "昆明理工大学食堂",
+    "kilometress": 1.4,
+    "end_address": "昆明理工大学女生楼1楼304室",
+    "order_status": 4 },
+
+  {
+    "ontime_order": "10:50",
+    "start_time": "10:30",
+    "end_time": "10:50",
+    "uerse_tiem": "20",
+    "start_address": "昆明理工大学食堂",
+    "kilometress": 1.4,
+    "end_address": "昆明理工大学女生楼1楼304室",
+    "order_status": 4 },
+
+  {
+    "ontime_order": "10:50",
+    "start_time": "10:30",
+    "end_time": "10:50",
+    "uerse_tiem": "20",
+    "start_address": "昆明理工大学食堂",
+    "kilometress": 1.4,
+    "end_address": "昆明理工大学女生楼1楼304室",
+    "order_status": 4 },
+
+  {
+    "ontime_order": "10:50",
+    "start_time": "10:30",
+    "end_time": "10:50",
+    "uerse_tiem": "20",
+    "start_address": "昆明理工大学食堂",
+    "kilometress": 1.4,
+    "end_address": "昆明理工大学女生楼1楼304室",
+    "order_status": 4 },
+
+  {
+    "ontime_order": "10:50",
+    "start_time": "10:30",
+    "end_time": "10:50",
+    "uerse_tiem": "20",
+    "start_address": "昆明理工大学食堂",
+    "kilometress": 1.4,
+    "end_address": "昆明理工大学女生楼1楼304室",
+    "order_status": 4 },
+
+  {
+    "ontime_order": "10:50",
+    "start_time": "10:30",
+    "end_time": "10:50",
+    "uerse_tiem": "20",
+    "start_address": "昆明理工大学食堂",
+    "kilometress": 1.4,
+    "end_address": "昆明理工大学女生楼1楼304室",
+    "order_status": 3 },
+
+  {
+    "ontime_order": "10:50",
+    "start_time": "10:30",
+    "end_time": "10:50",
+    "uerse_tiem": "20",
+    "start_address": "昆明理工大学食堂",
+    "kilometress": 1.4,
+    "end_address": "昆明理工大学女生楼1楼304室",
+    "order_status": 5 },
+
+  {
+    "ontime_order": "10:50",
+    "start_time": "10:30",
+    "end_time": "10:50",
+    "uerse_tiem": "20",
+    "start_address": "昆明理工大学食堂",
+    "kilometress": 1.4,
+    "end_address": "昆明理工大学女生楼1楼304室",
+    "order_status": 3 },
+
+  {
+    "ontime_order": "10:50",
+    "start_time": "10:30",
+    "end_time": "10:50",
+    "uerse_tiem": "20",
+    "start_address": "昆明理工大学食堂",
+    "kilometress": 1.4,
+    "end_address": "昆明理工大学女生楼1楼304室",
+    "order_status": 3 },
+
+  {
+    "ontime_order": "10:50",
+    "start_time": "10:30",
+    "end_time": "10:50",
+    "uerse_tiem": "20",
+    "start_address": "昆明理工大学食堂",
+    "kilometress": 1.4,
+    "end_address": "昆明理工大学女生楼1楼304室",
+    "order_status": 6 }] },
+
+
+
+{
+  "month": "2020年3月",
+  "complete_order": "250",
+  "cancel_order": "0",
+  "ontime_order": "100",
+  "orderList": [
+  {
+    "ontime_order": "10:50",
+    "start_time": "10:30",
+    "end_time": "10:50",
+    "uerse_tiem": "20",
+    "start_address": "昆明理工大学食堂",
+    "kilometress": 1.4,
+    "end_address": "昆明理工大学女生楼1楼304室",
+    "order_status": 4 },
+
+  {
+    "ontime_order": "10:50",
+    "start_time": "10:30",
+    "end_time": "10:50",
+    "uerse_tiem": "20",
+    "start_address": "昆明理工大学食堂",
+    "kilometress": 1.4,
+    "end_address": "昆明理工大学女生楼1楼304室",
+    "order_status": 4 },
+
+  {
+    "ontime_order": "10:50",
+    "start_time": "10:30",
+    "end_time": "10:50",
+    "uerse_tiem": "20",
+    "start_address": "昆明理工大学食堂",
+    "kilometress": 1.4,
+    "end_address": "昆明理工大学女生楼1楼304室",
+    "order_status": 4 },
+
+  {
+    "ontime_order": "10:50",
+    "start_time": "10:30",
+    "end_time": "10:50",
+    "uerse_tiem": "20",
+    "start_address": "昆明理工大学食堂",
+    "kilometress": 1.4,
+    "end_address": "昆明理工大学女生楼1楼304室",
+    "order_status": 2 },
+
+  {
+    "ontime_order": "10:50",
+    "start_time": "10:30",
+    "end_time": "10:50",
+    "uerse_tiem": "20",
+    "start_address": "昆明理工大学食堂",
+    "kilometress": 1.4,
+    "end_address": "昆明理工大学女生楼1楼304室",
+    "order_status": 5 },
+
+  {
+    "ontime_order": "10:50",
+    "start_time": "10:30",
+    "end_time": "10:50",
+    "uerse_tiem": "20",
+    "start_address": "昆明理工大学食堂",
+    "kilometress": 1.4,
+    "end_address": "昆明理工大学女生楼1楼304室",
+    "order_status": 3 },
+
+  {
+    "ontime_order": "10:50",
+    "start_time": "10:30",
+    "end_time": "10:50",
+    "uerse_tiem": "20",
+    "start_address": "昆明理工大学食堂",
+    "kilometress": 1.4,
+    "end_address": "昆明理工大学女生楼1楼304室",
+    "order_status": 4 },
+
+  {
+    "ontime_order": "10:50",
+    "start_time": "10:30",
+    "end_time": "10:50",
+    "uerse_tiem": "20",
+    "start_address": "昆明理工大学食堂",
+    "kilometress": 1.4,
+    "end_address": "昆明理工大学女生楼1楼304室",
+    "order_status": 3 },
+
+  {
+    "ontime_order": "10:50",
+    "start_time": "10:30",
+    "end_time": "10:50",
+    "uerse_tiem": "20",
+    "start_address": "昆明理工大学食堂",
+    "kilometress": 1.4,
+    "end_address": "昆明理工大学女生楼1楼304室",
+    "order_status": 4 },
+
+  {
+    "ontime_order": "10:50",
+    "start_time": "10:30",
+    "end_time": "10:50",
+    "uerse_tiem": "20",
+    "start_address": "昆明理工大学食堂",
+    "kilometress": 1.4,
+    "end_address": "昆明理工大学女生楼1楼304室",
+    "order_status": 4 }] },
+
+
+
+
+{
+  "month": "2020年2月",
+  "complete_order": "802",
+  "cancel_order": "1",
+  "ontime_order": "90",
+  "orderList": [
+  {
+    "start_time": "10:30",
+    "end_time": "10:50",
+    "uerse_tiem": "20",
+    "start_address": "昆明理工大学食堂",
+    "kilometress": 1.4,
+    "end_address": "昆明理工大学女生楼1楼304室",
+    "order_status": 4 },
+
+  {
+    "start_time": "10:30",
+    "end_time": "10:50",
+    "uerse_tiem": "20",
+    "start_address": "昆明理工大学食堂",
+    "kilometress": 1.4,
+    "end_address": "昆明理工大学女生楼1楼304室",
+    "order_status": 1 },
+
+  {
+    "start_time": "10:30",
+    "end_time": "10:50",
+    "uerse_tiem": "20",
+    "start_address": "昆明理工大学食堂",
+    "kilometress": 1.4,
+    "end_address": "昆明理工大学女生楼1楼304室",
+    "order_status": 4 },
+
+  {
+    "start_time": "10:30",
+    "end_time": "10:50",
+    "uerse_tiem": "20",
+    "start_address": "昆明理工大学食堂",
+    "kilometress": 1.4,
+    "end_address": "昆明理工大学女生楼1楼304室",
+    "order_status": 2 },
+
+  {
+    "start_time": "10:30",
+    "end_time": "10:50",
+    "uerse_tiem": "20",
+    "start_address": "昆明理工大学食堂",
+    "kilometress": 1.4,
+    "end_address": "昆明理工大学女生楼1楼304室",
+    "order_status": 4 },
+
+  {
+    "start_time": "10:30",
+    "end_time": "10:50",
+    "uerse_tiem": "20",
+    "start_address": "昆明理工大学食堂",
+    "kilometress": 1.4,
+    "end_address": "昆明理工大学女生楼1楼304室",
+    "order_status": 3 },
+
+  {
+    "start_time": "10:30",
+    "end_time": "10:50",
+    "uerse_tiem": "20",
+    "start_address": "昆明理工大学食堂",
+    "kilometress": 1.4,
+    "end_address": "昆明理工大学女生楼1楼304室",
+    "order_status": 5 },
+
+  {
+    "start_time": "10:30",
+    "end_time": "10:50",
+    "uerse_tiem": "20",
+    "start_address": "昆明理工大学食堂",
+    "kilometress": 1.4,
+    "end_address": "昆明理工大学女生楼1楼304室",
+    "order_status": 6 },
+
+  {
+    "start_time": "10:30",
+    "end_time": "10:50",
+    "uerse_tiem": "20",
+    "start_address": "昆明理工大学食堂",
+    "kilometress": 1.4,
+    "end_address": "昆明理工大学女生楼1楼304室",
+    "order_status": 4 },
+
+  {
+    "start_time": "10:30",
+    "end_time": "10:50",
+    "uerse_tiem": "20",
+    "start_address": "昆明理工大学食堂",
+    "kilometress": 1.4,
+    "end_address": "昆明理工大学女生楼1楼304室",
+    "order_status": 4 }] },
+
+
+
+{
+  "month": "2020年1月",
+  "complete_order": "300",
+  "cancel_order": "5",
+  "ontime_order": "80",
+  "orderList": [
+  {
+    "start_time": "10:30",
+    "end_time": "10:50",
+    "uerse_tiem": "20",
+    "start_address": "昆明理工大学食堂",
+    "kilometress": 1.4,
+    "end_address": "昆明理工大学女生楼1楼304室",
+    "order_status": 4 },
+
+  {
+    "start_time": "10:30",
+    "end_time": "10:50",
+    "uerse_tiem": "20",
+    "start_address": "昆明理工大学食堂",
+    "kilometress": 1.4,
+    "end_address": "昆明理工大学女生楼1楼304室",
+    "order_status": 1 },
+
+  {
+    "start_time": "10:30",
+    "end_time": "10:50",
+    "uerse_tiem": "20",
+    "start_address": "昆明理工大学食堂",
+    "kilometress": 1.4,
+    "end_address": "昆明理工大学女生楼1楼304室",
+    "order_status": 4 },
+
+  {
+    "start_time": "10:30",
+    "end_time": "10:50",
+    "uerse_tiem": "20",
+    "start_address": "昆明理工大学食堂",
+    "kilometress": 1.4,
+    "end_address": "昆明理工大学女生楼1楼304室",
+    "order_status": 4 },
+
+  {
+    "start_time": "10:30",
+    "end_time": "10:50",
+    "uerse_tiem": "20",
+    "start_address": "昆明理工大学食堂",
+    "kilometress": 1.4,
+    "end_address": "昆明理工大学女生楼1楼304室",
+    "order_status": 2 },
+
+  {
+    "start_time": "10:30",
+    "end_time": "10:50",
+    "uerse_tiem": "20",
+    "start_address": "昆明理工大学食堂",
+    "kilometress": 1.4,
+    "end_address": "昆明理工大学女生楼1楼304室",
+    "order_status": 5 },
+
+  {
+    "start_time": "10:30",
+    "end_time": "10:50",
+    "uerse_tiem": "20",
+    "start_address": "昆明理工大学食堂",
+    "kilometress": 1.4,
+    "end_address": "昆明理工大学女生楼1楼304室",
+    "order_status": 4 },
+
+  {
+    "start_time": "10:30",
+    "end_time": "10:50",
+    "uerse_tiem": "20",
+    "start_address": "昆明理工大学食堂",
+    "kilometress": 1.4,
+    "end_address": "昆明理工大学女生楼1楼304室",
+    "order_status": 4 },
+
+  {
+    "start_time": "10:30",
+    "end_time": "10:50",
+    "uerse_tiem": "20",
+    "start_address": "昆明理工大学食堂",
+    "kilometress": 1.4,
+    "end_address": "昆明理工大学女生楼1楼304室",
+    "order_status": 4 },
+
+  {
+    "start_time": "10:30",
+    "end_time": "10:50",
+    "uerse_tiem": "20",
+    "start_address": "昆明理工大学食堂",
+    "kilometress": 1.4,
+    "end_address": "昆明理工大学女生楼1楼304室",
+    "order_status": 4 }] },
+
+
+
+{
+  "month": "2019年12月",
+  "complete_order": "400",
+  "cancel_order": "0",
+  "ontime_order": "100",
+  "orderList": [
+  {
+    "start_time": "10:30",
+    "end_time": "10:50",
+    "uerse_tiem": "20",
+    "start_address": "昆明理工大学食堂",
+    "kilometress": 1.4,
+    "end_address": "昆明理工大学女生楼1楼304室",
+    "order_status": 4 },
+
+  {
+    "start_time": "10:30",
+    "end_time": "10:50",
+    "uerse_tiem": "20",
+    "start_address": "昆明理工大学食堂",
+    "kilometress": 1.4,
+    "end_address": "昆明理工大学女生楼1楼304室",
+    "order_status": 4 },
+
+  {
+    "start_time": "10:30",
+    "end_time": "10:50",
+    "uerse_tiem": "20",
+    "start_address": "昆明理工大学食堂",
+    "kilometress": 1.4,
+    "end_address": "昆明理工大学女生楼1楼304室",
+    "order_status": 4 },
+
+  {
+    "start_time": "10:30",
+    "end_time": "10:50",
+    "uerse_tiem": "20",
+    "start_address": "昆明理工大学食堂",
+    "kilometress": 1.4,
+    "end_address": "昆明理工大学女生楼1楼304室",
+    "order_status": 2 },
+
+  {
+    "start_time": "10:30",
+    "end_time": "10:50",
+    "uerse_tiem": "20",
+    "start_address": "昆明理工大学食堂",
+    "kilometress": 1.4,
+    "end_address": "昆明理工大学女生楼1楼304室",
+    "order_status": 4 },
+
+  {
+    "start_time": "10:30",
+    "end_time": "10:50",
+    "uerse_tiem": "20",
+    "start_address": "昆明理工大学食堂",
+    "kilometress": 1.4,
+    "end_address": "昆明理工大学女生楼1楼304室",
+    "order_status": 4 },
+
+  {
+    "start_time": "10:30",
+    "end_time": "10:50",
+    "uerse_tiem": "20",
+    "start_address": "昆明理工大学食堂",
+    "kilometress": 1.4,
+    "end_address": "昆明理工大学女生楼1楼304室",
+    "order_status": 4 },
+
+  {
+    "start_time": "10:30",
+    "end_time": "10:50",
+    "uerse_tiem": "20",
+    "start_address": "昆明理工大学食堂",
+    "kilometress": 1.4,
+    "end_address": "昆明理工大学女生楼1楼304室",
+    "order_status": 4 },
+
+  {
+    "start_time": "10:30",
+    "end_time": "10:50",
+    "uerse_tiem": "20",
+    "start_address": "昆明理工大学食堂",
+    "kilometress": 1.4,
+    "end_address": "昆明理工大学女生楼1楼304室",
+    "order_status": 4 },
+
+  {
+    "start_time": "10:30",
+    "end_time": "10:50",
+    "uerse_tiem": "20",
+    "start_address": "昆明理工大学食堂",
+    "kilometress": 1.4,
+    "end_address": "昆明理工大学女生楼1楼304室",
+    "order_status": 4 }] },
+
+
+
+{
+  "month": "2019年11月",
+  "complete_order": "300",
+  "cancel_order": "5",
+  "ontime_order": "80",
+  "orderList": [
+  {
+    "start_time": "10:30",
+    "end_time": "10:50",
+    "uerse_tiem": "20",
+    "start_address": "昆明理工大学食堂",
+    "kilometress": 1.4,
+    "end_address": "昆明理工大学女生楼1楼304室",
+    "order_status": 4 },
+
+  {
+    "start_time": "10:30",
+    "end_time": "10:50",
+    "uerse_tiem": "20",
+    "start_address": "昆明理工大学食堂",
+    "kilometress": 1.4,
+    "end_address": "昆明理工大学女生楼1楼304室",
+    "order_status": 4 },
+
+  {
+    "start_time": "10:30",
+    "end_time": "10:50",
+    "uerse_tiem": "20",
+    "start_address": "昆明理工大学食堂",
+    "kilometress": 1.4,
+    "end_address": "昆明理工大学女生楼1楼304室",
+    "order_status": 4 },
+
+  {
+    "start_time": "10:30",
+    "end_time": "10:50",
+    "uerse_tiem": "20",
+    "start_address": "昆明理工大学食堂",
+    "kilometress": 1.4,
+    "end_address": "昆明理工大学女生楼1楼304室",
+    "order_status": 4 },
+
+  {
+    "start_time": "10:30",
+    "end_time": "10:50",
+    "uerse_tiem": "20",
+    "start_address": "昆明理工大学食堂",
+    "kilometress": 1.4,
+    "end_address": "昆明理工大学女生楼1楼304室",
+    "order_status": 2 },
+
+  {
+    "start_time": "10:30",
+    "end_time": "10:50",
+    "uerse_tiem": "20",
+    "start_address": "昆明理工大学食堂",
+    "kilometress": 1.4,
+    "end_address": "昆明理工大学女生楼1楼304室",
+    "order_status": 4 },
+
+  {
+    "start_time": "10:30",
+    "end_time": "10:50",
+    "uerse_tiem": "20",
+    "start_address": "昆明理工大学食堂",
+    "kilometress": 1.4,
+    "end_address": "昆明理工大学女生楼1楼304室",
+    "order_status": 3 },
+
+  {
+    "start_time": "10:30",
+    "end_time": "10:50",
+    "uerse_tiem": "20",
+    "start_address": "昆明理工大学食堂",
+    "kilometress": 1.4,
+    "end_address": "昆明理工大学女生楼1楼304室",
+    "order_status": 4 },
+
+  {
+    "start_time": "10:30",
+    "end_time": "10:50",
+    "uerse_tiem": "20",
+    "start_address": "昆明理工大学食堂",
+    "kilometress": 1.4,
+    "end_address": "昆明理工大学女生楼1楼304室",
+    "order_status": 3 },
+
+  {
+    "start_time": "10:30",
+    "end_time": "10:50",
+    "uerse_tiem": "20",
+    "start_address": "昆明理工大学食堂",
+    "kilometress": 1.4,
+    "end_address": "昆明理工大学女生楼1楼304室",
+    "order_status": 4 }] },
+
+
+
+{
+  "month": "2019年10月",
+  "complete_order": "802",
+  "cancel_order": "1",
+  "ontime_order": "90",
+  "orderList": [
+  {
+    "start_time": "10:30",
+    "end_time": "10:50",
+    "uerse_tiem": "20",
+    "start_address": "昆明理工大学食堂",
+    "kilometress": 1.4,
+    "end_address": "昆明理工大学女生楼1楼304室",
+    "order_status": 4 },
+
+  {
+    "start_time": "10:30",
+    "end_time": "10:50",
+    "uerse_tiem": "20",
+    "start_address": "昆明理工大学食堂",
+    "kilometress": 1.4,
+    "end_address": "昆明理工大学女生楼1楼304室",
+    "order_status": 4 },
+
+  {
+    "start_time": "10:30",
+    "end_time": "10:50",
+    "uerse_tiem": "20",
+    "start_address": "昆明理工大学食堂",
+    "kilometress": 1.4,
+    "end_address": "昆明理工大学女生楼1楼304室",
+    "order_status": 3 },
+
+  {
+    "start_time": "10:30",
+    "end_time": "10:50",
+    "uerse_tiem": "20",
+    "start_address": "昆明理工大学食堂",
+    "kilometress": 1.4,
+    "end_address": "昆明理工大学女生楼1楼304室",
+    "order_status": 2 },
+
+  {
+    "start_time": "10:30",
+    "end_time": "10:50",
+    "uerse_tiem": "20",
+    "start_address": "昆明理工大学食堂",
+    "kilometress": 1.4,
+    "end_address": "昆明理工大学女生楼1楼304室",
+    "order_status": 2 },
+
+  {
+    "start_time": "10:30",
+    "end_time": "10:50",
+    "uerse_tiem": "20",
+    "start_address": "昆明理工大学食堂",
+    "kilometress": 1.4,
+    "end_address": "昆明理工大学女生楼1楼304室",
+    "order_status": 3 },
+
+  {
+    "start_time": "10:30",
+    "end_time": "10:50",
+    "uerse_tiem": "20",
+    "start_address": "昆明理工大学食堂",
+    "kilometress": 1.4,
+    "end_address": "昆明理工大学女生楼1楼304室",
+    "order_status": 3 },
+
+  {
+    "start_time": "10:30",
+    "end_time": "10:50",
+    "uerse_tiem": "20",
+    "start_address": "昆明理工大学食堂",
+    "kilometress": 1.4,
+    "end_address": "昆明理工大学女生楼1楼304室",
+    "order_status": 3 },
+
+  {
+    "start_time": "10:30",
+    "end_time": "10:50",
+    "uerse_tiem": "20",
+    "start_address": "昆明理工大学食堂",
+    "kilometress": 1.4,
+    "end_address": "昆明理工大学女生楼1楼304室",
+    "order_status": 3 },
+
+  {
+    "start_time": "10:30",
+    "end_time": "10:50",
+    "uerse_tiem": "20",
+    "start_address": "昆明理工大学食堂",
+    "kilometress": 1.4,
+    "end_address": "昆明理工大学女生楼1楼304室",
+    "order_status": 3 }] },
+
+
+
+{
+  "month": "2019年9月",
+  "complete_order": "250",
+  "cancel_order": "0",
+  "ontime_order": "100",
+  "orderList": [
+  {
+    "start_time": "10:30",
+    "end_time": "10:50",
+    "uerse_tiem": "20",
+    "start_address": "昆明理工大学食堂",
+    "kilometress": 1.4,
+    "end_address": "昆明理工大学女生楼1楼304室",
+    "order_status": 3 },
+
+  {
+    "start_time": "10:30",
+    "end_time": "10:50",
+    "uerse_tiem": "20",
+    "start_address": "昆明理工大学食堂",
+    "kilometress": 1.4,
+    "end_address": "昆明理工大学女生楼1楼304室",
+    "order_status": 1 },
+
+  {
+    "start_time": "10:30",
+    "end_time": "10:50",
+    "uerse_tiem": "20",
+    "start_address": "昆明理工大学食堂",
+    "kilometress": 1.4,
+    "end_address": "昆明理工大学女生楼1楼304室",
+    "order_status": 3 },
+
+  {
+    "start_time": "10:30",
+    "end_time": "10:50",
+    "uerse_tiem": "20",
+    "start_address": "昆明理工大学食堂",
+    "kilometress": 1.4,
+    "end_address": "昆明理工大学女生楼1楼304室",
+    "order_status": 2 },
+
+  {
+    "start_time": "10:30",
+    "end_time": "10:50",
+    "uerse_tiem": "20",
+    "start_address": "昆明理工大学食堂",
+    "kilometress": 1.4,
+    "end_address": "昆明理工大学女生楼1楼304室",
+    "order_status": 2 },
+
+  {
+    "start_time": "10:30",
+    "end_time": "10:50",
+    "uerse_tiem": "20",
+    "start_address": "昆明理工大学食堂",
+    "kilometress": 1.4,
+    "end_address": "昆明理工大学女生楼1楼304室",
+    "order_status": 3 },
+
+  {
+    "start_time": "10:30",
+    "end_time": "10:50",
+    "uerse_tiem": "20",
+    "start_address": "昆明理工大学食堂",
+    "kilometress": 1.4,
+    "end_address": "昆明理工大学女生楼1楼304室",
+    "order_status": 3 },
+
+  {
+    "start_time": "10:30",
+    "end_time": "10:50",
+    "uerse_tiem": "20",
+    "start_address": "昆明理工大学食堂",
+    "kilometress": 1.4,
+    "end_address": "昆明理工大学女生楼1楼304室",
+    "order_status": 3 },
+
+  {
+    "start_time": "10:30",
+    "end_time": "10:50",
+    "uerse_tiem": "20",
+    "start_address": "昆明理工大学食堂",
+    "kilometress": 1.4,
+    "end_address": "昆明理工大学女生楼1楼304室",
+    "order_status": 3 },
+
+  {
+    "start_time": "10:30",
+    "end_time": "10:50",
+    "uerse_tiem": "20",
+    "start_address": "昆明理工大学食堂",
+    "kilometress": 1.4,
+    "end_address": "昆明理工大学女生楼1楼304室",
+    "order_status": 3 }] },
+
+
+
+{
+  "month": "2019年8月",
+  "complete_order": "312",
+  "cancel_order": "1",
+  "ontime_order": "98",
+  "orderList": [
+  {
+    "start_time": "10:30",
+    "end_time": "10:50",
+    "uerse_tiem": "20",
+    "start_address": "昆明理工大学食堂",
+    "kilometress": 1.4,
+    "end_address": "昆明理工大学女生楼1楼304室",
+    "order_status": 3 },
+
+  {
+    "start_time": "10:30",
+    "end_time": "10:50",
+    "uerse_tiem": "20",
+    "start_address": "昆明理工大学食堂",
+    "kilometress": 1.4,
+    "end_address": "昆明理工大学女生楼1楼304室",
+    "order_status": 1 },
+
+  {
+    "start_time": "10:30",
+    "end_time": "10:50",
+    "uerse_tiem": "20",
+    "start_address": "昆明理工大学食堂",
+    "kilometress": 1.4,
+    "end_address": "昆明理工大学女生楼1楼304室",
+    "order_status": 3 },
+
+  {
+    "start_time": "10:30",
+    "end_time": "10:50",
+    "uerse_tiem": "20",
+    "start_address": "昆明理工大学食堂",
+    "kilometress": 1.4,
+    "end_address": "昆明理工大学女生楼1楼304室",
+    "order_status": 2 },
+
+  {
+    "start_time": "10:30",
+    "end_time": "10:50",
+    "uerse_tiem": "20",
+    "start_address": "昆明理工大学食堂",
+    "kilometress": 1.4,
+    "end_address": "昆明理工大学女生楼1楼304室",
+    "order_status": 2 },
+
+  {
+    "start_time": "10:30",
+    "end_time": "10:50",
+    "uerse_tiem": "20",
+    "start_address": "昆明理工大学食堂",
+    "kilometress": 1.4,
+    "end_address": "昆明理工大学女生楼1楼304室",
+    "order_status": 3 },
+
+  {
+    "start_time": "10:30",
+    "end_time": "10:50",
+    "uerse_tiem": "20",
+    "start_address": "昆明理工大学食堂",
+    "kilometress": 1.4,
+    "end_address": "昆明理工大学女生楼1楼304室",
+    "order_status": 3 },
+
+  {
+    "start_time": "10:30",
+    "end_time": "10:50",
+    "uerse_tiem": "20",
+    "start_address": "昆明理工大学食堂",
+    "kilometress": 1.4,
+    "end_address": "昆明理工大学女生楼1楼304室",
+    "order_status": 3 },
+
+  {
+    "start_time": "10:30",
+    "end_time": "10:50",
+    "uerse_tiem": "20",
+    "start_address": "昆明理工大学食堂",
+    "kilometress": 1.4,
+    "end_address": "昆明理工大学女生楼1楼304室",
+    "order_status": 3 },
+
+  {
+    "start_time": "10:30",
+    "end_time": "10:50",
+    "uerse_tiem": "20",
+    "start_address": "昆明理工大学食堂",
+    "kilometress": 1.4,
+    "end_address": "昆明理工大学女生楼1楼304室",
+    "order_status": 3 }] }];var _default =
+
+
+
+
+
+{
+  carouselList: carouselList,
+  cartList: cartList,
+  detailData: detailData,
+  lazyLoadList: lazyLoadList,
+  userInfo: userInfo,
+  shareList: shareList,
+  goodsList: goodsList,
+  orderList: orderList,
+  cateList: cateList,
+  history: history,
+  qiShouOrderList: qiShouOrderList,
+  monthill: monthill };exports.default = _default;
+
+/***/ }),
+
+/***/ 18:
+/*!*******************************************!*\
+  !*** F:/projects/schoolShop/utils/api.js ***!
+  \*******************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _uniFly = _interopRequireDefault(__webpack_require__(/*! ../utils/uniFly.js */ 19));
+
+
+
+var _utils = _interopRequireDefault(__webpack_require__(/*! ../utils/utils.js */ 13));
+var _store = _interopRequireDefault(__webpack_require__(/*! ../store */ 20));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} // var Fly=require("flyio/dist/npm/wx")
+// var uniFly=new Fly
+//基础路由
+_uniFly.default.baseUrl = _store.default.getters.baseApiUrl; //APICloud签名校验
+var now = Date.now();
+var appId = _store.default.getters.appId;
+var appKey = _store.default.getters.appKey;
+// appKey = utils.SHA1(appId + 'UZ' + appKey + 'UZ' + now) + '.' + now
+//设置请求头
+// uniFly.headers['X-APICloud-AppId'] = appId
+// uniFly.headers['X-APICloud-AppKey'] = appKey
+//全局请求超时时间
+_uniFly.default.timeOut = 20000;
+
+//自定义请求拦截
+_uniFly.default.requestInterceptors.success = function (request) {
+  // console.log('自定义请求拦截')
+  //配置基本信息
+  request.headers = _uniFly.default.headers;
+  request.headers['client_token'] = _store.default.getters.token;
+  // console.log("store.getters.token: " + JSON.stringify(store.getters.token));
+  uni.showLoading();
+  // let hData = {}
+  // uni.setStorageSync('hStorage', 'hData')
+  var d = uni.getStorageSync('');
+  console.log("hData: " + JSON.stringify(d));
+  return request;
+};
+
+_uniFly.default.responseInterceptors.success = function (request) {
+  // console.log('自定义响应拦截')
+  // console.log("success: " + JSON.stringify(request));
+  uni.hideLoading();
+  return Promise.resolve(request);
+};
+
+_uniFly.default.responseInterceptors.error = function (request) {
+  // console.log('自定义响应拦截')
+  console.log("error: " + JSON.stringify(request));
+  uni.hideLoading();
+  return Promise.resolve(request);
+};
+
+//所有的接口请在此处统一定义
+var $api = {
+  init: function init() {
+    var info = uni.getStorageSync("userInfo");
+    var token = info.token;
+    // console.info(token);
+    //自定义请求拦截
+    _uniFly.default.requestInterceptors.success = function (request) {
+      // console.log('自定义请求拦截')
+      //配置基本信息
+      request.headers = _uniFly.default.headers;
+      request.headers['client_token'] = token;
+      uni.showLoading();
+      return request;
+    };
+  },
+
+  //post方法请求示例
+  postTest: function postTest(data) {
+    return _uniFly.default.post({
+      url: '/reserves/eaReserves/check',
+      params: data });
+
+  },
+  //get方法请求示例
+  getTest: function getTest(data) {
+    return _uniFly.default.get({
+      url: '/product/eaProducts/listJson',
+      params: data });
+
+  },
+  //post登录
+  login: function login(data) {
+    return _uniFly.default.post({
+      url: '/sys/user/login',
+      params: data });
+
+  },
+
+  //微信登录
+  // weixinlogin: function(data) {
+  // 	return uniFly.post({
+  // 		url: '/sys/user/wxlogin',
+  // 		params: data
+  // 	})
+  // },
+
+  // 分类cuIconList
+  cuIconListApi: function cuIconListApi(data) {
+    return _uniFly.default.get({
+      url: '/cuiconlist',
+      params: data });
+
+  },
+  // 分类catelist
+  catelistApi: function catelistApi(data) {
+    return _uniFly.default.get({
+      url: '/catelist',
+      params: data });
+
+  },
+  // storeListApi
+  storeListApi: function storeListApi(data) {
+    return _uniFly.default.get({
+      url: '/storeList',
+      params: data });
+
+  },
+  // getSwiperList
+  swiperListApi: function swiperListApi(data) {
+    return _uniFly.default.get({
+      url: '/swiperList',
+      params: data });
+
+  },
+  // 骑手端-订单模拟数据
+  qiShouOrderListApi: function qiShouOrderListApi(data) {
+    return _uniFly.default.get({
+      url: '/qiShouOrderList',
+      params: data });
+
+  },
+  // 骑手端-订单模拟数据
+  pqiShouOrderListApi: function pqiShouOrderListApi(data) {
+    return _uniFly.default.put({
+      url: '/qiShouOrderList',
+      params: data });
+
+  } };var _default =
+
+
+$api;exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
+
+/***/ }),
+
+/***/ 19:
+/*!**********************************************!*\
+  !*** F:/projects/schoolShop/utils/uniFly.js ***!
+  \**********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+/* WEBPACK VAR INJECTION */(function(uni) {!function (e, t) {
+   true ? module.exports = t() : undefined;
+}(this, function () {
+  return function (e) {
+    var t = {};
+    function r(n) {
+      if (t[n]) return t[n].exports;
+      var o = t[n] = { i: n, l: !1, exports: {} };
+      return e[n].call(o.exports, o, o.exports, r), o.l = !0, o.exports;
+    }
+
+    return r.m = e, r.c = t, r.d = function (e, t, n) {
+      r.o(e, t) || Object.defineProperty(e, t, { enumerable: !0, get: n });
+    }, r.r = function (e) {
+      "undefined" != typeof Symbol && Symbol.toStringTag && Object.defineProperty(e, Symbol.toStringTag, { value: "Module" }), Object.defineProperty(e, "__esModule", { value: !0 });
+    }, r.t = function (e, t) {
+      if (1 & t && (e = r(e)), 8 & t) return e;
+      if (4 & t && "object" == typeof e && e && e.__esModule) return e;
+      var n = Object.create(null);
+      if (r.r(n), Object.defineProperty(n, "default", {
+        enumerable: !0,
+        value: e }),
+      2 & t && "string" != typeof e) for (var o in e) {r.d(n, o, function (t) {
+          return e[t];
+        }.bind(null, o));}
+      return n;
+    }, r.n = function (e) {
+      var t = e && e.__esModule ? function () {
+        return e.default;
+      } : function () {
+        return e;
+      };
+      return r.d(t, "a", t), t;
+    }, r.o = function (e, t) {
+      return Object.prototype.hasOwnProperty.call(e, t);
+    }, r.p = "", r(r.s = 1);
+  }([function (e, t, r) {
+    var n;
+    n = function n() {
+      return function (e) {
+        var t = {};
+
+        function r(n) {
+          if (t[n]) return t[n].exports;
+          var o = t[n] = { i: n, l: !1, exports: {} };
+          return e[n].call(o.exports, o, o.exports, r), o.l = !0, o.exports;
+        }
+
+        return r.m = e, r.c = t, r.i = function (e) {
+          return e;
+        }, r.d = function (e, t, n) {
+          r.o(e, t) || Object.defineProperty(e, t, { configurable: !1, enumerable: !0, get: n });
+        }, r.n = function (e) {
+          var t = e && e.__esModule ? function () {
+            return e.default;
+          } : function () {
+            return e;
+          };
+          return r.d(t, "a", t), t;
+        }, r.o = function (e, t) {
+          return Object.prototype.hasOwnProperty.call(e, t);
+        }, r.p = "", r(r.s = 13);
+      }([function (e, t, r) {
+        "use strict";
+        var n = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (e) {
+          return typeof e;
+        } : function (e) {
+          return e && "function" == typeof Symbol && e.constructor === Symbol && e !== Symbol.prototype ? "symbol" : typeof e;
+        };
+        e.exports = {
+          type: function type(e) {
+            return Object.prototype.toString.call(e).slice(8, -1).toLowerCase();
+          }, isObject: function isObject(e, t) {
+            return t ? "object" === this.type(e) : e && "object" === (void 0 === e ? "undefined" : n(e));
+          }, isFormData: function isFormData(e) {
+            return "undefined" != typeof FormData && e instanceof FormData;
+          }, trim: function trim(e) {
+            return e.replace(/(^\s*)|(\s*$)/g, "");
+          }, encode: function encode(e) {
+            return encodeURIComponent(e).replace(/%40/gi, "@").replace(/%3A/gi, ":").replace(/%24/g, "$").replace(/%2C/gi, ",").replace(/%20/g, "+").replace(/%5B/gi, "[").replace(/%5D/gi, "]");
+          }, formatParams: function formatParams(e) {
+            var t = "",r = !0,n = this;
+            return this.isObject(e) ? (function e(o, s) {
+              var i = n.encode,a = n.type(o);
+              if ("array" == a) o.forEach(function (t, r) {
+                n.isObject(t) || (r = ""), e(t, s + "%5B" + r + "%5D");
+              });else if ("object" == a) for (var u in o) {e(o[u], s ? s + "%5B" + i(u) + "%5D" : i(u));} else r || (t += "&"), r = !1, t += s + "=" + i(o);
+            }(e, ""), t) : e;
+          }, merge: function merge(e, t) {
+            for (var r in t) {e.hasOwnProperty(r) ? this.isObject(t[r], 1) && this.isObject(e[r], 1) && this.merge(e[r], t[r]) : e[r] = t[r];}
+            return e;
+          } };
+
+      }, function (e, t, r) {
+        var n = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (e) {
+          return typeof e;
+        } : function (e) {
+          return e && "function" == typeof Symbol && e.constructor === Symbol && e !== Symbol.prototype ? "symbol" : typeof e;
+        },o = function () {
+          function e(e, t) {
+            for (var r = 0; r < t.length; r++) {
+              var n = t[r];
+              n.enumerable = n.enumerable || !1, n.configurable = !0, "value" in n && (n.writable = !0), Object.defineProperty(e, n.key, n);
+            }
+          }
+
+          return function (t, r, n) {
+            return r && e(t.prototype, r), n && e(t, n), t;
+          };
+        }(),s = r(0),i = "undefined" != typeof document;
+        e.exports = function (e) {
+          return function () {
+            function t() {
+              !function (e, t) {
+                if (!(e instanceof t)) throw new TypeError("Cannot call a class as a function");
+              }(this, t), this.requestHeaders = {}, this.readyState = 0, this.timeout = 0, this.responseURL = "", this.responseHeaders = {};
+            }
+
+            return o(t, [{
+              key: "_call", value: function value(e) {
+                this[e] && this[e].apply(this, [].splice.call(arguments, 1));
+              } },
+            {
+              key: "_changeReadyState", value: function value(e) {
+                this.readyState = e, this._call("onreadystatechange");
+              } },
+            {
+              key: "open", value: function value(e, t) {
+                if (this.method = e, t) {
+                  if (0 !== (t = s.trim(t)).indexOf("http") && i) {
+                    var r = document.createElement("a");
+                    r.href = t, t = r.href;
+                  }
+                } else t = location.href;
+                this.responseURL = t, this._changeReadyState(1);
+              } },
+            {
+              key: "send", value: function value(t) {
+                var r = this;
+                t = t || null;
+                var o = this;
+                if (e) {
+                  var a = {
+                    method: o.method,
+                    url: o.responseURL,
+                    headers: o.requestHeaders || {},
+                    body: t };
+
+                  s.merge(a, o._options || {}), "GET" === a.method && (a.body = null), o._changeReadyState(3);
+                  var u = void 0;
+                  o.timeout = o.timeout || 0, 0 < o.timeout && (u = setTimeout(function () {
+                    3 === o.readyState && (r._call("onloadend"), o._changeReadyState(0), o._call("ontimeout"));
+                  }, o.timeout)), a.timeout = o.timeout, e(a, function (e) {
+                    function t(t) {
+                      var r = e[t];
+                      return delete e[t], r;
+                    }
+
+                    if (3 === o.readyState) {
+                      clearTimeout(u), o.status = t("statusCode") - 0;
+                      var r = t("responseText"),s = t("statusMessage");
+                      if (o.status) {
+                        var a = t("headers"),c = {};
+                        for (var f in a) {
+                          var l = a[f],p = f.toLowerCase();
+                          "object" === (void 0 === l ? "undefined" : n(l)) ? c[p] = l : (c[p] = c[p] || [], c[p].push(l));
+                        }
+                        var d = c["set-cookie"];
+                        i && d && d.forEach(function (e) {
+                          document.cookie = e.replace(/;\s*httpOnly/gi, "");
+                        }), o.responseHeaders = c, o.statusText = s || "", o.response = o.responseText = r, o._response = e, o._changeReadyState(4), o._call("onload");
+                      } else o.statusText = r, o._call("onerror", { msg: s });
+                      o._call("onloadend");
+                    }
+                  });
+                } else console.error("Ajax require adapter");
+              } },
+            {
+              key: "setRequestHeader", value: function value(e, t) {
+                this.requestHeaders[s.trim(e)] = t;
+              } },
+            {
+              key: "getResponseHeader", value: function value(e) {
+                return (this.responseHeaders[e.toLowerCase()] || "").toString() || null;
+              } },
+            {
+              key: "getAllResponseHeaders", value: function value() {
+                var e = "";
+                for (var t in this.responseHeaders) {e += t + ":" + this.getResponseHeader(t) + "\r\n";}
+                return e || null;
+              } },
+            {
+              key: "abort", value: function value(e) {
+                this._changeReadyState(0), this._call("onerror", { msg: e }), this._call("onloadend");
+              } }],
+            [{
+              key: "setAdapter", value: function value(t) {
+                e = t;
+              } }]),
+            t;
+          }();
+        };
+      }, function (e, t, r) {
+        var n = function () {
+          function e(e, t) {
+            for (var r = 0; r < t.length; r++) {
+              var n = t[r];
+              n.enumerable = n.enumerable || !1, n.configurable = !0, "value" in n && (n.writable = !0), Object.defineProperty(e, n.key, n);
+            }
+          }
+
+          return function (t, r, n) {
+            return r && e(t.prototype, r), n && e(t, n), t;
+          };
+        }(),o = r(0),s = "undefined" != typeof document,i = function () {
+          function e(t) {
+            function r(e) {
+              var t = void 0,r = void 0;
+
+              function n() {
+                e.p = t = r = null;
+              }
+
+              o.merge(e, {
+                lock: function lock() {
+                  t || (e.p = new Promise(function (e, n) {
+                    t = e, r = n;
+                  }));
+                }, unlock: function unlock() {
+                  t && (t(), n());
+                }, clear: function clear() {
+                  r && (r("cancel"), n());
+                } });
+
+            }
+
+            !function (t, r) {
+              if (!(t instanceof e)) throw new TypeError("Cannot call a class as a function");
+            }(this), this.engine = t || XMLHttpRequest;
+            var n = (this.default = this).interceptors = {
+              response: {
+                use: function use(e, t) {
+                  this.handler = e, this.onerror = t;
+                } },
+              request: {
+                use: function use(e) {
+                  this.handler = e;
+                } } },
+
+            s = n.request;
+            r(n.response), r(s), this.config = {
+              method: "GET",
+              baseURL: "",
+              headers: {},
+              timeout: 0,
+              params: {},
+              parseJson: !0,
+              withCredentials: !1 };
+
+          }
+
+          return n(e, [{
+            key: "request", value: function value(e, t, r) {
+              var n = this,i = new this.engine(),a = "Content-Type",u = a.toLowerCase(),
+              c = this.interceptors,f = c.request,l = c.response,p = f.handler,
+              d = new Promise(function (c, d) {
+                function h(e) {
+                  return e && e.then && e.catch;
+                }
+
+                function m(e, t) {
+                  e ? e.then(function () {
+                    t();
+                  }) : t();
+                }
+
+                o.isObject(e) && (e = (r = e).url), (r = r || {}).headers = r.headers || {}, m(f.p, function () {
+                  o.merge(r, JSON.parse(JSON.stringify(n.config)));
+                  var y = r.headers;
+                  y[a] = y[a] || y[u] || "", delete y[u], r.body = t || r.body, e = o.trim(e || ""), r.method = r.method.toUpperCase(), r.url = e;
+                  var v = r;
+                  p && (v = p.call(f, r, Promise) || r), h(v) || (v = Promise.resolve(v)), v.then(function (n) {
+                    n === r ? function (r) {
+                      t = r.body, e = o.trim(r.url);
+                      var n = o.trim(r.baseURL || "");
+                      if (e || !s || n || (e = location.href), 0 !== e.indexOf("http")) {
+                        var f = "/" === e[0];
+                        if (!n && s) {
+                          var p = location.pathname.split("/");
+                          p.pop(), n = location.protocol + "//" + location.host + (f ? "" : p.join("/"));
+                        }
+                        if ("/" !== n[n.length - 1] && (n += "/"), e = n + (f ? e.substr(1) : e), s) {
+                          var y = document.createElement("a");
+                          y.href = e, e = y.href;
+                        }
+                      }
+                      var v = o.trim(r.responseType || ""),
+                      b = -1 !== ["GET", "HEAD", "DELETE", "OPTION"].indexOf(r.method),
+                      g = o.type(t),w = r.params || {};
+                      b && "object" === g && (w = o.merge(t, w));
+                      var O = [];
+                      (w = o.formatParams(w)) && O.push(w), b && t && "string" === g && O.push(t), 0 < O.length && (e += (-1 === e.indexOf("?") ? "?" : "&") + O.join("&")), i.open(r.method, e);
+                      try {
+                        i.withCredentials = !!r.withCredentials, i.timeout = r.timeout || 0, "stream" !== v && (i.responseType = v);
+                      } catch (n) {
+                      }
+                      var j = r.headers[a] || r.headers[u],
+                      P = "application/x-www-form-urlencoded";
+                      for (var x in o.trim((j || "").toLowerCase()) === P ? t = o.formatParams(t) : o.isFormData(t) || -1 === ["object", "array"].indexOf(o.type(t)) || (P = "application/json;charset=utf-8", t = JSON.stringify(t)), j || b || (r.headers[a] = P), r.headers) {if (x === a && o.isFormData(t)) delete r.headers[x];else try {
+                          i.setRequestHeader(x, r.headers[x]);
+                        } catch (n) {
+                        }}
+
+                      function E(e, t, n) {
+                        m(l.p, function () {
+                          if (e) {
+                            n && (t.request = r);
+                            var o = e.call(l, t, Promise);
+                            t = void 0 === o ? t : o;
+                          }
+                          h(t) || (t = Promise[0 === n ? "resolve" : "reject"](t)), t.then(function (e) {
+                            c(e);
+                          }).catch(function (e) {
+                            d(e);
+                          });
+                        });
+                      }
+
+                      function S(e) {
+                        e.engine = i, E(l.onerror, e, -1);
+                      }
+
+                      function k(e, t) {
+                        this.message = e, this.status = t;
+                      }
+
+                      i.onload = function () {
+                        try {
+                          var e = i.response || i.responseText;
+                          e && r.parseJson && -1 !== (i.getResponseHeader(a) || "").indexOf("json") && !o.isObject(e) && (e = JSON.parse(e));
+                          var t = i.responseHeaders;
+                          if (!t) {
+                            t = {};
+                            var n = (i.getAllResponseHeaders() || "").split("\r\n");
+                            n.pop(), n.forEach(function (e) {
+                              if (e) {
+                                var r = e.split(":")[0];
+                                t[r] = i.getResponseHeader(r);
+                              }
+                            });
+                          }
+                          var s = i.status,u = i.statusText,
+                          c = { data: e, headers: t, status: s, statusText: u };
+                          if (o.merge(c, i._response), 200 <= s && s < 300 || 304 === s) c.engine = i, c.request = r, E(l.handler, c, 0);else {
+                            var f = new k(u, s);
+                            f.response = c, S(f);
+                          }
+                        } catch (f) {
+                          S(new k(f.msg, i.status));
+                        }
+                      }, i.onerror = function (e) {
+                        S(new k(e.msg || "Network Error", 0));
+                      }, i.ontimeout = function () {
+                        S(new k("timeout [ " + i.timeout + "ms ]", 1));
+                      }, i._options = r, setTimeout(function () {
+                        i.send(b ? null : t);
+                      }, 0);
+                    }(n) : c(n);
+                  }, function (e) {
+                    d(e);
+                  });
+                });
+              });
+              return d.engine = i, d;
+            } },
+          {
+            key: "all", value: function value(e) {
+              return Promise.all(e);
+            } },
+          {
+            key: "spread", value: function value(e) {
+              return function (t) {
+                return e.apply(null, t);
+              };
+            } }]),
+          e;
+        }();
+        i.default = i, ["get", "post", "put", "patch", "head", "delete"].forEach(function (e) {
+          i.prototype[e] = function (t, r, n) {
+            return this.request(t, r, o.merge({ method: e }, n));
+          };
+        }), ["lock", "unlock", "clear"].forEach(function (e) {
+          i.prototype[e] = function () {
+            this.interceptors.request[e]();
+          };
+        }), e.exports = i;
+      },,,,, function (e, t, r) {
+        "use strict";
+        e.exports = function (e, t) {
+          var r = {
+            method: e.method,
+            url: e.url,
+            dataType: e.dataType || void 0,
+            header: e.headers,
+            data: e.body || {},
+            responseType: e.responseType || "text",
+            success: function success(e) {
+              t({
+                statusCode: e.statusCode,
+                responseText: e.data,
+                headers: e.header,
+                statusMessage: e.errMsg });
+
+            },
+            fail: function fail(e) {
+              t({ statusCode: e.statusCode || 0, statusMessage: e.errMsg });
+            } };
+
+          wx.request(r);
+        };
+      },,,,,, function (e, t, r) {
+        "use strict";
+        var n = r(2),o = r(1)(r(7));
+        e.exports = function (e) {
+          return new n(e || o);
+        };
+      }]);
+    }, e.exports = n();
+  }, function (e, t, r) {
+    "use strict";
+
+    function n(e) {
+      for (var t = 1; t < arguments.length; t++) {
+        var r = null != arguments[t] ? arguments[t] : {},n = Object.keys(r);
+        "function" == typeof Object.getOwnPropertySymbols && (n = n.concat(Object.getOwnPropertySymbols(r).filter(function (e) {
+          return Object.getOwnPropertyDescriptor(r, e).enumerable;
+        }))), n.forEach(function (t) {
+          o(e, t, r[t]);
+        });
+      }
+      return e;
+    }
+
+    function o(e, t, r) {
+      return t in e ? Object.defineProperty(e, t, {
+        value: r,
+        enumerable: !0,
+        configurable: !0,
+        writable: !0 }) :
+      e[t] = r, e;
+    }
+
+    r.r(t);
+    var s = function s(e) {
+      null != e && null != e.title && 0 < e.title.length && (null == e.icon && (e.icon = "none"), void 0 === e.mask && (e.mask = !0), uni.showToast(n({ duration: 2e3 }, e)));
+    },i = function i(e) {
+      (null == (e = n({}, e)).title || e.title.length < 1) && (e.title = "加载中..."), void 0 === e.mask && (e.mask = !0), uni.showLoading(n({}, e));
+    },a = function a() {
+      uni.hideLoading();
+    },u = r(0),c = r.n(u);
+
+    function f(e) {
+      for (var t = 1; t < arguments.length; t++) {
+        var r = null != arguments[t] ? arguments[t] : {},n = Object.keys(r);
+        "function" == typeof Object.getOwnPropertySymbols && (n = n.concat(Object.getOwnPropertySymbols(r).filter(function (e) {
+          return Object.getOwnPropertyDescriptor(r, e).enumerable;
+        }))), n.forEach(function (t) {
+          l(e, t, r[t]);
+        });
+      }
+      return e;
+    }
+
+    function l(e, t, r) {
+      return t in e ? Object.defineProperty(e, t, {
+        value: r,
+        enumerable: !0,
+        configurable: !0,
+        writable: !0 }) :
+      e[t] = r, e;
+    }
+
+    var p = function e(t) {
+      var r = t.baseUrl,n = t.timeout,o = t.headers,s = t.showLoading,i = t.showError,
+      a = t.requestInterceptors,u = t.responseInterceptors;
+      !function (e, t) {
+        if (!(e instanceof t)) throw new TypeError("Cannot call a class as a function");
+      }(this, e), e.headers = o, e.showLoading = s, e.showError = i;
+      var l = new c.a();
+      l.config.baseURL = r, l.config.timeout = n, a = f({}, e.requestInterceptors, a), u = f({}, e.responseInterceptors, u), l.interceptors.request.use(a.success, a.error), l.interceptors.response.use(u.success, u.error), this.fly = l;
+    };
+    p.headers = {}, p.showLoading = !0, p.showError = !0, p.requestInterceptors = {
+      success: function success(e) {
+        return console.log("请求拦截"), e.headers = p.headers, 1 == p.showLoading && i(), e;
+      }, error: function error(e) {
+        return a(), p.showError && s({ title: "请求拦截失败" }), Promise.reject(e);
+      } },
+    p.responseInterceptors = {
+      success: function success(e) {
+        return p.showLoading && a(), console.log("响应拦截"), Promise.resolve(e);
+      }, error: function error(e) {
+        return a(), p.showError && s({ title: "响应拦截失败" }), Promise.reject(e);
+      } };
+
+    var d = p;
+
+    function h(e) {
+      for (var t = 1; t < arguments.length; t++) {
+        var r = null != arguments[t] ? arguments[t] : {},n = Object.keys(r);
+        "function" == typeof Object.getOwnPropertySymbols && (n = n.concat(Object.getOwnPropertySymbols(r).filter(function (e) {
+          return Object.getOwnPropertyDescriptor(r, e).enumerable;
+        }))), n.forEach(function (t) {
+          m(e, t, r[t]);
+        });
+      }
+      return e;
+    }
+
+    function m(e, t, r) {
+      return t in e ? Object.defineProperty(e, t, {
+        value: r,
+        enumerable: !0,
+        configurable: !0,
+        writable: !0 }) :
+      e[t] = r, e;
+    }
+
+    function y(e, t) {
+      for (var r = 0; r < t.length; r++) {
+        var n = t[r];
+        n.enumerable = n.enumerable || !1, n.configurable = !0, "value" in n && (n.writable = !0), Object.defineProperty(e, n.key, n);
+      }
+    }
+
+    var v = function () {
+      function e() {
+        !function (t, r) {
+          if (!(t instanceof e)) throw new TypeError("Cannot call a class as a function");
+        }(this);
+      }
+
+      return t = e, (r = [{
+        key: "instance", value: function value(t) {
+          var r = t.headers,n = t.showLoading,o = void 0 === n || n,s = t.showError,i = void 0 === s || s,
+          a = t.timeout,u = void 0 === a ? e.timeOut : a;
+          if (!e.baseUrl) throw new Error("请先设置基础路由baseUrl");
+          return r = h({}, e.headers, r), new d({
+            baseUrl: e.baseUrl,
+            timeout: u,
+            headers: r,
+            showLoading: o,
+            showError: i,
+            requestInterceptors: e.requestInterceptors,
+            responseInterceptors: e.responseInterceptors });
+
+        } },
+      {
+        key: "get", value: function value(t) {
+          var r = t.url,n = t.params,o = t.showLoading,s = t.showError,i = t.timeout,a = t.headers,
+          u = e.instance({ showLoading: o, showError: s, timeout: i, headers: void 0 === a ? {} : a });
+          return new Promise(function (t, o) {
+            u.fly.get(r, h({}, e.baseParam, n)).then(function (e) {
+              t(e);
+            }).catch(function (e) {
+              o(e);
+            });
+          });
+        } },
+      {
+        key: "post", value: function value(t) {
+          var r = t.url,n = t.params,o = t.showLoading,s = t.showError,i = t.timeout,a = t.headers,
+          u = e.instance({ showLoading: o, showError: s, timeout: i, headers: void 0 === a ? {} : a });
+          return new Promise(function (t, o) {
+            u.fly.post(r, h({}, e.baseParam, n)).then(function (e) {
+              t(e);
+            }).catch(function (e) {
+              o(e);
+            });
+          });
+        } },
+      {
+        key: "put", value: function value(t) {
+          var r = t.url,n = t.params,o = t.showLoading,s = t.showError,i = t.timeout,a = t.headers,
+          u = e.instance({ showLoading: o, showError: s, timeout: i, headers: void 0 === a ? {} : a });
+          return new Promise(function (t, o) {
+            u.fly.put(r, h({}, e.baseParam, n)).then(function (e) {
+              t(e);
+            }).catch(function (e) {
+              o(e);
+            });
+          });
+        } },
+      {
+        key: "delete", value: function value(t) {
+          var r = t.url,n = t.params,o = t.showLoading,s = t.showError,i = t.timeout,a = t.headers,
+          u = e.instance({ showLoading: o, showError: s, timeout: i, headers: void 0 === a ? {} : a });
+          return new Promise(function (t, o) {
+            u.fly.delete(r, h({}, e.baseParam, n)).then(function (e) {
+              t(e);
+            }).catch(function (e) {
+              o(e);
+            });
+          });
+        } }]) &&
+      y(t, r), e;
+      var t, r;
+    }();
+    v.baseUrl = "", v.timeOut = 2e4, v.headers = {
+      common: {},
+      "Content-Type": "application/json" },
+    v.baseParam = {}, v.requestInterceptors = {}, v.responseInterceptors = {};
+    var b = v;
+    t.default = b;
+  }]).default;
+});
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
+
+/***/ }),
+
 /***/ 2:
 /*!******************************************************************************************!*\
   !*** ./node_modules/@dcloudio/vue-cli-plugin-uni/packages/mp-vue/dist/mp.runtime.esm.js ***!
@@ -1683,7 +6285,7 @@ function normalizeComponent (
 __webpack_require__.r(__webpack_exports__);
 /* WEBPACK VAR INJECTION */(function(global) {/*!
  * Vue.js v2.6.11
- * (c) 2014-2019 Evan You
+ * (c) 2014-2020 Evan You
  * Released under the MIT License.
  */
 /*  */
@@ -7306,7 +11908,7 @@ var patch = function(oldVnode, vnode) {
     Object.keys(data).forEach(function (key) { //仅同步 data 中有的数据
       mpData[key] = mpInstance.data[key];
     });
-    var diffData = diff(data, mpData);
+    var diffData = this.$shouldDiffData === false ? data : diff(data, mpData);
     if (Object.keys(diffData).length) {
       if (Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
         console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + this._uid +
@@ -7481,12 +12083,11 @@ function getTarget(obj, path) {
 function internalMixin(Vue) {
 
   Vue.config.errorHandler = function(err) {
+    console.error(err);
     /* eslint-disable no-undef */
     var app = getApp();
     if (app && app.onError) {
       app.onError(err);
-    } else {
-      console.error(err);
     }
   };
 
@@ -7703,6 +12304,177 @@ internalMixin(Vue);
 
 /***/ }),
 
+/***/ 20:
+/*!*********************************************!*\
+  !*** F:/projects/schoolShop/store/index.js ***!
+  \*********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
+
+
+
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
+var _vuex = _interopRequireDefault(__webpack_require__(/*! vuex */ 12));
+var _state = _interopRequireDefault(__webpack_require__(/*! ./state */ 21));
+var _mutations = _interopRequireDefault(__webpack_require__(/*! ./mutations */ 22));
+var _actions = _interopRequireDefault(__webpack_require__(/*! ./actions */ 23));
+var _getters = _interopRequireDefault(__webpack_require__(/*! ./getters */ 24));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} /*
+                                                                                                                                                          vuex最核心的管理对象store
+                                                                                                                                                           */_vue.default.use(_vuex.default);var _default =
+
+new _vuex.default.Store({
+  state: _state.default,
+  mutations: _mutations.default,
+  actions: _actions.default,
+  getters: _getters.default });exports.default = _default;
+
+/***/ }),
+
+/***/ 21:
+/*!*********************************************!*\
+  !*** F:/projects/schoolShop/store/state.js ***!
+  \*********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _baseApiUrl$baseDemai;function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;} /* 
+                                                                                                                                                                                                                                                                                                                                         状态对象  //全局state
+                                                                                                                                                                                                                                                                                                                                          */var _default = (_baseApiUrl$baseDemai = {
+
+  baseApiUrl: 'http://localhost:3000',
+  baseDemain: 'http://localhost:3000',
+  userInfo: {},
+  hasLogin: false,
+
+  latitude: 40.10038, // 纬度
+  longitude: 116.36867, // 经度
+  address: {}, //地址相关信息对象
+  categorys: [], // 食品分类数组
+  shops: [] }, _defineProperty(_baseApiUrl$baseDemai, "userInfo",
+{}), _defineProperty(_baseApiUrl$baseDemai, "goods",
+[]), _defineProperty(_baseApiUrl$baseDemai, "ratings",
+[]), _defineProperty(_baseApiUrl$baseDemai, "info",
+{}), _defineProperty(_baseApiUrl$baseDemai, "cartFoods",
+[]), _defineProperty(_baseApiUrl$baseDemai, "searchShops",
+[]), _baseApiUrl$baseDemai);exports.default = _default;
+
+/***/ }),
+
+/***/ 22:
+/*!*************************************************!*\
+  !*** F:/projects/schoolShop/store/mutations.js ***!
+  \*************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = {
+  login: function login(state, provider) {
+    state.hasLogin = true;
+    state.token = provider.token;
+    state.userInfo = provider;
+    uni.setStorage({
+      key: 'userInfo',
+      data: provider });
+
+    console.info("setStorage");
+  },
+  logout: function logout(state) {
+    state.hasLogin = false;
+    state.userInfo = {};
+    uni.removeStorage({
+      key: 'userInfo' });
+
+    uni.removeStorageSync("wxUserInfo");
+  },
+  checkLogin: function checkLogin(state) {
+    uni.getStorage({
+      key: 'userInfo',
+      success: function success(res) {
+        state.hasLogin = true;
+        state.token = res.data.token;
+        state.userInfo = res.data;
+      } });
+
+  } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
+
+/***/ }),
+
+/***/ 23:
+/*!***********************************************!*\
+  !*** F:/projects/schoolShop/store/actions.js ***!
+  \***********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default =
+{};exports.default = _default;
+
+/***/ }),
+
+/***/ 24:
+/*!***********************************************!*\
+  !*** F:/projects/schoolShop/store/getters.js ***!
+  \***********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //全局getters
+// const getters = {
+// 	baseDemain: state => state.baseDemain,
+//     baseApiUrl: state => state.baseApiUrl,   
+// 	vehicleShareUrl: state => state.vehicleShareUrl,
+// 	token: state => state.token,
+// 	hData : state => state.hData,
+// 	userInfo: state => state.userInfo,
+// 	hasLogin: state => state.hasLogin,
+//     appId: state => state.appId,
+//     appKey: state => state.appKey,
+// 	wxAppId: state => state.wxAppId,
+// 	wxInfoByBackUrl: state => state.wxInfoByBackUrl,
+// 	wxInfoByCode: state => state.wxInfoByCode
+// }
+// export default getters
+
+/*
+包含多个基于state的getter计算属性的对象
+ */var _default =
+{
+
+  totalCount: function totalCount(state) {
+    return state.cartFoods.reduce(function (preTotal, food) {return preTotal + food.count;}, 0);
+  },
+
+  totalPrice: function totalPrice(state) {
+    return state.cartFoods.reduce(function (preTotal, food) {return preTotal + food.count * food.price;}, 0);
+  },
+
+  positiveSize: function positiveSize(state) {
+    return state.ratings.reduce(function (preTotal, rating) {return preTotal + (rating.rateType === 0 ? 1 : 0);}, 0);
+  },
+
+  baseDemain: function baseDemain(state) {return state.baseDemain;},
+  baseApiUrl: function baseApiUrl(state) {return state.baseApiUrl;},
+  vehicleShareUrl: function vehicleShareUrl(state) {return state.vehicleShareUrl;},
+  token: function token(state) {return state.token;},
+  hData: function hData(state) {return state.hData;},
+  userInfo: function userInfo(state) {return state.userInfo;},
+  hasLogin: function hasLogin(state) {return state.hasLogin;},
+  appId: function appId(state) {return state.appId;},
+  appKey: function appKey(state) {return state.appKey;},
+  wxAppId: function wxAppId(state) {return state.wxAppId;},
+  wxInfoByBackUrl: function wxInfoByBackUrl(state) {return state.wxInfoByBackUrl;},
+  wxInfoByCode: function wxInfoByCode(state) {return state.wxInfoByCode;} };exports.default = _default;
+
+/***/ }),
+
 /***/ 3:
 /*!***********************************!*\
   !*** (webpack)/buildin/global.js ***!
@@ -7735,130 +12507,13 @@ module.exports = g;
 /***/ }),
 
 /***/ 4:
-/*!*************************************************************************************************************************************************!*\
-  !*** C:/Users/admin/Documents/Tencent Files/1960512171/FileRecv/MobileFile/school_shop(1)(1)/school_shop(1)/school_shop/school_shop/pages.json ***!
-  \*************************************************************************************************************************************************/
+/*!*****************************************!*\
+  !*** F:/projects/schoolShop/pages.json ***!
+  \*****************************************/
 /*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
+/***/ (function(module, exports) {
 
 
-/***/ }),
-
-/***/ 49:
-/*!***************************************************************************************************************************************************************!*\
-  !*** C:/Users/admin/Documents/Tencent Files/1960512171/FileRecv/MobileFile/school_shop(1)(1)/school_shop(1)/school_shop/school_shop/js_sdk/lyn4ever-gaode.js ***!
-  \***************************************************************************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
- //高德key
-var key = '3d78fb7261cb6e8af4cc6522a1e19bae';
-
-var amapFile = __webpack_require__(/*! ./amap-uni.js */ 50);
-/*
-                                         调用高德地图api进行路线规划时,
-                                         高德对途经点的坐标格式如下:
-                                         
-                                         116.441063,39.91903;
-                                         116.39622,39.912057;
-                                         116.39622,39.912057;
-                                         116.39622,39.912057;
-                                         116.39622,39.912057;
-                                         116.39622,39.912057;
-                                         116.39622,39.912057;
-                                         116.39622,39.912057
-                                         
-                                         也就是说每个点的经纬度之间用;分隔,所以请提前格式化好您的坐标格式
-                                         
-                                         */
-
-
-function PlanningRoute(start, end, _waypoints, result, _fail) {
-  var that = this;
-  var myAmapFun = new amapFile.AMapWX({
-    key: key });
-
-
-  myAmapFun.getDrivingRoute({
-    origin: start,
-    destination: end,
-    waypoints: _waypoints,
-    success: function success(data) {
-      var points = [];
-      if (data.paths && data.paths[0] && data.paths[0].steps) {
-        var steps = data.paths[0].steps;
-        for (var i = 0; i < steps.length; i++) {
-          var poLen = steps[i].polyline.split(';');
-          for (var j = 0; j < poLen.length; j++) {
-            points.push({
-              longitude: parseFloat(poLen[j].split(',')[0]),
-              latitude: parseFloat(poLen[j].split(',')[1]) });
-
-          }
-        }
-      }
-      //这个返回结果就是对应的路线坐标,其他属性页面自己配置,请参照uniapp地图组件一章节
-      //https://uniapp.dcloud.io/component/map
-      result({
-        points: points,
-        color: "#0606ff",
-        width: 8 });
-
-    },
-    fail: function fail(info) {
-      _fail(info);
-    } });
-
-}
-//标记标记点
-function Makemarkers(startpoi, endpoi, waypoints, success) {
-  var markers = [];
-
-  //起点
-  var start = {
-    iconPath: "/static/start.png",
-    id: 0,
-    longitude: startpoi.split(",")[0],
-    latitude: startpoi.split(",")[1],
-    width: 23,
-    height: 33 };
-
-  markers.push(start);
-  //终点
-  var end = {
-    iconPath: "/static/end.png",
-    id: 1,
-    longitude: endpoi.split(",")[0],
-    latitude: endpoi.split(",")[1],
-    width: 23,
-    height: 33 };
-
-  markers.push(end);
-  //途经点,先将其分隔成为数组
-  var _waypoints = waypoints.split(';');
-  for (var i = 0, _len = _waypoints.length; i < _len; i++) {
-    var point = {
-      iconPath: "/static/tjd.png",
-      id: i,
-      longitude: parseFloat(_waypoints[i].split(",")[0]),
-      latitude: parseFloat(_waypoints[i].split(",")[1]),
-      width: 23,
-      height: 33 };
-
-    markers.push(point);
-  }
-
-  //统一风格为回调方式,也可以直接返回这个markers
-  success(markers);
-
-}
-
-module.exports = {
-  line: PlanningRoute,
-  markers: Makemarkers };
 
 /***/ }),
 
@@ -7870,7 +12525,7 @@ module.exports = {
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {var _package = __webpack_require__(/*! ../package.json */ 6);function _possibleConstructorReturn(self, call) {if (call && (typeof call === "object" || typeof call === "function")) {return call;}return _assertThisInitialized(self);}function _assertThisInitialized(self) {if (self === void 0) {throw new ReferenceError("this hasn't been initialised - super() hasn't been called");}return self;}function _getPrototypeOf(o) {_getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) {return o.__proto__ || Object.getPrototypeOf(o);};return _getPrototypeOf(o);}function _inherits(subClass, superClass) {if (typeof superClass !== "function" && superClass !== null) {throw new TypeError("Super expression must either be null or a function");}subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } });if (superClass) _setPrototypeOf(subClass, superClass);}function _setPrototypeOf(o, p) {_setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) {o.__proto__ = p;return o;};return _setPrototypeOf(o, p);}function _classCallCheck(instance, Constructor) {if (!(instance instanceof Constructor)) {throw new TypeError("Cannot call a class as a function");}}function _defineProperties(target, props) {for (var i = 0; i < props.length; i++) {var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);}}function _createClass(Constructor, protoProps, staticProps) {if (protoProps) _defineProperties(Constructor.prototype, protoProps);if (staticProps) _defineProperties(Constructor, staticProps);return Constructor;}
+/* WEBPACK VAR INJECTION */(function(uni) {var _package = __webpack_require__(/*! ../package.json */ 6);function _createSuper(Derived) {return function () {var Super = _getPrototypeOf(Derived),result;if (_isNativeReflectConstruct()) {var NewTarget = _getPrototypeOf(this).constructor;result = Reflect.construct(Super, arguments, NewTarget);} else {result = Super.apply(this, arguments);}return _possibleConstructorReturn(this, result);};}function _possibleConstructorReturn(self, call) {if (call && (typeof call === "object" || typeof call === "function")) {return call;}return _assertThisInitialized(self);}function _assertThisInitialized(self) {if (self === void 0) {throw new ReferenceError("this hasn't been initialised - super() hasn't been called");}return self;}function _isNativeReflectConstruct() {if (typeof Reflect === "undefined" || !Reflect.construct) return false;if (Reflect.construct.sham) return false;if (typeof Proxy === "function") return true;try {Date.prototype.toString.call(Reflect.construct(Date, [], function () {}));return true;} catch (e) {return false;}}function _getPrototypeOf(o) {_getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) {return o.__proto__ || Object.getPrototypeOf(o);};return _getPrototypeOf(o);}function _inherits(subClass, superClass) {if (typeof superClass !== "function" && superClass !== null) {throw new TypeError("Super expression must either be null or a function");}subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } });if (superClass) _setPrototypeOf(subClass, superClass);}function _setPrototypeOf(o, p) {_setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) {o.__proto__ = p;return o;};return _setPrototypeOf(o, p);}function _classCallCheck(instance, Constructor) {if (!(instance instanceof Constructor)) {throw new TypeError("Cannot call a class as a function");}}function _defineProperties(target, props) {for (var i = 0; i < props.length; i++) {var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);}}function _createClass(Constructor, protoProps, staticProps) {if (protoProps) _defineProperties(Constructor.prototype, protoProps);if (staticProps) _defineProperties(Constructor, staticProps);return Constructor;}
 
 var STAT_VERSION = _package.version;
 var STAT_URL = 'https://tongji.dcloud.io/uni/stat';
@@ -8560,7 +13215,7 @@ Util = /*#__PURE__*/function () {
 
 
 
-Stat = /*#__PURE__*/function (_Util) {_inherits(Stat, _Util);_createClass(Stat, null, [{ key: "getInstance", value: function getInstance()
+Stat = /*#__PURE__*/function (_Util) {_inherits(Stat, _Util);var _super = _createSuper(Stat);_createClass(Stat, null, [{ key: "getInstance", value: function getInstance()
     {
       if (!this.instance) {
         this.instance = new Stat();
@@ -8568,7 +13223,7 @@ Stat = /*#__PURE__*/function (_Util) {_inherits(Stat, _Util);_createClass(Stat, 
       return this.instance;
     } }]);
   function Stat() {var _this6;_classCallCheck(this, Stat);
-    _this6 = _possibleConstructorReturn(this, _getPrototypeOf(Stat).call(this));
+    _this6 = _super.call(this);
     _this6.instance = null;
     // 注册拦截器
     if (typeof uni.addInterceptor === 'function' && "development" !== 'development') {
@@ -8749,443 +13404,39 @@ main();
 
 /***/ }),
 
-/***/ 50:
-/*!*********************************************************************************************************************************************************!*\
-  !*** C:/Users/admin/Documents/Tencent Files/1960512171/FileRecv/MobileFile/school_shop(1)(1)/school_shop(1)/school_shop/school_shop/js_sdk/amap-uni.js ***!
-  \*********************************************************************************************************************************************************/
+/***/ 55:
+/*!*****************************************!*\
+  !*** F:/projects/schoolShop/service.js ***!
+  \*****************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {function AMapWX(a) {
-  this.key = a.key, this.requestConfig = {
-    key: a.key,
-    s: "rsx",
-    platform: "WXJS",
-    appname: a.key,
-    sdkversion: "1.2.0",
-    logversion: "2.0" };
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; // 管理账号信息
+var USERS_KEY = 'USERS_KEY';
+var STATE_KEY = 'STATE_KEY';
 
-}
-AMapWX.prototype.getWxLocation = function (a, b) {
-  uni.getLocation({
-    type: "gcj02",
-    success: function success(a) {
-      var c = a.longitude + "," + a.latitude;
-      uni.setStorage({
-        key: "userLocation",
-        data: c }),
-      b(c);
-    },
-    fail: function fail(c) {
-      uni.getStorage({
-        key: "userLocation",
-        success: function success(a) {
-          a.data && b(a.data);
-        } }),
-      a.fail({
-        errCode: "0",
-        errMsg: c.errMsg || "" });
-
-    } });
-
-}, AMapWX.prototype.getRegeo = function (a) {
-  function c(c) {
-    var d = b.requestConfig;
-    uni.request({
-      url: "https://restapi.amap.com/v3/geocode/regeo",
-      data: {
-        key: b.key,
-        location: c,
-        extensions: "all",
-        s: d.s,
-        platform: d.platform,
-        appname: b.key,
-        sdkversion: d.sdkversion,
-        logversion: d.logversion },
-
-      method: "GET",
-      header: {
-        "content-type": "application/json" },
-
-      success: function success(b) {
-        var d, e, f, g, h, i, j, k, l;
-        b.data.status && "1" == b.data.status ? (d = b.data.regeocode, e = d.addressComponent, f = [], g = "", d && d.roads[
-        0] && d.roads[0].name && (g = d.roads[0].name + "附近"), h = c.split(",")[0], i = c.split(",")[1], d.pois && d.
-        pois[0] && (g = d.pois[0].name + "附近", j = d.pois[0].location, j && (h = parseFloat(j.split(",")[0]), i =
-        parseFloat(j.split(",")[1]))), e.provice && f.push(e.provice), e.city && f.push(e.city), e.district && f.push(
-        e.district), e.streetNumber && e.streetNumber.street && e.streetNumber.number ? (f.push(e.streetNumber.street),
-        f.push(e.streetNumber.number)) : (k = "", d && d.roads[0] && d.roads[0].name && (k = d.roads[0].name), f.push(
-        k)), f = f.join(""), l = [{
-          iconPath: a.iconPath,
-          width: a.iconWidth,
-          height: a.iconHeight,
-          name: f,
-          desc: g,
-          longitude: h,
-          latitude: i,
-          id: 0,
-          regeocodeData: d }],
-        a.success(l)) : a.fail({
-          errCode: b.data.infocode,
-          errMsg: b.data.info });
-
-      },
-      fail: function fail(b) {
-        a.fail({
-          errCode: "0",
-          errMsg: b.errMsg || "" });
-
-      } });
-
+var getUsers = function getUsers() {
+  var ret = '';
+  ret = uni.getStorageSync(USERS_KEY);
+  if (!ret) {
+    ret = '[]';
   }
-  var b = this;
-  a.location ? c(a.location) : b.getWxLocation(a, function (a) {
-    c(a);
-  });
-}, AMapWX.prototype.getWeather = function (a) {
-  function d(d) {
-    var e = "base";
-    a.type && "forecast" == a.type && (e = "all"), uni.request({
-      url: "https://restapi.amap.com/v3/weather/weatherInfo",
-      data: {
-        key: b.key,
-        city: d,
-        extensions: e,
-        s: c.s,
-        platform: c.platform,
-        appname: b.key,
-        sdkversion: c.sdkversion,
-        logversion: c.logversion },
+  return JSON.parse(ret);
+};
 
-      method: "GET",
-      header: {
-        "content-type": "application/json" },
+var addUser = function addUser(userInfo) {
+  var users = getUsers();
+  users.push({
+    account: userInfo.account,
+    password: userInfo.password });
 
-      success: function success(b) {
-        function c(a) {
-          var b = {
-            city: {
-              text: "城市",
-              data: a.city },
+  uni.setStorageSync(USERS_KEY, JSON.stringify(users));
+};var _default =
 
-            weather: {
-              text: "天气",
-              data: a.weather },
-
-            temperature: {
-              text: "温度",
-              data: a.temperature },
-
-            winddirection: {
-              text: "风向",
-              data: a.winddirection + "风" },
-
-            windpower: {
-              text: "风力",
-              data: a.windpower + "级" },
-
-            humidity: {
-              text: "湿度",
-              data: a.humidity + "%" } };
-
-
-          return b;
-        }
-        var d, e;
-        b.data.status && "1" == b.data.status ? b.data.lives ? (d = b.data.lives, d && d.length > 0 && (d = d[0], e = c(
-        d), e["liveData"] = d, a.success(e))) : b.data.forecasts && b.data.forecasts[0] && a.success({
-          forecast: b.data.forecasts[0] }) :
-        a.fail({
-          errCode: b.data.infocode,
-          errMsg: b.data.info });
-
-      },
-      fail: function fail(b) {
-        a.fail({
-          errCode: "0",
-          errMsg: b.errMsg || "" });
-
-      } });
-
-  }
-
-  function e(e) {
-    uni.request({
-      url: "https://restapi.amap.com/v3/geocode/regeo",
-      data: {
-        key: b.key,
-        location: e,
-        extensions: "all",
-        s: c.s,
-        platform: c.platform,
-        appname: b.key,
-        sdkversion: c.sdkversion,
-        logversion: c.logversion },
-
-      method: "GET",
-      header: {
-        "content-type": "application/json" },
-
-      success: function success(b) {
-        var c, e;
-        b.data.status && "1" == b.data.status ? (e = b.data.regeocode, e.addressComponent ? c = e.addressComponent.adcode :
-        e.aois && e.aois.length > 0 && (c = e.aois[0].adcode), d(c)) : a.fail({
-          errCode: b.data.infocode,
-          errMsg: b.data.info });
-
-      },
-      fail: function fail(b) {
-        a.fail({
-          errCode: "0",
-          errMsg: b.errMsg || "" });
-
-      } });
-
-  }
-  var b = this,
-  c = b.requestConfig;
-  a.city ? d(a.city) : b.getWxLocation(a, function (a) {
-    e(a);
-  });
-}, AMapWX.prototype.getPoiAround = function (a) {
-  function d(d) {
-    var e = {
-      key: b.key,
-      location: d,
-      s: c.s,
-      platform: c.platform,
-      appname: b.key,
-      sdkversion: c.sdkversion,
-      logversion: c.logversion };
-
-    a.querytypes && (e["types"] = a.querytypes), a.querykeywords && (e["keywords"] = a.querykeywords), uni.request({
-      url: "https://restapi.amap.com/v3/place/around",
-      data: e,
-      method: "GET",
-      header: {
-        "content-type": "application/json" },
-
-      success: function success(b) {
-        var c, d, e, f;
-        if (b.data.status && "1" == b.data.status) {
-          if (b = b.data, b && b.pois) {
-            for (c = [], d = 0; d < b.pois.length; d++) {e = 0 == d ? a.iconPathSelected : a.iconPath, c.push({
-                latitude: parseFloat(b.pois[d].location.split(",")[1]),
-                longitude: parseFloat(b.pois[d].location.split(",")[0]),
-                iconPath: e,
-                width: 22,
-                height: 32,
-                id: d,
-                name: b.pois[d].name,
-                address: b.pois[d].address });}
-
-            f = {
-              markers: c,
-              poisData: b.pois },
-            a.success(f);
-          }
-        } else a.fail({
-          errCode: b.data.infocode,
-          errMsg: b.data.info });
-
-      },
-      fail: function fail(b) {
-        a.fail({
-          errCode: "0",
-          errMsg: b.errMsg || "" });
-
-      } });
-
-  }
-  var b = this,
-  c = b.requestConfig;
-  a.location ? d(a.location) : b.getWxLocation(a, function (a) {
-    d(a);
-  });
-}, AMapWX.prototype.getStaticmap = function (a) {
-  function f(b) {
-    c.push("location=" + b), a.zoom && c.push("zoom=" + a.zoom), a.size && c.push("size=" + a.size), a.scale && c.push(
-    "scale=" + a.scale), a.markers && c.push("markers=" + a.markers), a.labels && c.push("labels=" + a.labels), a.paths &&
-    c.push("paths=" + a.paths), a.traffic && c.push("traffic=" + a.traffic);
-    var e = d + c.join("&");
-    a.success({
-      url: e });
-
-  }
-  var e,b = this,
-  c = [],
-  d = "https://restapi.amap.com/v3/staticmap?";
-  c.push("key=" + b.key), e = b.requestConfig, c.push("s=" + e.s), c.push("platform=" + e.platform), c.push("appname=" +
-  e.appname), c.push("sdkversion=" + e.sdkversion), c.push("logversion=" + e.logversion), a.location ? f(a.location) :
-  b.getWxLocation(a, function (a) {
-    f(a);
-  });
-}, AMapWX.prototype.getInputtips = function (a) {
-  var b = this,
-  c = b.requestConfig,
-  d = {
-    key: b.key,
-    s: c.s,
-    platform: c.platform,
-    appname: b.key,
-    sdkversion: c.sdkversion,
-    logversion: c.logversion };
-
-  a.location && (d["location"] = a.location), a.keywords && (d["keywords"] = a.keywords), a.type && (d["type"] = a.type),
-  a.city && (d["city"] = a.city), a.citylimit && (d["citylimit"] = a.citylimit), uni.request({
-    url: "https://restapi.amap.com/v3/assistant/inputtips",
-    data: d,
-    method: "GET",
-    header: {
-      "content-type": "application/json" },
-
-    success: function success(b) {
-      b && b.data && b.data.tips && a.success({
-        tips: b.data.tips });
-
-    },
-    fail: function fail(b) {
-      a.fail({
-        errCode: "0",
-        errMsg: b.errMsg || "" });
-
-    } });
-
-}, AMapWX.prototype.getDrivingRoute = function (a) {
-  var b = this,
-  c = b.requestConfig,
-  d = {
-    key: b.key,
-    s: c.s,
-    platform: c.platform,
-    appname: b.key,
-    sdkversion: c.sdkversion,
-    logversion: c.logversion };
-
-  a.origin && (d["origin"] = a.origin),
-  a.destination && (d["destination"] = a.destination),
-  a.strategy && (d["strategy"] = a.strategy),
-  a.waypoints && (d["waypoints"] = a.waypoints),
-  a.avoidpolygons && (d["avoidpolygons"] = a.avoidpolygons),
-  a.avoidroad && (d["avoidroad"] = a.avoidroad),
-  uni.request({
-    url: "https://restapi.amap.com/v3/direction/driving",
-    data: d,
-    method: "GET",
-    header: {
-      "content-type": "application/json" },
-
-    success: function success(b) {
-      b && b.data && b.data.route && a.success({
-        paths: b.data.route.paths,
-        taxi_cost: b.data.route.taxi_cost || "" });
-
-    },
-    fail: function fail(b) {
-      a.fail({
-        errCode: "0",
-        errMsg: b.errMsg || "" });
-
-    } });
-
-}, AMapWX.prototype.getWalkingRoute = function (a) {
-  var b = this,
-  c = b.requestConfig,
-  d = {
-    key: b.key,
-    s: c.s,
-    platform: c.platform,
-    appname: b.key,
-    sdkversion: c.sdkversion,
-    logversion: c.logversion };
-
-  a.origin && (d["origin"] = a.origin), a.destination && (d["destination"] = a.destination), uni.request({
-    url: "https://restapi.amap.com/v3/direction/walking",
-    data: d,
-    method: "GET",
-    header: {
-      "content-type": "application/json" },
-
-    success: function success(b) {
-      b && b.data && b.data.route && a.success({
-        paths: b.data.route.paths });
-
-    },
-    fail: function fail(b) {
-      a.fail({
-        errCode: "0",
-        errMsg: b.errMsg || "" });
-
-    } });
-
-}, AMapWX.prototype.getTransitRoute = function (a) {
-  var b = this,
-  c = b.requestConfig,
-  d = {
-    key: b.key,
-    s: c.s,
-    platform: c.platform,
-    appname: b.key,
-    sdkversion: c.sdkversion,
-    logversion: c.logversion };
-
-  a.origin && (d["origin"] = a.origin), a.destination && (d["destination"] = a.destination), a.strategy && (d[
-  "strategy"] = a.strategy), a.city && (d["city"] = a.city), a.cityd && (d["cityd"] = a.cityd), uni.request({
-    url: "https://restapi.amap.com/v3/direction/transit/integrated",
-    data: d,
-    method: "GET",
-    header: {
-      "content-type": "application/json" },
-
-    success: function success(b) {
-      if (b && b.data && b.data.route) {
-        var c = b.data.route;
-        a.success({
-          distance: c.distance || "",
-          taxi_cost: c.taxi_cost || "",
-          transits: c.transits });
-
-      }
-    },
-    fail: function fail(b) {
-      a.fail({
-        errCode: "0",
-        errMsg: b.errMsg || "" });
-
-    } });
-
-}, AMapWX.prototype.getRidingRoute = function (a) {
-  var b = this,
-  c = b.requestConfig,
-  d = {
-    key: b.key,
-    s: c.s,
-    platform: c.platform,
-    appname: b.key,
-    sdkversion: c.sdkversion,
-    logversion: c.logversion };
-
-  a.origin && (d["origin"] = a.origin), a.destination && (d["destination"] = a.destination), uni.request({
-    url: "https://restapi.amap.com/v4/direction/bicycling",
-    data: d,
-    method: "GET",
-    header: {
-      "content-type": "application/json" },
-
-    success: function success(b) {
-      b && b.data && b.data.data && a.success({
-        paths: b.data.data.paths });
-
-    },
-    fail: function fail(b) {
-      a.fail({
-        errCode: "0",
-        errMsg: b.errMsg || "" });
-
-    } });
-
-}, module.exports.AMapWX = AMapWX;
+{
+  getUsers: getUsers,
+  addUser: addUser };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
@@ -9197,26 +13448,26 @@ AMapWX.prototype.getWxLocation = function (a, b) {
 /*! exports provided: _from, _id, _inBundle, _integrity, _location, _phantomChildren, _requested, _requiredBy, _resolved, _shasum, _spec, _where, author, bugs, bundleDependencies, deprecated, description, devDependencies, files, gitHead, homepage, license, main, name, repository, scripts, version, default */
 /***/ (function(module) {
 
-module.exports = {"_from":"@dcloudio/uni-stat@alpha","_id":"@dcloudio/uni-stat@2.0.0-alpha-25720200116005","_inBundle":false,"_integrity":"sha512-RZFw3WAaS/CZTzzv9JPaWvmoNitojD/06vPdHSzlqZi8GbuE222lFuyochEjrGkG8rPPrWHAnwfoPBuQVtkfdg==","_location":"/@dcloudio/uni-stat","_phantomChildren":{},"_requested":{"type":"tag","registry":true,"raw":"@dcloudio/uni-stat@alpha","name":"@dcloudio/uni-stat","escapedName":"@dcloudio%2funi-stat","scope":"@dcloudio","rawSpec":"alpha","saveSpec":null,"fetchSpec":"alpha"},"_requiredBy":["#USER","/","/@dcloudio/vue-cli-plugin-uni"],"_resolved":"https://registry.npmjs.org/@dcloudio/uni-stat/-/uni-stat-2.0.0-alpha-25720200116005.tgz","_shasum":"08bb17aba91c84a981f33d74153aa3dd07b578ad","_spec":"@dcloudio/uni-stat@alpha","_where":"/Users/guoshengqiang/Documents/dcloud-plugins/alpha/uniapp-cli","author":"","bugs":{"url":"https://github.com/dcloudio/uni-app/issues"},"bundleDependencies":false,"deprecated":false,"description":"","devDependencies":{"@babel/core":"^7.5.5","@babel/preset-env":"^7.5.5","eslint":"^6.1.0","rollup":"^1.19.3","rollup-plugin-babel":"^4.3.3","rollup-plugin-clear":"^2.0.7","rollup-plugin-commonjs":"^10.0.2","rollup-plugin-copy":"^3.1.0","rollup-plugin-eslint":"^7.0.0","rollup-plugin-json":"^4.0.0","rollup-plugin-node-resolve":"^5.2.0","rollup-plugin-replace":"^2.2.0","rollup-plugin-uglify":"^6.0.2"},"files":["dist","package.json","LICENSE"],"gitHead":"a129bde60de35f7ef497f43d5a45b4556231995c","homepage":"https://github.com/dcloudio/uni-app#readme","license":"Apache-2.0","main":"dist/index.js","name":"@dcloudio/uni-stat","repository":{"type":"git","url":"git+https://github.com/dcloudio/uni-app.git","directory":"packages/uni-stat"},"scripts":{"build":"NODE_ENV=production rollup -c rollup.config.js","dev":"NODE_ENV=development rollup -w -c rollup.config.js"},"version":"2.0.0-alpha-25720200116005"};
+module.exports = {"_from":"@dcloudio/uni-stat@next","_id":"@dcloudio/uni-stat@2.0.0-261120200409001","_inBundle":false,"_integrity":"sha512-iM1vsCzUEg80lCM7rSAkh+28ahjS9zQgiGsEoHxawCD9s7rTFnSRIaOuc7WHeQt6EclGUUIrMccYHXsLsNAXZg==","_location":"/@dcloudio/uni-stat","_phantomChildren":{},"_requested":{"type":"tag","registry":true,"raw":"@dcloudio/uni-stat@next","name":"@dcloudio/uni-stat","escapedName":"@dcloudio%2funi-stat","scope":"@dcloudio","rawSpec":"next","saveSpec":null,"fetchSpec":"next"},"_requiredBy":["#USER","/","/@dcloudio/vue-cli-plugin-uni"],"_resolved":"https://registry.npmjs.org/@dcloudio/uni-stat/-/uni-stat-2.0.0-261120200409001.tgz","_shasum":"e9daeef120f133bf3d4ca0505f5b2abed0e874a7","_spec":"@dcloudio/uni-stat@next","_where":"/Users/guoshengqiang/Documents/dcloud-plugins/release/uniapp-cli","author":"","bugs":{"url":"https://github.com/dcloudio/uni-app/issues"},"bundleDependencies":false,"deprecated":false,"description":"","devDependencies":{"@babel/core":"^7.5.5","@babel/preset-env":"^7.5.5","eslint":"^6.1.0","rollup":"^1.19.3","rollup-plugin-babel":"^4.3.3","rollup-plugin-clear":"^2.0.7","rollup-plugin-commonjs":"^10.0.2","rollup-plugin-copy":"^3.1.0","rollup-plugin-eslint":"^7.0.0","rollup-plugin-json":"^4.0.0","rollup-plugin-node-resolve":"^5.2.0","rollup-plugin-replace":"^2.2.0","rollup-plugin-uglify":"^6.0.2"},"files":["dist","package.json","LICENSE"],"gitHead":"ff0877f516c1cc986cf2d7eae2bf5030c58050f9","homepage":"https://github.com/dcloudio/uni-app#readme","license":"Apache-2.0","main":"dist/index.js","name":"@dcloudio/uni-stat","repository":{"type":"git","url":"git+https://github.com/dcloudio/uni-app.git","directory":"packages/uni-stat"},"scripts":{"build":"NODE_ENV=production rollup -c rollup.config.js","dev":"NODE_ENV=development rollup -w -c rollup.config.js"},"version":"2.0.0-261120200409001"};
 
 /***/ }),
 
 /***/ 7:
-/*!******************************************************************************************************************************************************************!*\
-  !*** C:/Users/admin/Documents/Tencent Files/1960512171/FileRecv/MobileFile/school_shop(1)(1)/school_shop(1)/school_shop/school_shop/pages.json?{"type":"style"} ***!
-  \******************************************************************************************************************************************************************/
+/*!**********************************************************!*\
+  !*** F:/projects/schoolShop/pages.json?{"type":"style"} ***!
+  \**********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = { "pages": { "pages/order-processing/order-processing": {}, "pages/order-history/order-history": {}, "pages/set-up/set-up": {}, "pages/map/map": {} }, "globalStyle": { "navigationBarTextStyle": "black", "navigationBarTitleText": "uni-app", "navigationBarBackgroundColor": "#F8F8F8", "backgroundColor": "#F8F8F8" } };exports.default = _default;
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = { "pages": { "pages/order-processing/order-prssing": { "usingComponents": { "empty": "/components/empty" }, "usingAutoImportComponents": {} }, "pages/order/order": { "usingComponents": { "uni-load-more": "/components/uni-load-more/uni-load-more", "empty": "/components/empty" }, "usingAutoImportComponents": { "uni-load-more": "/components/uni-load-more/uni-load-more" } }, "pages/order-processing/order-prssingtest": { "usingComponents": { "tra-order": "/components/tra-order/tra-order" }, "usingAutoImportComponents": { "uni-load-more": "/components/uni-load-more/uni-load-more", "tra-order": "/components/tra-order/tra-order" } }, "pages/login/login": { "navigationBarTitleText": "登录", "usingComponents": { "m-input": "/components/m-input" }, "usingAutoImportComponents": {} }, "pages/set-up/set-up": { "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/set-up/set-up-account": { "navigationBarTitleText": "我的账户", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/set-up/set-up-about": { "navigationBarTitleText": "关于我们", "usingComponents": { "m-input": "/components/m-input" }, "usingAutoImportComponents": {} }, "pages/set-up/set-up-access": { "navigationBarTitleText": "权限设置", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/login/capLogin": { "navigationBarTitleText": "验证登录", "usingComponents": { "cmd-transition": "/components/cmd-transition/cmd-transition", "cmd-input": "/components/cmd-input/cmd-input" }, "usingAutoImportComponents": { "cmd-transition": "/components/cmd-transition/cmd-transition", "cmd-input": "/components/cmd-input/cmd-input" } }, "pages/login/login-reste-pwd": { "navigationBarTitleText": "修改密码", "usingComponents": { "cmd-nav-bar": "/components/cmd-nav-bar/cmd-nav-bar", "cmd-page-body": "/components/cmd-page-body/cmd-page-body", "cmd-transition": "/components/cmd-transition/cmd-transition", "cmd-input": "/components/cmd-input/cmd-input" }, "usingAutoImportComponents": { "cmd-page-body": "/components/cmd-page-body/cmd-page-body", "cmd-transition": "/components/cmd-transition/cmd-transition", "cmd-input": "/components/cmd-input/cmd-input" } }, "pages/set-up/set-up-info": { "navigationBarTitleText": "账户信息", "usingComponents": { "cmd-nav-bar": "/components/cmd-nav-bar/cmd-nav-bar", "cmd-cel-item": "/components/cmd-cell-item/cmd-cell-item", "cmd-avatar": "/components/cmd-avatar/cmd-avatar" }, "usingAutoImportComponents": {} }, "pages/order-processing/details": { "navigationBarTitleText": "详情", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/order-history/order-history": { "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/map/map": { "usingComponents": {}, "usingAutoImportComponents": {} } }, "globalStyle": { "navigationBarTextStyle": "white", "navigationBarTitleText": "校园骑手", "navigationBarBackgroundColor": "#0099FF", "backgroundColor": "#F8F8F8" } };exports.default = _default;
 
 /***/ }),
 
 /***/ 8:
-/*!*****************************************************************************************************************************************************************!*\
-  !*** C:/Users/admin/Documents/Tencent Files/1960512171/FileRecv/MobileFile/school_shop(1)(1)/school_shop(1)/school_shop/school_shop/pages.json?{"type":"stat"} ***!
-  \*****************************************************************************************************************************************************************/
+/*!*********************************************************!*\
+  !*** F:/projects/schoolShop/pages.json?{"type":"stat"} ***!
+  \*********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 

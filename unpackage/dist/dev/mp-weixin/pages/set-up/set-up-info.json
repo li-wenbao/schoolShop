@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "账户信息",
+  "usingComponents": {
+    "cmd-nav-bar": "/components/cmd-nav-bar/cmd-nav-bar",
+    "cmd-cel-item": "/components/cmd-cell-item/cmd-cell-item",
+    "cmd-avatar": "/components/cmd-avatar/cmd-avatar"
+  }
+}
